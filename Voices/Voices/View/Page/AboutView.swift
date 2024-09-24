@@ -1,0 +1,8 @@
+//
+//  About.swift
+//  Voices
+//
+//  Created by Actor on 2024/9/24.
+//
+// 关于我们
+import Foundation

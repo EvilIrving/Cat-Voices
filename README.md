@@ -13,3 +13,15 @@
 5. 点击播放按钮,播放副本文件,播放 start 到 end 区间的音频.
 6. 点击保存按钮,保存副本文件,保存 start 到 end 区间的音频到原始文件文件夹下, 删除原始文件.
 7. 将副本文件 链接到 原始资源文件中.
+
+
+
+资料:
+
+音频处理案例:
+1. Convert audio to MP3: https://github.com/SingletonH/SwiftRecorder/blob/master/SwiftRecorder/ConvertMp3.m 
+2. 
+集成 FFMPEG 库:
+1. ffmpeg-kit: https://github.com/arthenica/ffmpeg-kit/tree/main/apple
+2. 手动安装
+3. 通过 CocoaPods 添加 FFmpeg
