@@ -7,28 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A2BD7C22CA18154007CAD3E /* utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2BD7C12CA18154007CAD3E /* utils.swift */; };
+		1A2BD7C42CA18C5D007CAD3E /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2BD7C32CA18C5D007CAD3E /* EditView.swift */; };
+		1A2BD7C62CA18CA2007CAD3E /* struct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2BD7C52CA18CA2007CAD3E /* struct.swift */; };
 		1A4802582C9B27F200223FCB /* numbers.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1A4802572C9B27F200223FCB /* numbers.mp3 */; };
 		1A9935852C9A6D2000028B09 /* audiodemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9935842C9A6D2000028B09 /* audiodemoApp.swift */; };
 		1A9935872C9A6D2000028B09 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9935862C9A6D2000028B09 /* ContentView.swift */; };
 		1A9935892C9A6D2200028B09 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A9935882C9A6D2200028B09 /* Assets.xcassets */; };
 		1A99358C2C9A6D2200028B09 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A99358B2C9A6D2200028B09 /* Preview Assets.xcassets */; };
-		1A9935972C9A6DC200028B09 /* 03.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1A9935932C9A6DC100028B09 /* 03.mp3 */; };
-		1A9935982C9A6DC200028B09 /* 02.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1A9935942C9A6DC100028B09 /* 02.mp3 */; };
-		1A9935992C9A6DC200028B09 /* 04.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1A9935952C9A6DC200028B09 /* 04.mp3 */; };
-		1A99359A2C9A6DC200028B09 /* 01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1A9935962C9A6DC200028B09 /* 01.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1A2BD7C12CA18154007CAD3E /* utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = utils.swift; sourceTree = "<group>"; };
+		1A2BD7C32CA18C5D007CAD3E /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
+		1A2BD7C52CA18CA2007CAD3E /* struct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = struct.swift; sourceTree = "<group>"; };
 		1A4802572C9B27F200223FCB /* numbers.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = numbers.mp3; sourceTree = "<group>"; };
 		1A9935812C9A6D2000028B09 /* audiodemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = audiodemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A9935842C9A6D2000028B09 /* audiodemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = audiodemoApp.swift; sourceTree = "<group>"; };
 		1A9935862C9A6D2000028B09 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		1A9935882C9A6D2200028B09 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1A99358B2C9A6D2200028B09 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		1A9935932C9A6DC100028B09 /* 03.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 03.mp3; sourceTree = "<group>"; };
-		1A9935942C9A6DC100028B09 /* 02.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 02.mp3; sourceTree = "<group>"; };
-		1A9935952C9A6DC200028B09 /* 04.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 04.mp3; sourceTree = "<group>"; };
-		1A9935962C9A6DC200028B09 /* 01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 01.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +62,9 @@
 				1A9935842C9A6D2000028B09 /* audiodemoApp.swift */,
 				1A9935A02C9AB41600028B09 /* audios */,
 				1A9935862C9A6D2000028B09 /* ContentView.swift */,
+				1A2BD7C32CA18C5D007CAD3E /* EditView.swift */,
+				1A2BD7C52CA18CA2007CAD3E /* struct.swift */,
+				1A2BD7C12CA18154007CAD3E /* utils.swift */,
 				1A9935882C9A6D2200028B09 /* Assets.xcassets */,
 				1A99358A2C9A6D2200028B09 /* Preview Content */,
 			);
@@ -81,11 +82,7 @@
 		1A9935A02C9AB41600028B09 /* audios */ = {
 			isa = PBXGroup;
 			children = (
-				1A9935962C9A6DC200028B09 /* 01.mp3 */,
 				1A4802572C9B27F200223FCB /* numbers.mp3 */,
-				1A9935942C9A6DC100028B09 /* 02.mp3 */,
-				1A9935932C9A6DC100028B09 /* 03.mp3 */,
-				1A9935952C9A6DC200028B09 /* 04.mp3 */,
 			);
 			path = audios;
 			sourceTree = "<group>";
@@ -149,10 +146,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A4802582C9B27F200223FCB /* numbers.mp3 in Resources */,
-				1A9935992C9A6DC200028B09 /* 04.mp3 in Resources */,
-				1A9935982C9A6DC200028B09 /* 02.mp3 in Resources */,
-				1A9935972C9A6DC200028B09 /* 03.mp3 in Resources */,
-				1A99359A2C9A6DC200028B09 /* 01.mp3 in Resources */,
 				1A99358C2C9A6D2200028B09 /* Preview Assets.xcassets in Resources */,
 				1A9935892C9A6D2200028B09 /* Assets.xcassets in Resources */,
 			);
@@ -165,7 +158,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A2BD7C22CA18154007CAD3E /* utils.swift in Sources */,
 				1A9935872C9A6D2000028B09 /* ContentView.swift in Sources */,
+				1A2BD7C42CA18C5D007CAD3E /* EditView.swift in Sources */,
+				1A2BD7C62CA18CA2007CAD3E /* struct.swift in Sources */,
 				1A9935852C9A6D2000028B09 /* audiodemoApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
