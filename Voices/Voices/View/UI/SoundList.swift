@@ -35,11 +35,11 @@ struct SoundsList: View {
             Alert(title: Text("Error"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
         }
 //        .navigationBarItems(trailing: EditButton())
-//        .sheet(isPresented: $sheetPresented) {
-//            if let sound = selectedSound {
-//                AudioEditView(cat: $cat, soundToEdit: .constant(sound))
-//            }
-//        }
+        .sheet(isPresented: $sheetPresented) {
+            if let sound = selectedSound {
+                AudioEditView(cat: $cat, soundToEdit: .constant(sound))
+            }
+        }
     }
 
     private func audioRow(sound: Sound) -> some View {
