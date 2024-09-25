@@ -5,143 +5,142 @@
 //  Created by Actor on 2024/9/24.
 //
 
-import SwiftUI
 import AVFoundation
+import SwiftUI
 
 struct SoundsList: View {
     @Binding var cat: Cat
     @State private var playingSound: Sound?
-    @State private var audioPlayer: AVAudioPlayer?
+    @StateObject private var audioManager = AudioManager()
     @State private var isEditing = false
     @State private var editMode: EditMode = .inactive
     @State private var selectedSound: Sound?
     @State private var sheetPresented = false
-    
-    @State private var timer: Timer?
-    @State private var currentTime: TimeInterval = 0
-    private var duration: TimeInterval {
-        audioPlayer?.duration ?? 0
-    }
-    
+
     var body: some View {
         List {
             ForEach(cat.sounds, id: \.id) { sound in
-                HStack {
-                    VStack(alignment: .leading) {
-                        HStack {
-                            Text("这里是波形图")
-                                .font(.headline)
-                            
-                            Spacer()
-                            
-                            Button(action: {
-                                sheetPresented = false
-                                handlePlayPause(sound: sound)
-                            }) {
-                                Image(systemName: (playingSound == sound && audioPlayer?.isPlaying == true) ? "stop.fill" : "play.fill")
-                                    .font(.title3)
-                                    .padding()
-                            }
-                        }
-                        
-                        HStack {
-                            Text(formatTime(currentTime))
-                                .font(.caption)
-                            Spacer()
-                            Text(formatTime(duration))
-                                .font(.caption)
-                        }
-                        
-                        HStack {
-                            Text(sound.name)
-                                .font(.subheadline)
-                            Spacer()
-                            Button(action: {
-                                selectedSound = sound
-                                sheetPresented = true
-                            }) {
-                                Image(systemName: "pencil")
-                                    .font(.title3)
-                                    .padding()
-                            }
-                        }
-                    }
-                }
-                .padding(.vertical, 8)
+                audioRow(sound: sound)
             }
-            .onDelete(perform: deleteSound)
+            .onDelete(perform: deleteSounds)
+            .onMove(perform: moveSounds)
         }
         .listStyle(PlainListStyle())
         .background(Color(.systemBackground))
-        .navigationBarItems(trailing: HStack {
-            Button(action: {
-                withAnimation {
-                    isEditing.toggle()
-                    editMode = isEditing ? .active : .inactive
-                }
-            }) {
-                Text(isEditing ? "完成" : "编辑")
-            }
-        })
         .environment(\.editMode, $editMode)
+        .navigationBarItems(trailing: EditButton())
 //        .sheet(isPresented: $sheetPresented) {
 //            if let sound = selectedSound {
 //                AudioEditView(cat: $cat, soundToEdit: .constant(sound))
 //            }
 //        }
     }
-    
-    func handlePlayPause(sound: Sound) {
-        if playingSound == sound {
-            if audioPlayer?.isPlaying == true {
-                startTimer()
-                audioPlayer?.stop()
-                playingSound = nil
-            } else {
-                timer?.invalidate()
-                currentTime = 0
-                audioPlayer?.play()
-            }
-        } else {
-            audioPlayer?.stop()
-            do {
-                let fileManager = FileManager.default
-                let filePath = sound.soundURL.path
-                
-                if fileManager.fileExists(atPath: filePath) {
-                    audioPlayer = try AVAudioPlayer(contentsOf: sound.soundURL)
-                    audioPlayer?.prepareToPlay()
-                    audioPlayer?.play()
-                    playingSound = sound
-                } else {
-                    print("Error: File does not exist at path \(filePath)")
+
+    private func audioRow(sound: Sound) -> some View {
+        HStack {
+            VStack(alignment: .leading, spacing: 16) {
+                HStack {
+                    Text(sound.name)
+                        .font(.subheadline)
+
+                    Spacer()
+
+                    Text(audioManager.isPlaying && playingSound == sound ? formatTime(audioManager.currentTime) : formatTime(sound.duration ?? 0.0))
+                        .font(.caption)
                 }
-            } catch {
-                print("Failed to play sound: \(error.localizedDescription)")
+
+                HStack {
+                    Image(systemName: playingSound == sound && audioManager.isPlaying ? "pause.circle" : "play.circle")
+                        .font(.title)
+                        .foregroundColor(.blue)
+                        .onTapGesture {
+                            if playingSound == sound && audioManager.isPlaying {
+                                audioManager.pause()
+                                playingSound = nil
+                            } else {
+                                playOf(sound: sound)
+                            }
+                        }
+
+                    Image(systemName: "pencil")
+                        .foregroundColor(.blue)
+                        .onTapGesture {
+                            audioManager.pause()
+                            selectedSound = sound
+                            sheetPresented = true
+                        }
+                }
             }
         }
+        .padding(.vertical, 8)
     }
-    
-    func deleteSound(at offsets: IndexSet) {
-        cat.sounds.remove(atOffsets: offsets)
-    }
-    
-    func startTimer() {
-        timer?.invalidate()
-        timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { _ in
-            guard let player = audioPlayer, player.isPlaying else {
-                timer?.invalidate()
-                return
-            }
-            currentTime = player.currentTime
+
+    func playOf(sound: Sound) {
+        audioManager.pause()
+        do {
+            try audioManager.play(url: sound.url)
+            playingSound = sound
+        } catch {
+            print("Unable to play audio file: \(error.localizedDescription)")
         }
     }
-    
+
     func formatTime(_ time: TimeInterval) -> String {
         let formatter = DateComponentsFormatter()
         formatter.allowedUnits = [.minute, .second]
         formatter.zeroFormattingBehavior = .pad
         return formatter.string(from: time) ?? "00:00"
     }
+
+    func deleteSounds(at offsets: IndexSet) {
+        cat.sounds.remove(atOffsets: offsets)
+    }
+
+    func moveSounds(from source: IndexSet, to destination: Int) {
+        cat.sounds.move(fromOffsets: source, toOffset: destination)
+    }
 }
 
+class AudioManager: NSObject, ObservableObject, AVAudioPlayerDelegate {
+    @Published var isPlaying = false
+    @Published var currentTime: TimeInterval = 0
+    private var audioPlayer: AVAudioPlayer?
+    private var timer: Timer?
+
+    func play(url: URL) throws {
+        audioPlayer = try AVAudioPlayer(contentsOf: url)
+        audioPlayer?.delegate = self
+        audioPlayer?.prepareToPlay()
+        audioPlayer?.play()
+        isPlaying = true
+        startTimer()
+    }
+
+    func pause() {
+        audioPlayer?.pause()
+        isPlaying = false
+        stopTimer()
+    }
+
+    private func startTimer() {
+        stopTimer()
+        timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { [weak self] _ in
+            guard let self = self, let player = self.audioPlayer, player.isPlaying else {
+                self?.stopTimer()
+                return
+            }
+            self.currentTime = player.currentTime
+        }
+    }
+
+    private func stopTimer() {
+        timer?.invalidate()
+        timer = nil
+    }
+
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        isPlaying = false
+        currentTime = 0
+        stopTimer()
+    }
+}

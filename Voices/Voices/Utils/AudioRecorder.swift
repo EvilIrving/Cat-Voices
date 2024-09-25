@@ -32,7 +32,7 @@ class AudioRecorder: NSObject, ObservableObject {
     }
 
     // Start recording
-    func startRecording() {
+    func startRecording(count: Int) {
         guard !isRecording else { return }
 
         isRecording = true
@@ -43,14 +43,15 @@ class AudioRecorder: NSObject, ObservableObject {
         let settings = [
             AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
             AVSampleRateKey: 44100,
-            AVNumberOfChannelsKey: 2
+            AVNumberOfChannelsKey: 2,
         ]
 
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        let fileURL = paths[0].appendingPathComponent("recording.m4a")
-        recordingURL = fileURL
-
+        let fileURL: URL
         do {
+            let recordingName = "声音\(count + 1).m4a"
+            fileURL = paths[0].appendingPathComponent(recordingName)
+            recordingURL = fileURL
             audioRecorder = try AVAudioRecorder(url: fileURL, settings: settings)
             audioRecorder?.prepareToRecord()
             audioRecorder?.record()
@@ -68,7 +69,7 @@ class AudioRecorder: NSObject, ObservableObject {
         updateButtonDetails()
 
         timerStop()
-        
+
         audioRecorder?.stop()
         print("Stopped recording at \(recordingURL?.path ?? "Unknown path")")
         audioRecorder = nil
@@ -139,6 +140,7 @@ class AudioRecorder: NSObject, ObservableObject {
 }
 
 // MARK: - AVAudioPlayerDelegate
+
 extension AudioRecorder: AVAudioPlayerDelegate {
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         isPlaying = false

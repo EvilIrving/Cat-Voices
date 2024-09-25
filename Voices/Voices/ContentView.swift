@@ -17,6 +17,8 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             VStack {
+                Text("\(cat.name)").font(.headline)
+                
                 // Display the cat's sounds
                 if cat.sounds.isEmpty {
                     Text("还没有录入声音哦")
