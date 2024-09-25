@@ -16,6 +16,9 @@ struct SoundsList: View {
     @State private var editMode: EditMode = .inactive
     @State private var selectedSound: Sound?
     @State private var sheetPresented = false
+    
+    @State private var showAlert = false
+       @State private var alertMessage = ""
 
     var body: some View {
         List {
@@ -28,7 +31,10 @@ struct SoundsList: View {
         .listStyle(PlainListStyle())
         .background(Color(.systemBackground))
         .environment(\.editMode, $editMode)
-        .navigationBarItems(trailing: EditButton())
+        .alert(isPresented: $showAlert) {
+            Alert(title: Text("Error"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
+        }
+//        .navigationBarItems(trailing: EditButton())
 //        .sheet(isPresented: $sheetPresented) {
 //            if let sound = selectedSound {
 //                AudioEditView(cat: $cat, soundToEdit: .constant(sound))
@@ -93,7 +99,17 @@ struct SoundsList: View {
     }
 
     func deleteSounds(at offsets: IndexSet) {
-        cat.sounds.remove(atOffsets: offsets)
+        for index in offsets {
+            let sound = cat.sounds[index]
+            do {
+                try FileManager.default.removeItem(at: sound.url)
+                cat.sounds.remove(at: index)
+            } catch {
+                print("Error deleting file: \(error.localizedDescription)")
+                alertMessage = "Failed to delete audio file: \(error.localizedDescription)"
+                showAlert = true
+            }
+        }
     }
 
     func moveSounds(from source: IndexSet, to destination: Int) {
