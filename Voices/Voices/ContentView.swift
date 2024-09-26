@@ -10,31 +10,32 @@ import AVFoundation
 
 // Main ContentView display the cat sounds and record button
 struct ContentView: View {
-    @State private var cat = Cat(id: UUID(), name: "罗小黑", sounds: [], description: "一个小黑猫，总是很调皮。")
+    @StateObject private var vm =  CatViewModel()
     @State private var isRecording = false
     @StateObject private var audioRecorder = AudioRecorder()
     
     var body: some View {
         NavigationView {
             VStack {
-                Text("\(cat.name)").font(.headline)
+                Text("\(vm.cat.name)").font(.headline)
                 
                 // Display the cat's sounds
-                if cat.sounds.isEmpty {
+                if vm.cat.sounds.isEmpty {
                     Text("还没有录入声音哦")
                         .font(.title3)
                         .padding()
                 } else {
-                    SoundsList(cat: $cat)
+                    SoundsList( )
                 }
                 
                 Spacer()
                 
                 // Floating record button
-                RecordButton(isRecording: $isRecording, cat:$cat)
+                RecordButton(isRecording: $isRecording)
             }
             .padding()
         }
+        .environmentObject(vm) // 将 CatsViewModel 通过 EnvironmentObject 传递给子视图
     }
 }
 

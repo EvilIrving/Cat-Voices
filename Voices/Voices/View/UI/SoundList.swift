@@ -9,24 +9,24 @@ import AVFoundation
 import SwiftUI
 
 struct SoundsList: View {
-    @Binding var cat: Cat
+    @EnvironmentObject var vm: CatViewModel
     @State private var playingSound: Sound?
     @StateObject private var audioManager = AudioManager()
     @State private var isEditing = false
     @State private var editMode: EditMode = .inactive
     @State private var selectedSound: Sound?
     @State private var sheetPresented = false
-    
+
     @State private var showAlert = false
-       @State private var alertMessage = ""
+    @State private var alertMessage = ""
 
     var body: some View {
         List {
-            ForEach(cat.sounds, id: \.id) { sound in
+            ForEach(vm.cat.sounds, id: \.id) { sound in
                 audioRow(sound: sound)
             }
             .onDelete(perform: deleteSounds)
-            .onMove(perform: moveSounds)
+             
         }
         .listStyle(PlainListStyle())
         .background(Color(.systemBackground))
@@ -37,7 +37,7 @@ struct SoundsList: View {
 //        .navigationBarItems(trailing: EditButton())
         .sheet(isPresented: $sheetPresented) {
             if let sound = selectedSound {
-                AudioEditView(cat: $cat, soundToEdit: .constant(sound))
+                AudioEditView(soundToEdit: Binding($selectedSound)!)
             }
         }
     }
@@ -99,21 +99,11 @@ struct SoundsList: View {
     }
 
     func deleteSounds(at offsets: IndexSet) {
-        for index in offsets {
-            let sound = cat.sounds[index]
-            do {
-                try FileManager.default.removeItem(at: sound.url)
-                cat.sounds.remove(at: index)
-            } catch {
-                print("Error deleting file: \(error.localizedDescription)")
-                alertMessage = "Failed to delete audio file: \(error.localizedDescription)"
-                showAlert = true
-            }
+        let flag = vm.removeSound(at: offsets)
+        if flag == false {
+            alertMessage = "Failed to delete audio file"
+            showAlert = true
         }
-    }
-
-    func moveSounds(from source: IndexSet, to destination: Int) {
-        cat.sounds.move(fromOffsets: source, toOffset: destination)
     }
 }
 

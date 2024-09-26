@@ -9,8 +9,8 @@ import SwiftUI
 
 // Button for recording sounds
 struct RecordButton: View {
+    @EnvironmentObject var vm: CatViewModel
     @Binding var isRecording: Bool
-    @Binding var cat: Cat
     @StateObject private var audioRecorder = AudioRecorder()
 
     var body: some View {
@@ -32,13 +32,13 @@ struct RecordButton: View {
                     if isRecording {
                         audioRecorder.stopRecording()
                         if let url = audioRecorder.recordingURL {
-                            let soundName = "新录音\(cat.sounds.count + 1)"
+                            let soundName = "新录音\(vm.cat.sounds.count + 1)"
                             let sound = Sound(name: soundName, url: url)
-                            cat.sounds.append(sound)
+                            vm.addSound(sound: sound)
                         }
                         isRecording = false
                     } else {
-                        audioRecorder.startRecording(count: cat.sounds.count)
+                        audioRecorder.startRecording(count: vm.cat.sounds.count)
                         isRecording = true
                     }
                 }

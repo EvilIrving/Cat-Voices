@@ -7,13 +7,6 @@
 // 定义的结构体
 import AVFoundation
 
-// Model for Cat
-struct Cat: Identifiable {
-    var id: UUID
-    var name: String
-    var sounds: [Sound]
-    var description: String
-}
 
 // Model for Sound
 

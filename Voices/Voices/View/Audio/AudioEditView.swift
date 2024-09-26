@@ -9,13 +9,11 @@ import SwiftUI
 
 struct AudioEditView: View {
     @Environment(\.presentationMode) var presentationMode
-    @Binding var cat: Cat
+    @EnvironmentObject var vm: CatViewModel
     @Binding var soundToEdit: Sound
-    
-    @State private var editedName: String
-    
-    init(cat: Binding<Cat>, soundToEdit: Binding<Sound>) {
-        self._cat = cat
+    @State private var editedName: String = ""
+
+    init(soundToEdit: Binding<Sound>) {
         self._soundToEdit = soundToEdit
         self._editedName = State(initialValue: soundToEdit.wrappedValue.name)
     }
@@ -48,18 +46,17 @@ struct AudioEditView: View {
     
     private func saveChanges() {
         // Update the sound with the new name
+        print(editedName)
         soundToEdit.name = editedName
-
-        // Find the index of the sound and update it in the cat's sounds array
-        if let index = cat.sounds.firstIndex(where: { $0.id == soundToEdit.id }) {
-            cat.sounds[index] = soundToEdit
-
-            // Trigger an update by re-assigning the sounds array
-            let updatedSounds = cat.sounds
-            cat.sounds = updatedSounds
+        print(soundToEdit.name)
+        // Update sound in the ViewModel
+        if let index = vm.cat.sounds.firstIndex(where: { $0.id == soundToEdit.id }) {
+            vm.cat.sounds[index] = soundToEdit
+                   vm.cat.sounds = vm.cat.sounds // 触发视图刷新
         }
 
         // Dismiss the view after saving
         presentationMode.wrappedValue.dismiss()
     }
 }
+
