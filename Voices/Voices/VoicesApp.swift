@@ -12,7 +12,7 @@ import SwiftData
 struct VoicesApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            CatsView()
                 .modelContainer(for: Cat.self)
         }
     }

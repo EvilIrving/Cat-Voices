@@ -12,7 +12,7 @@ import SwiftData
 struct CatsApp: App {
     var body: some Scene {
         WindowGroup {
-            CatsView()
+            ContentView()
         }
         .modelContainer(for: Cat.self)
     }

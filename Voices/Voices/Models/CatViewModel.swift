@@ -3,15 +3,15 @@ import SwiftData
 @Model
 class Cat {
      var name: String
-     var age: Int
-     var vaccinationData: String
-     var audioFiles: [Sound]
+     var age: String
+     var desc: String
+    // 头像 昵称 性别 生日 体重 体型
+     var audios: [Sound]?
     
-    init(name: String, age: Int, vaccinationData: String, audioFiles: [Sound]) {
+    init(name: String, age: String, desc: String) {
         self.name = name
         self.age = age
-        self.vaccinationData = vaccinationData
-        self.audioFiles = audioFiles
+        self.desc = desc
     }
 }
  

@@ -20,14 +20,20 @@ struct ContentView: View {
                 .tabItem {
                     Label("Cats", systemImage: "pawprint")
                 }
-            SettingsView()
+            SettingView()
                 .tabItem {
                     Label("Settings", systemImage: "gear")
                 }
         }
     }
 }
-//
-//#Preview {
-//    ContentView()
-//}
+
+#Preview {
+    do {
+        let previewer = try Previewer()
+        return ContentView()
+            .modelContainer(previewer.container)
+    } catch {
+        return Text("Failed to create preview: \(error.localizedDescription)")
+    }
+}

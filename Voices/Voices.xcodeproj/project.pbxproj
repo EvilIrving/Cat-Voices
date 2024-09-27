@@ -16,7 +16,6 @@
 		1A6145C62CA2DDF400D7149A /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6145C52CA2DDF400D7149A /* Extension.swift */; };
 		1A6145C82CA2DE1700D7149A /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6145C72CA2DE1700D7149A /* Enum.swift */; };
 		1A6145CA2CA2DE2C00D7149A /* Struct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6145C92CA2DE2C00D7149A /* Struct.swift */; };
-		1A6145CD2CA2DE7400D7149A /* AudioEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6145CC2CA2DE7400D7149A /* AudioEditView.swift */; };
 		1A6145D22CA2DEBC00D7149A /* AudioCropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6145D12CA2DEBC00D7149A /* AudioCropView.swift */; };
 		1A6145D62CA2DF2900D7149A /* CatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6145D52CA2DF2900D7149A /* CatViewModel.swift */; };
 		1A6145D82CA2DFE600D7149A /* AudioRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6145D72CA2DFE600D7149A /* AudioRecorder.swift */; };
@@ -26,6 +25,10 @@
 		1A6145FF2CA6406500D7149A /* SoundsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6145FE2CA6406500D7149A /* SoundsView.swift */; };
 		1A6146012CA6407900D7149A /* CatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6146002CA6407900D7149A /* CatsView.swift */; };
 		1A6146032CA6474F00D7149A /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6146022CA6474F00D7149A /* Util.swift */; };
+		1A61462C2CA69CF600D7149A /* EditCatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A61462B2CA69CF600D7149A /* EditCatView.swift */; };
+		1A61462E2CA69DAD00D7149A /* Previewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A61462D2CA69DAD00D7149A /* Previewer.swift */; };
+		1A6146332CA6A05300D7149A /* ThemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6146322CA6A05300D7149A /* ThemeView.swift */; };
+		1A6146352CA6A07E00D7149A /* LanguageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6146342CA6A07E00D7149A /* LanguageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,7 +42,6 @@
 		1A6145C52CA2DDF400D7149A /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		1A6145C72CA2DE1700D7149A /* Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
 		1A6145C92CA2DE2C00D7149A /* Struct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Struct.swift; sourceTree = "<group>"; };
-		1A6145CC2CA2DE7400D7149A /* AudioEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioEditView.swift; sourceTree = "<group>"; };
 		1A6145D12CA2DEBC00D7149A /* AudioCropView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioCropView.swift; sourceTree = "<group>"; };
 		1A6145D52CA2DF2900D7149A /* CatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatViewModel.swift; sourceTree = "<group>"; };
 		1A6145D72CA2DFE600D7149A /* AudioRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecorder.swift; sourceTree = "<group>"; };
@@ -49,6 +51,10 @@
 		1A6145FE2CA6406500D7149A /* SoundsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundsView.swift; sourceTree = "<group>"; };
 		1A6146002CA6407900D7149A /* CatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatsView.swift; sourceTree = "<group>"; };
 		1A6146022CA6474F00D7149A /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		1A61462B2CA69CF600D7149A /* EditCatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCatView.swift; sourceTree = "<group>"; };
+		1A61462D2CA69DAD00D7149A /* Previewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Previewer.swift; sourceTree = "<group>"; };
+		1A6146322CA6A05300D7149A /* ThemeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeView.swift; sourceTree = "<group>"; };
+		1A6146342CA6A07E00D7149A /* LanguageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				1A6145B22CA2DD0100D7149A /* VoicesApp.swift */,
+				1A61462D2CA69DAD00D7149A /* Previewer.swift */,
 				1A6145B42CA2DD0100D7149A /* ContentView.swift */,
 				1A6146042CA65A6900D7149A /* Models */,
 				1A6145CB2CA2DE3F00D7149A /* Utils */,
@@ -142,12 +149,10 @@
 		1A6145DC2CA2E04400D7149A /* Page */ = {
 			isa = PBXGroup;
 			children = (
-				1A6145C02CA2DD8600D7149A /* AboutView.swift */,
+				1A61462F2CA69DF200D7149A /* Setting */,
 				1A6145C22CA2DDBB00D7149A /* WelcomeView.swift */,
-				1A6145DD2CA2E06200D7149A /* SettingView.swift */,
-				1A6145CC2CA2DE7400D7149A /* AudioEditView.swift */,
-				1A6145FE2CA6406500D7149A /* SoundsView.swift */,
-				1A6146002CA6407900D7149A /* CatsView.swift */,
+				1A6146312CA69E0800D7149A /* Sounds */,
+				1A6146302CA69DFE00D7149A /* Cats */,
 			);
 			path = Page;
 			sourceTree = "<group>";
@@ -158,6 +163,34 @@
 				1A6145D52CA2DF2900D7149A /* CatViewModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		1A61462F2CA69DF200D7149A /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				1A6145C02CA2DD8600D7149A /* AboutView.swift */,
+				1A6145DD2CA2E06200D7149A /* SettingView.swift */,
+				1A6146322CA6A05300D7149A /* ThemeView.swift */,
+				1A6146342CA6A07E00D7149A /* LanguageView.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		1A6146302CA69DFE00D7149A /* Cats */ = {
+			isa = PBXGroup;
+			children = (
+				1A6146002CA6407900D7149A /* CatsView.swift */,
+				1A61462B2CA69CF600D7149A /* EditCatView.swift */,
+			);
+			path = Cats;
+			sourceTree = "<group>";
+		};
+		1A6146312CA69E0800D7149A /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				1A6145FE2CA6406500D7149A /* SoundsView.swift */,
+			);
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,21 +264,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A6145C62CA2DDF400D7149A /* Extension.swift in Sources */,
-				1A6145CD2CA2DE7400D7149A /* AudioEditView.swift in Sources */,
 				1A6145C32CA2DDBB00D7149A /* WelcomeView.swift in Sources */,
 				1A6145DA2CA2E00D00D7149A /* RecordButton.swift in Sources */,
 				1A6145D62CA2DF2900D7149A /* CatViewModel.swift in Sources */,
 				1A6145C82CA2DE1700D7149A /* Enum.swift in Sources */,
 				1A6146032CA6474F00D7149A /* Util.swift in Sources */,
 				1A6145D82CA2DFE600D7149A /* AudioRecorder.swift in Sources */,
+				1A6146332CA6A05300D7149A /* ThemeView.swift in Sources */,
 				1A6145E02CA2E07100D7149A /* SoundList.swift in Sources */,
 				1A6145B52CA2DD0100D7149A /* ContentView.swift in Sources */,
 				1A6145DE2CA2E06200D7149A /* SettingView.swift in Sources */,
 				1A6145C12CA2DD8600D7149A /* AboutView.swift in Sources */,
+				1A61462E2CA69DAD00D7149A /* Previewer.swift in Sources */,
 				1A6145CA2CA2DE2C00D7149A /* Struct.swift in Sources */,
 				1A6145FF2CA6406500D7149A /* SoundsView.swift in Sources */,
 				1A6145D22CA2DEBC00D7149A /* AudioCropView.swift in Sources */,
+				1A61462C2CA69CF600D7149A /* EditCatView.swift in Sources */,
 				1A6145B32CA2DD0100D7149A /* VoicesApp.swift in Sources */,
+				1A6146352CA6A07E00D7149A /* LanguageView.swift in Sources */,
 				1A6146012CA6407900D7149A /* CatsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
