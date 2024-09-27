@@ -2,12 +2,21 @@
 
 ## 说明
 
-Voices 是 app 开发的代码
-ViewModelDemo 是 测试 EnvironmentObject 的代码, 包含如何使用 EnvironmentObject 实现 ViewModel 的绑定.
-CatVoice 是录音的实现 demo
-audiodemo 是 音频剪辑的实现 demo
+- Voices 是 app 开发的代码,包含最新的实现, 只用看这一个项目的代码就可以了.
+- ViewModelDemo.swift 是 测试 EnvironmentObject 的代码, 包含如何使用 EnvironmentObject 实现 ViewModel 的绑定. 需要新建项目, 将 ViewModelDemo 的代码复制到 ContentView.
+- CatVoice 是录音的实现 demo
+- audiodemo 是 音频剪辑的实现 demo
 
 后续完成后会将不同的 demo 放在不同的 git 分支.
+
+## 待办
+
+[*] 录音
+[ ] 数据持久化
+    [ ] 用户设置
+    [ ] 猫咪数据
+[ ] 音频剪辑
+
 
 ## 录音实现
 
@@ -32,7 +41,6 @@ AVFoundation 库提供了音频剪辑的功能，包括音频录制、音频播�
 音频处理案例:
 
 1. Convert audio to MP3: <https://github.com/SingletonH/SwiftRecorder/blob/master/SwiftRecorder/ConvertMp3.m>
-2.
 
 集成 FFMPEG 库:
 

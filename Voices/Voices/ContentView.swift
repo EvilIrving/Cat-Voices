@@ -5,37 +5,26 @@
 //  Created by Actor on 2024/9/24.
 //
 
-import SwiftUI
 import AVFoundation
+import SwiftUI
 
-// Main ContentView display the cat sounds and record button
+
 struct ContentView: View {
-    @StateObject private var vm =  CatViewModel()
-    @State private var isRecording = false
-    @StateObject private var audioRecorder = AudioRecorder()
-    
     var body: some View {
-        NavigationView {
-            VStack {
-                Text("\(vm.cat.name)").font(.headline)
-                
-                // Display the cat's sounds
-                if vm.cat.sounds.isEmpty {
-                    Text("还没有录入声音哦")
-                        .font(.title3)
-                        .padding()
-                } else {
-                    SoundsList( )
+        TabView {
+            SoundsView()
+                .tabItem {
+                    Label("Sounds", systemImage: "music.note")
                 }
-                
-                Spacer()
-                
-                // Floating record button
-                RecordButton(isRecording: $isRecording)
-            }
-            .padding()
+            SettingsView()
+                .tabItem {
+                    Label("Settings", systemImage: "gear")
+                }
+            CatsView()
+                .tabItem {
+                    Label("Cats", systemImage: "pawprint")
+                }
         }
-        .environmentObject(vm) // 将 CatsViewModel 通过 EnvironmentObject 传递给子视图
     }
 }
 

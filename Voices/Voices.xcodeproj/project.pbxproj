@@ -23,6 +23,8 @@
 		1A6145DA2CA2E00D00D7149A /* RecordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6145D92CA2E00D00D7149A /* RecordButton.swift */; };
 		1A6145DE2CA2E06200D7149A /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6145DD2CA2E06200D7149A /* SettingView.swift */; };
 		1A6145E02CA2E07100D7149A /* SoundList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6145DF2CA2E07100D7149A /* SoundList.swift */; };
+		1A6145FF2CA6406500D7149A /* SoundsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6145FE2CA6406500D7149A /* SoundsView.swift */; };
+		1A6146012CA6407900D7149A /* CatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6146002CA6407900D7149A /* CatsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,8 @@
 		1A6145DD2CA2E06200D7149A /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		1A6145DF2CA2E07100D7149A /* SoundList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundList.swift; sourceTree = "<group>"; };
 		1A6145E22CA3ABC300D7149A /* School.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = School.m4a; sourceTree = "<group>"; };
+		1A6145FE2CA6406500D7149A /* SoundsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundsView.swift; sourceTree = "<group>"; };
+		1A6146002CA6407900D7149A /* CatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,7 +124,6 @@
 		1A6145D02CA2DE9200D7149A /* Audio */ = {
 			isa = PBXGroup;
 			children = (
-				1A6145CC2CA2DE7400D7149A /* AudioEditView.swift */,
 				1A6145D12CA2DEBC00D7149A /* AudioCropView.swift */,
 			);
 			path = Audio;
@@ -141,6 +144,9 @@
 				1A6145C02CA2DD8600D7149A /* AboutView.swift */,
 				1A6145C22CA2DDBB00D7149A /* WelcomeView.swift */,
 				1A6145DD2CA2E06200D7149A /* SettingView.swift */,
+				1A6145CC2CA2DE7400D7149A /* AudioEditView.swift */,
+				1A6145FE2CA6406500D7149A /* SoundsView.swift */,
+				1A6146002CA6407900D7149A /* CatsView.swift */,
 			);
 			path = Page;
 			sourceTree = "<group>";
@@ -235,8 +241,10 @@
 				1A6145DE2CA2E06200D7149A /* SettingView.swift in Sources */,
 				1A6145C12CA2DD8600D7149A /* AboutView.swift in Sources */,
 				1A6145CA2CA2DE2C00D7149A /* Struct.swift in Sources */,
+				1A6145FF2CA6406500D7149A /* SoundsView.swift in Sources */,
 				1A6145D22CA2DEBC00D7149A /* AudioCropView.swift in Sources */,
 				1A6145B32CA2DD0100D7149A /* VoicesApp.swift in Sources */,
+				1A6146012CA6407900D7149A /* CatsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
