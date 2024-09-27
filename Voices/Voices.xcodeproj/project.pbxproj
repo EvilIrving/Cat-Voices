@@ -46,7 +46,6 @@
 		1A6145D92CA2E00D00D7149A /* RecordButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordButton.swift; sourceTree = "<group>"; };
 		1A6145DD2CA2E06200D7149A /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		1A6145DF2CA2E07100D7149A /* SoundList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundList.swift; sourceTree = "<group>"; };
-		1A6145E22CA3ABC300D7149A /* School.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = School.m4a; sourceTree = "<group>"; };
 		1A6145FE2CA6406500D7149A /* SoundsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundsView.swift; sourceTree = "<group>"; };
 		1A6146002CA6407900D7149A /* CatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatsView.swift; sourceTree = "<group>"; };
 		1A6146022CA6474F00D7149A /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
@@ -84,8 +83,7 @@
 			children = (
 				1A6145B22CA2DD0100D7149A /* VoicesApp.swift */,
 				1A6145B42CA2DD0100D7149A /* ContentView.swift */,
-				1A6145E32CA3ABD000D7149A /* Record */,
-				1A6145D52CA2DF2900D7149A /* CatViewModel.swift */,
+				1A6146042CA65A6900D7149A /* Models */,
 				1A6145CB2CA2DE3F00D7149A /* Utils */,
 				1A6145C42CA2DDDF00D7149A /* View */,
 				1A6145B62CA2DD0300D7149A /* Assets.xcassets */,
@@ -154,12 +152,12 @@
 			path = Page;
 			sourceTree = "<group>";
 		};
-		1A6145E32CA3ABD000D7149A /* Record */ = {
+		1A6146042CA65A6900D7149A /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				1A6145E22CA3ABC300D7149A /* School.m4a */,
+				1A6145D52CA2DF2900D7149A /* CatViewModel.swift */,
 			);
-			path = Record;
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
