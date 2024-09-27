@@ -4,41 +4,29 @@
 
 - Voices 是 app 开发的代码,包含最新的实现, 只用看这一个项目的代码就可以了.
 - ViewModelDemo.swift 是 测试 EnvironmentObject 的代码, 包含如何使用 EnvironmentObject 实现 ViewModel 的绑定. 需要新建项目, 将 ViewModelDemo 的代码复制到 ContentView.
-- CatVoice 是录音的实现 demo
-- audiodemo 是 音频剪辑的实现 demo
+- cutAudioFunc.swift 是音频剪辑函数的最小实现, 包含如何使用 AVFoundation 实现音频剪辑. 但代码运行还需要重新传入参数,音频等.
+- audiodemo 可以忽略了
 
 后续完成后会将不同的 demo 放在不同的 git 分支.
 
 ## 待办
 
 [*] 录音
-[ ] 数据持久化
-    [ ] 用户设置
-    [ ] 猫咪数据
+[ ] 数据持久化: 结合 SwiftData 或 CoreData 与文件系统进行数据持久化，再利用 Localizable.strings 和 UserDefaults 进行多语言和主题色的管理
+    [ ] 用户设置 UserDefaults
+    [ ] 猫咪数据 SwiftData
+    [ ] 录音存储管理 FileManager 存储在猫咪 id 的文件夹下
 [ ] 音频剪辑
-
 
 ## 录音实现
 
+`AudioRecorder.swift` 实现录音和保存功能. `AVAudioRecorder` `类用于录音，AVAudioPlayer` 类用于播放录音文件.
+
 ## 音频剪辑实现
 
-AVFoundation 库提供了音频剪辑的功能，包括音频录制、音频播放、音频合成、音频处理等。
+AVFoundation 库提供了音频剪辑的功能，包括音频录制、音频播放、音频合成、音频处理等。 参考 cutAudioFile 文件对音频进行剪辑.但是 Swift 内置库 AVFoundation 只能进行 m4a 格式的音频剪辑, mp3 格式是只读的. 需要引入第三方库,如 ffmpeg-kit 等.
 
-1. EditView.swift 页面获取 audio 音频文件
-
-    ```swift
-    EditView(audioFile: binding(for: audioFile))
-    ```
-
-2. 创建副本 audioFile Comform to AudioFile , 副本文件名为原始文件名_副本, 副本文件位于原始文件文件夹下.
-3. 拖拽左侧滑块, 调整 start 值,  拖拽右侧滑块,调整 end 值.
-4. 点击播放按钮,播放副本文件,播放 start 到 end 区间的音频.
-5. 点击保存按钮,保存副本文件,保存 start 到 end 区间的音频到原始文件文件夹下, 删除原始文件.
-6. 将副本文件 链接到 原始资源文件中.
-
-资料:
-
-音频处理案例:
+资料: 音频处理案例:
 
 1. Convert audio to MP3: <https://github.com/SingletonH/SwiftRecorder/blob/master/SwiftRecorder/ConvertMp3.m>
 

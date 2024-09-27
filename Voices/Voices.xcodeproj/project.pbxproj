@@ -25,6 +25,7 @@
 		1A6145E02CA2E07100D7149A /* SoundList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6145DF2CA2E07100D7149A /* SoundList.swift */; };
 		1A6145FF2CA6406500D7149A /* SoundsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6145FE2CA6406500D7149A /* SoundsView.swift */; };
 		1A6146012CA6407900D7149A /* CatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6146002CA6407900D7149A /* CatsView.swift */; };
+		1A6146032CA6474F00D7149A /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6146022CA6474F00D7149A /* Util.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		1A6145E22CA3ABC300D7149A /* School.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = School.m4a; sourceTree = "<group>"; };
 		1A6145FE2CA6406500D7149A /* SoundsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundsView.swift; sourceTree = "<group>"; };
 		1A6146002CA6407900D7149A /* CatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatsView.swift; sourceTree = "<group>"; };
+		1A6146022CA6474F00D7149A /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				1A6145C52CA2DDF400D7149A /* Extension.swift */,
+				1A6146022CA6474F00D7149A /* Util.swift */,
 				1A6145D72CA2DFE600D7149A /* AudioRecorder.swift */,
 				1A6145C72CA2DE1700D7149A /* Enum.swift */,
 				1A6145C92CA2DE2C00D7149A /* Struct.swift */,
@@ -235,6 +238,7 @@
 				1A6145DA2CA2E00D00D7149A /* RecordButton.swift in Sources */,
 				1A6145D62CA2DF2900D7149A /* CatViewModel.swift in Sources */,
 				1A6145C82CA2DE1700D7149A /* Enum.swift in Sources */,
+				1A6146032CA6474F00D7149A /* Util.swift in Sources */,
 				1A6145D82CA2DFE600D7149A /* AudioRecorder.swift in Sources */,
 				1A6145E02CA2E07100D7149A /* SoundList.swift in Sources */,
 				1A6145B52CA2DD0100D7149A /* ContentView.swift in Sources */,

@@ -7,3 +7,11 @@
 
 //定义的 Enum
 import Foundation
+
+
+
+enum FileCopyError: Error {
+    case fileDoesNotExist
+    case fileExistsAndOverwriteDisabled
+    case copyFailed(Error)
+}

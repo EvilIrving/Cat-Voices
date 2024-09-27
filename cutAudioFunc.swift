@@ -1,9 +1,5 @@
 import AVFoundation
-import PlaygroundSupport
-
-// Allows playground to continue execution after async tasks
-PlaygroundPage.current.needsIndefiniteExecution = true
-
+ 
 /**
   Trim an audio file from `fromTime` to `toTime`.
   
@@ -61,3 +57,4 @@ if let inputPath = Bundle.main.path(forResource: "School", ofType: "m4a") {
 } else {
     print("Failed to find the input audio file.")
 }
+
