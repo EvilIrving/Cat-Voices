@@ -9,10 +9,10 @@ import SwiftUI
 
 // Button for recording sounds
 struct RecordButton: View {
-    @EnvironmentObject var vm: CatViewModel
     @Binding var isRecording: Bool
     @StateObject private var audioRecorder = AudioRecorder()
-
+    @State  var cat: Cat
+    
     var body: some View {
         HStack {
             Spacer()
@@ -20,7 +20,7 @@ struct RecordButton: View {
             Image(systemName: isRecording ? "stop.fill" : "mic.fill")
                 .resizable() // 使图标可调整大小
                 .scaledToFit()
-                .frame(width: 40, height: 40) // 固定宽高
+                .frame(width: 30, height: 30) // 固定宽高
                 .scaleEffect(isRecording ? 0.6 : 1.0) // 录音时缩小 stop 图标
                 .font(.largeTitle)
                 .padding()
@@ -32,13 +32,12 @@ struct RecordButton: View {
                     if isRecording {
                         audioRecorder.stopRecording()
                         if let url = audioRecorder.recordingURL {
-                            let soundName = "新录音\(vm.cat.sounds.count + 1)"
-                            let sound = Sound(name: soundName, url: url)
-                            vm.addSound(sound: sound)
+                            let soundName =  "新录音\(cat.audios.count + 1)"
+                                let sound = Sound(name: soundName, url: url)
                         }
                         isRecording = false
                     } else {
-                        audioRecorder.startRecording(count: vm.cat.sounds.count)
+                        audioRecorder.startRecording(cat: cat)
                         isRecording = true
                     }
                 }

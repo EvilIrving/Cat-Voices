@@ -4,40 +4,58 @@
 //
 //  Created by Actor on 2024/9/24.
 //
-// 定义的结构体
+ 
 import AVFoundation
-
-
-// Model for Sound
-
-struct Sound: Identifiable, Equatable {
-    var id = UUID()
+import CoreAudio
+ 
+struct Sound: Codable, Identifiable, Hashable {
+    var id: UUID = UUID()
     var name: String
-    var url: URL
+    var urlString: String
     var startTime: TimeInterval = 0
     var endTime: TimeInterval = 0
-    var duration: TimeInterval? // 总时长
+    var duration: TimeInterval?
+
+    // 使用 URL 字符串来满足 Codable
+    enum CodingKeys: String, CodingKey {
+        case id, name, urlString, startTime, endTime, duration
+    }
 
     // 自定义初始化方法
     init(name: String, url: URL) {
         self.name = name
-        self.url = url
-
-        print("Audio File \(name) Init")
-
-        // 初始化 AVAudioPlayer 并获取音频时长
-        do {
-            let player = try AVAudioPlayer(contentsOf: url)
-            duration = player.duration
-            endTime = player.duration // 初始时，endTime 即为文件的时长
-        } catch {
-            print("Error initializing AVAudioPlayer: \(error)")
-            duration = nil
-        }
+        self.urlString = url.absoluteString
+        self.id = UUID()
     }
 
-    // Implement equality based on id
+    // 解码器初始化方法
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        id = try container.decode(UUID.self, forKey: .id)
+        name = try container.decode(String.self, forKey: .name)
+        urlString = try container.decode(String.self, forKey: .urlString)
+        startTime = try container.decodeIfPresent(TimeInterval.self, forKey: .startTime) ?? 0
+        endTime = try container.decodeIfPresent(TimeInterval.self, forKey: .endTime) ?? 0
+        duration = try container.decodeIfPresent(TimeInterval.self, forKey: .duration)
+    }
+
+    // 编码方法
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(id, forKey: .id)
+        try container.encode(name, forKey: .name)
+        try container.encode(urlString, forKey: .urlString)
+        try container.encode(startTime, forKey: .startTime)
+        try container.encode(endTime, forKey: .endTime)
+        try container.encodeIfPresent(duration, forKey: .duration)
+    }
+
+    // 遵循 Hashable 协议
     static func == (lhs: Sound, rhs: Sound) -> Bool {
-        lhs.id == rhs.id
+        return lhs.id == rhs.id
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
     }
 }

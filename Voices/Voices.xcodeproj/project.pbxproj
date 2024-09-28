@@ -90,7 +90,7 @@
 				1A6145B22CA2DD0100D7149A /* VoicesApp.swift */,
 				1A61462D2CA69DAD00D7149A /* Previewer.swift */,
 				1A6145B42CA2DD0100D7149A /* ContentView.swift */,
-				1A6146042CA65A6900D7149A /* Models */,
+				1A6146042CA65A6900D7149A /* Model */,
 				1A6145CB2CA2DE3F00D7149A /* Utils */,
 				1A6145C42CA2DDDF00D7149A /* View */,
 				1A6145B62CA2DD0300D7149A /* Assets.xcassets */,
@@ -157,12 +157,12 @@
 			path = Page;
 			sourceTree = "<group>";
 		};
-		1A6146042CA65A6900D7149A /* Models */ = {
+		1A6146042CA65A6900D7149A /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				1A6145D52CA2DF2900D7149A /* CatViewModel.swift */,
 			);
-			path = Models;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		1A61462F2CA69DF200D7149A /* Setting */ = {

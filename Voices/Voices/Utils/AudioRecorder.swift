@@ -32,7 +32,7 @@ class AudioRecorder: NSObject, ObservableObject {
     }
 
     // Start recording
-    func startRecording(count: Int) {
+    func startRecording(cat: Cat) {
         guard !isRecording else { return }
 
         isRecording = true
@@ -48,9 +48,11 @@ class AudioRecorder: NSObject, ObservableObject {
 
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         let fileURL: URL
+        let catFolderPath = paths[0].appendingPathComponent(String(cat.id))
         do {
-            let recordingName = "声音\(count + 1).m4a"
-            fileURL = paths[0].appendingPathComponent(recordingName)
+            try FileManager.default.createDirectory(at: catFolderPath, withIntermediateDirectories: true, attributes: nil)
+            let recordingName = "声音\(cat.audios.count + 1).m4a"
+            let fileURL = catFolderPath.appendingPathComponent(recordingName)
             recordingURL = fileURL
             audioRecorder = try AVAudioRecorder(url: fileURL, settings: settings)
             audioRecorder?.prepareToRecord()

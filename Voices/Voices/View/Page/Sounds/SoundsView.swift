@@ -3,10 +3,11 @@ import SwiftUI
 
 struct SoundsView: View {
     @Environment(\.modelContext) private var modelContext
-    @Query(Cat.self) private var cats: [Cat]
-
+    @Query private var cats: [Cat]
     @State private var selectedCat: Cat?
-
+    @State private var isRecording = false
+    @StateObject private var audioRecorder = AudioRecorder()
+    
     var body: some View {
         NavigationStack {
             VStack {
@@ -18,28 +19,43 @@ struct SoundsView: View {
                 }
                 .pickerStyle(MenuPickerStyle())
                 .padding()
-
+                
                 // 显示音频列表
-                List {
-                    if let audios = selectedCat?.audios {
+                if let audios = selectedCat?.audios, audios.count > 0 {
+                    List {
                         ForEach(audios, id: \.self) { sound in
-                            Text(sound.description) // 假设 Sound 有一个 description 属性
+                            Text(sound.name)
                         }
-                    } else {
-                        Text("No audio recordings available.")
                     }
-                }
-                .navigationTitle("Sounds")
-                .onAppear {
-                    // 设置默认选择的猫咪
-                    if cats.isEmpty {
-                        selectedCat = nil
-                    } else {
-                        selectedCat = cats.first
+                    .listStyle(PlainListStyle())
+                    .background(Color(.systemBackground))
+                    .onAppear {
+                        // 设置默认选择的猫咪
+                        if cats.isEmpty {
+                            selectedCat = nil
+                        } else {
+                            selectedCat = cats.first
+                        }
                     }
+                } else {
+                    Text("还没有录入声音哦")
+                        .font(.title3)
+                        .padding()
                 }
+                Spacer()
+                RecordButton(isRecording: $isRecording,cat:selectedCat!)
             }
             .padding()
         }
+    }
+}
+
+#Preview {
+    do {
+        let previewer = try Previewer()
+        return SoundsView()
+            .modelContainer(previewer.container)
+    } catch {
+        return Text("Failed to create preview: \(error.localizedDescription)")
     }
 }
