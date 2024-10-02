@@ -19,6 +19,7 @@
       [ ] 关于我们
     [ ] 猫咪数据 SwiftData
         - ⭐️⭐️⭐️⭐️⭐️: [如何使用SwiftData？如何与SwiftUI配合使用](https://blog.zhheo.com/p/92aa21b4.html)  
+        - [Let's Integrate SwiftData CRUD into the Notes App, youtube 视频](https://www.youtube.com/watch?v=uK-OIchqh08)
         - ⭐️⭐️⭐️⭐️⭐️⭐️ : [using-swiftdata-to-store-large-files-from-an-api-call](https://medium.com/@jpmtech/using-swiftdata-to-store-large-files-from-an-api-call-11ad83404f76)
         - [SwiftData 实战：用现代方法构建 SwiftUI 应用](https://fatbobman.com/zh/posts/practical-swiftdata-building-swiftui-applications-with-modern-approaches/#%E6%96%B0%E7%9A%84%E9%97%AE%E9%A2%98%E6%95%B0%E6%8D%AE%E6%9B%B4%E6%96%B0%E5%90%8E%E8%A7%86%E5%9B%BE%E6%B2%A1%E6%9C%89%E5%88%B7%E6%96%B0)
         - [WWDC23 初识 SwiftData](https://www.swiftdict.com/wwdc23-meet-swiftdata.swift/WWDC23+%E5%88%9D%E8%AF%86+SwiftData)
