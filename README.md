@@ -116,3 +116,60 @@ AVFoundation 库提供了音频剪辑的功能，包括音频录制、音频播�
 [SwiftAudioEx: Swift 音频播放库](https://github.com/doublesymmetry/SwiftAudioEx):SwiftAudioEx is an audio player written in Swift, making it simpler to work with audio playback from streams and files.
 [AudioKit Cookbook: 音频合成、处理和分析库](https://github.com/AudioKit/Cookbook)
 AVAudioSession：用于管理音频会话和处理音频中断。
+
+## SwiftData
+
+### 如何使用 SwiftData？
+
+1. 引入 SwiftData , 使用 @Model 创建一个模型类
+2. 在应用入口处使用 .modelContainer 修饰符配置 ModelContainer
+3. 使用环境变量获取 `@Environment(\.modelContext) private var modelContext`
+4. 增删改查
+   1. modelContext.insert(model)
+   2. modelContext.delete(model)
+   3. 使用 `@Bindable var item: Item` 接收参数, 同步修改, 并处理 Preview
+   4. 使用 `@Query private var items: [Item]`, 加载缓存下来的数据模型
+5. 排序
+   1. 一个参数: `@Query(sort: \Item.name, order: .reverse)`
+   2. 不限制个数: `@Query(sort: [SortDescriptor(\Item.name), SortDescriptor(\Item.timestamp, order: .reverse)])`
+6. 过滤
+
+  ```swift
+  <!-- 根据 name 长度过滤 -->
+  init(sort: SortDescriptor<Item>) {
+      _items = Query(filter: #Predicate {
+          $0.name.count > 5
+      }, sort: [sort])
+  }
+
+  <!-- or  -->
+
+  <!-- 根据输入搜搜 -->
+  init(sort: SortDescriptor<Item>, searchString: String) {
+      _items = Query(filter: #Predicate {
+          if searchString.isEmpty {
+              return true
+          } else {
+              return $0.name.localizedStandardContains(searchString)
+          }
+      }, sort: [sort])
+  }
+
+
+  <!-- 接收用户输入 -->
+  @State private var searchText = ""
+
+  <!-- 输入框使用 -->
+  TextField("Search", text: $searchText)
+  .searchable(text: $searchText)
+
+  ```
+
+  修改页面的 Preview 并传入 searchString 参数
+7. relationship
+`@Relationship` 显式声明
+8. ModelContainer、ModelContext 与 ModelConfiguration
+
+ModelContainer 创建实际的数据库用于存储
+ModelContext 用于跟踪增删改查的操作
+ModelConfiguration 用于配置存储位置和方式

@@ -12,6 +12,8 @@
 		1A932AC22CAD8F6700954B71 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A932AC12CAD8F6700954B71 /* Assets.xcassets */; };
 		1A932AC52CAD8F6700954B71 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A932AC42CAD8F6700954B71 /* Preview Assets.xcassets */; };
 		1A932ACC2CAD8F8300954B71 /* CatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A932ACB2CAD8F8300954B71 /* CatModel.swift */; };
+		1A932ACE2CAD92D300954B71 /* SoundsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A932ACD2CAD92D300954B71 /* SoundsView.swift */; };
+		1A932AD02CAD93DF00954B71 /* Previewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A932ACF2CAD93DF00954B71 /* Previewer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +23,8 @@
 		1A932AC12CAD8F6700954B71 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1A932AC42CAD8F6700954B71 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1A932ACB2CAD8F8300954B71 /* CatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatModel.swift; sourceTree = "<group>"; };
+		1A932ACD2CAD92D300954B71 /* SoundsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundsView.swift; sourceTree = "<group>"; };
+		1A932ACF2CAD93DF00954B71 /* Previewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Previewer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +59,8 @@
 			children = (
 				1A932ABD2CAD8F6500954B71 /* TestApp.swift */,
 				1A932ABF2CAD8F6500954B71 /* ContentView.swift */,
+				1A932ACF2CAD93DF00954B71 /* Previewer.swift */,
+				1A932ACD2CAD92D300954B71 /* SoundsView.swift */,
 				1A932ACB2CAD8F8300954B71 /* CatModel.swift */,
 				1A932AC12CAD8F6700954B71 /* Assets.xcassets */,
 				1A932AC32CAD8F6700954B71 /* Preview Content */,
@@ -142,7 +148,9 @@
 			files = (
 				1A932ACC2CAD8F8300954B71 /* CatModel.swift in Sources */,
 				1A932AC02CAD8F6500954B71 /* ContentView.swift in Sources */,
+				1A932ACE2CAD92D300954B71 /* SoundsView.swift in Sources */,
 				1A932ABE2CAD8F6500954B71 /* TestApp.swift in Sources */,
+				1A932AD02CAD93DF00954B71 /* Previewer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

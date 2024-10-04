@@ -13,5 +13,6 @@ struct TestApp: App {
         WindowGroup {
             ContentView()
         }
+        .modelContainer(for: [Cat.self, Audio.self])
     }
 }
