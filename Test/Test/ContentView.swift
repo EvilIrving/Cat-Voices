@@ -5,7 +5,7 @@ import SwiftUI
 
 // 定义 Cat 类，使用 @Model 注解，表示它是一个 SwiftData 模型
 @Model
-final class Cat {
+final class Cat: Identifiable {
     // 使用 @Attribute 注解，表示 id 属性是一个唯一的属性
     @Attribute(.unique) let id: UUID
     var name: String
@@ -75,7 +75,6 @@ final class Audio {
     }
 }
 
-// 扩展 Cat 类，添加方法用于添加和删除音频
 extension Cat {
     func addAudio(_ audio: Audio) {
         audios.append(audio)
@@ -83,8 +82,10 @@ extension Cat {
     }
 
     func removeAudio(_ audio: Audio) {
-        audios.removeAll { $0.id == audio.id }
-        audio.cat = nil
+        if let index = audios.firstIndex(where: { $0.id == audio.id }) {
+            audios.remove(at: index)
+            audio.cat = nil
+        }
     }
 }
 
@@ -112,6 +113,9 @@ struct ContentView: View {
 
 // 定义 SoundsView 结构体，用于显示猫的音频列表
 struct SoundsView: View {
+    // 使用 @Environment 注解，获取 modelContext 对象
+    @Environment(\.modelContext) private var modelContext
+
     // 使用 @Query 注解，获取所有 Cat 对象
     @Query private var cats: [Cat]
     // 使用 @State 注解，声明 selectedCat 属性，用于存储当前选中的猫
@@ -140,16 +144,23 @@ struct SoundsView: View {
                                 // 显示音频时长
                                 Text(String(format: "%.1f sec", audio.duration))
                                     .foregroundColor(.secondary)
+
+                                // 添加删除按钮
+                                Button(action: {
+                                    deleteAudio(audio: audio)
+                                }) {
+                                    Image(systemName: "trash")
+                                        .foregroundColor(.red)
+                                }
                             }
                         }
                     }
-                    
+
                     Spacer()
 
                     // 显示录音按钮
-                    if let cat = selectedCat {
-                        // 使用 cat 对象
-                        RecordButton(isRecording: $isRecording, cat: cat)
+                    if let selectedCat = selectedCat {
+                        RecordButton(isRecording: $isRecording, cat: selectedCat)
                     } else {
                         // 如果 selectedCat 为空，则显示提示信息
                         Text("Please select a cat.")
@@ -165,7 +176,7 @@ struct SoundsView: View {
             .toolbar {
                 // 添加一个工具栏按钮，用于选择猫
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Menu("Select Cat") {
+                    Menu(selectedCat?.name ?? "Select Cat") {
                         // 遍历 cats 列表，为每个猫添加一个按钮
                         ForEach(cats) { cat in
                             Button(cat.name) {
@@ -175,6 +186,29 @@ struct SoundsView: View {
                     }
                 }
             }
+            .onAppear {
+                // 在视图出现时，如果 selectedCat 为空，则将 selectedCat 设置为 cats 的第一个元素
+                if selectedCat == nil && !cats.isEmpty {
+                    selectedCat = cats[0]
+                }
+            }
+        }
+    }
+
+    // 删除声音的方法
+    private func deleteAudio(audio: Audio) {
+        // 删除关联的音频文件
+        try? FileManager.default.removeItem(at: audio.url)
+
+        // 从数据库中删除音频
+        modelContext.delete(audio)
+    }
+
+    // 删除声音列表中的多个声音
+    private func deleteAudio(at offsets: IndexSet) {
+        for index in offsets {
+            let audio = cats.first?.audios[index]
+            deleteAudio(audio: audio ?? Audio(url: URL(string: "https://www.example.com")!, name: "Example"))
         }
     }
 }
@@ -189,13 +223,16 @@ struct CatsView: View {
     var body: some View {
         NavigationView {
             // 使用 List 视图显示猫的列表
-            List(cats) { cat in
-                VStack(alignment: .leading) {
-                    Text(cat.name)
-                        .font(.headline)
-                    Text("Age: \(cat.age)")
-                        .font(.subheadline)
+            List {
+                ForEach(cats) { cat in
+                    VStack(alignment: .leading) {
+                        Text(cat.name)
+                            .font(.headline)
+                        Text("Age: \(cat.age)")
+                            .font(.subheadline)
+                    }
                 }
+                .onDelete(perform: deleteCat) // Apply onDelete to the ForEach
             }
             .navigationTitle("Cats")
             .toolbar {
@@ -212,6 +249,25 @@ struct CatsView: View {
         let newCat = Cat(name: "New Cat", age: "1", desc: "A cute cat", gender: .unknown, bodyType: .medium)
         // 使用 modelContext 插入新的猫对象
         modelContext.insert(newCat)
+    }
+
+    // 删除猫咪的方法
+    private func deleteCat(at offsets: IndexSet) {
+        for index in offsets {
+            let cat = cats[index]
+            // 删除关联的音频文件
+            for audio in cat.audios {
+                try? FileManager.default.removeItem(at: audio.url)
+            }
+
+            // Assuming 'cat.audios' contains the path to the folder
+            if let folderURL = cat.audios.first?.url.deletingLastPathComponent() {
+                // Delete the folder recursively
+                try? FileManager.default.removeItem(at: folderURL)
+            }
+            // 从数据库中删除猫咪
+            modelContext.delete(cat)
+        }
     }
 }
 
@@ -255,7 +311,7 @@ struct RecordButton: View {
     // 使用 @StateObject 注解，创建 AudioRecorder 对象
     @StateObject private var audioRecorder = AudioRecorder()
     // 使用 @Binding 注解，绑定 cat 属性，用于获取当前选中的猫
-    @State var cat: Cat
+    let cat: Cat
 
     var body: some View {
         HStack {
@@ -287,6 +343,7 @@ struct RecordButton: View {
                         }
                         isRecording = false
                     } else {
+                        print("已选中的猫咪:\(cat.name)")
                         audioRecorder.startRecording(cat: cat)
                         isRecording = true
                     }
