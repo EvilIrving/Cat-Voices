@@ -1,37 +1,62 @@
-//
-//  SettingView.swift
-//  Test
-//
-//  Created by Actor on 2024/10/7.
-//
-
 import SwiftUI
 
-// 定义 SettingView 结构体，用于显示设置页面
 struct SettingView: View {
-    // 使用 @State 注解，声明 notificationsEnabled 和 darkModeEnabled 属性，用于控制通知和暗黑模式
-   
-    @State private var darkModeEnabled = false
-
+    @State private var currentVersion = "1.0.0" // 默认版本号
+    @State private var isNewVersionAvailable = false // 是否有新版本
+    @State private var isCheckingVersion = false // 是否正在检查新版本
+    
     var body: some View {
-        NavigationView {
-            Form {
-               
-                // 添加外观设置部分
-                Section(header: Text("Appearance")) {
-                    Toggle("Dark Mode", isOn: $darkModeEnabled)
-                }
-
-                // 添加关于部分
-                Section(header: Text("About")) {
+        NavigationStack {
+            List {
+                NavigationLink("Theme", destination: ThemeView())
+                NavigationLink("Language", destination: LanguageView())
+                NavigationLink("About", destination: AboutView())
+                
+                // 版本显示
+                Button(action: {
+                    checkForNewVersion()
+                }) {
                     HStack {
-                        Text("Version")
+                        Text("Version \(currentVersion)").foregroundStyle(.black)
                         Spacer()
-                        Text("1.0.0")
+                        if isCheckingVersion {
+                            ProgressView()
+                                .progressViewStyle(CircularProgressViewStyle())
+                        } else if isNewVersionAvailable {
+                            // 如果有新版本，显示小红点
+                            Circle()
+                                .fill(Color.red)
+                                .frame(width: 10, height: 10)
+                        } else {
+                            Text("当前是最新版本")
+                                .font(.footnote)
+                                .foregroundColor(.gray)
+                        }
                     }
                 }
             }
             .navigationTitle("Settings")
         }
     }
+    
+    // 模拟检查新版本的逻辑
+    func checkForNewVersion() {
+        isCheckingVersion = true
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            // 模拟版本检查结果
+            let availableVersion = "1.1.0"
+            
+            if availableVersion > currentVersion {
+                isNewVersionAvailable = true
+            } else {
+                isNewVersionAvailable = false
+            }
+            isCheckingVersion = false
+        }
+    }
+}
+
+
+#Preview {
+    SettingView()
 }
