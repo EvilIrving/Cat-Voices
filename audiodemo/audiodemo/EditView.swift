@@ -5,8 +5,8 @@
 //  Created by Actor on 2024/9/23.
 //
 
-import SwiftUI
 import AVFoundation
+import SwiftUI
 
 struct EditView: View {
     @Binding var audioFile: AudioFile
@@ -21,17 +21,17 @@ struct EditView: View {
     init(audioFile: Binding<AudioFile>) {
         _audioFile = audioFile
         do {
-            let (destinationFileName , destinationURL) = try copyFile(from: audioFile.wrappedValue.url)
-            
-            print(destinationFileName,destinationURL,"123")
-            cpFile = AudioFile(name:destinationFileName, url: destinationURL)
+            let (destinationFileName, destinationURL) = try copyFile(from: audioFile.wrappedValue.url)
+
+            print(destinationFileName, destinationURL, "123")
+            cpFile = AudioFile(name: destinationFileName, url: destinationURL)
             print(cpFile ?? "111")
-            
+
         } catch {
             print("copyFile Failed")
             self.error = error
         }
-        
+
         loadAudio()
     }
 
@@ -51,14 +51,12 @@ struct EditView: View {
                                 .fill(Color.gray)
                                 .frame(width: 10, height: 50)
                                 .offset(x: 0)
-                               
 
                             // end slider
                             Rectangle()
                                 .fill(Color.gray)
                                 .frame(width: 10, height: 50)
-                                .offset(x: end / duration * geometry.size.width )
-                                
+                                .offset(x: end / duration * geometry.size.width)
                         }
                     }
                 }
@@ -83,7 +81,6 @@ struct EditView: View {
             }
         }
         .navigationBarTitle("Edit Audio File", displayMode: .inline)
-         
     }
 
     func loadAudio() {
@@ -97,9 +94,8 @@ struct EditView: View {
             duration = audioPlayer?.duration ?? 0
             end = duration
             start = 0
-            
-            
-            print(start,duration,end)
+
+            print(start, duration, end)
         } catch {
             print("Error AVAudioPlayer Loading Resource.")
         }

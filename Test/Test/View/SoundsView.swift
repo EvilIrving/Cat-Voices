@@ -73,7 +73,9 @@ struct SoundsView: View {
                                         .font(.title) // 保持与播放按钮大小一致
                                         .foregroundColor(.blue)
                                         .onTapGesture {
-                                            
+                                            audioToTrim = audio
+                                            pauseAudio()
+                                            showingTrimView = true
                                         }
                                 }
                             }
@@ -117,6 +119,12 @@ struct SoundsView: View {
                 // 在视图出现时，如果 selectedCat 为空，则将 selectedCat 设置为 cats 的第一个元素
                 if selectedCat == nil && !cats.isEmpty {
                     selectedCat = cats[0]
+                }
+            }
+
+            .sheet(isPresented: $showingTrimView) {
+                if let audioToTrim = audioToTrim {
+                    AudioTrimView(audio: audioToTrim)
                 }
             }
         }

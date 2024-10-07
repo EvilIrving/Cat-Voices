@@ -38,7 +38,8 @@ struct RecordButton: View {
                     if isRecording {
                         audioRecorder.stopRecording()
                         if let url = audioRecorder.recordingURL {
-                            let sound = Audio(id: UUID(), url: url, name: url.lastPathComponent)
+                            let fileName = url.deletingPathExtension().lastPathComponent
+                            let sound = Audio(id: UUID(), url: url, name: fileName)
                             cat.addAudio(sound) // 添加音频到猫的 audios 列表中
                             // 可选：调用 updateDuration() 更新音频时长
                             Task {
