@@ -130,18 +130,6 @@ struct SoundsView: View {
         }
     }
 
-//    private func updateAudio(original: Audio, trimmed: Audio) {
-//        // 删除原始音频文件
-//        try? FileManager.default.removeItem(at: original.url)
-//
-//        // 更新数据库中的音频对象
-//        original.url = trimmed.url
-//        original.duration = trimmed.duration
-//
-//        // 保存更改
-//        try? modelContext.save()
-//    }
-
     // 暂停当前正在播放的音频
     private func pauseAudio() {
         audioManager.pause()

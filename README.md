@@ -173,3 +173,9 @@ AVAudioSession：用于管理音频会话和处理音频中断。
 ModelContainer 创建实际的数据库用于存储
 ModelContext 用于跟踪增删改查的操作
 ModelConfiguration 用于配置存储位置和方式
+
+### 需要问 Race 的问题
+
+1. SwiftData 和 MVVM 的结合
+2. 使用 AI 开发 造成对知识的理解层次很浅, 比如 猫咪声音 Ai 生成的代码有 Task, 有 文件管理, 这些相关的语法和 API 其实需要单独去学习. 但是用 ai 写 app 心态上变得有点不愿意深究知识, 尤其是已经是比较高阶一点的语法
+3.

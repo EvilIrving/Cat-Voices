@@ -116,6 +116,7 @@ struct AudioTrimView: View {
             let newURL = try await cutAudio(audio, startTime, endTime)
             audio.url = newURL
             audio.name = soundName
+            await audio.updateDuration()
             modelContext.insert(audio)
             isSaving = false
             dismiss()
