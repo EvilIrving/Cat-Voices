@@ -31,6 +31,7 @@ struct ContentView: View {
         let previewer = try Previewer()
         return ContentView()
             .modelContainer(previewer.container)
+            .environmentObject(AppState())
     } catch {
         return Text("Failed to create preview: \(error.localizedDescription)")
     }

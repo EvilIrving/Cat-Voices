@@ -2,111 +2,143 @@ import AVFoundation
 import SwiftUI
 
 struct AudioTrimView: View {
+    // MARK: - Environment
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
+    
+    // MARK: - State
     @State private var audio: Audio
     @State private var soundName: String
     @State private var startTime: Double = 0
     @State private var endTime: Double = 0
     @State private var isSaving: Bool = false
     @State private var duration: CGFloat = 0
+    @State private var errorWrapper: ErrorWrapper?
 
+    // MARK: - Initialization
     init(audio: Audio) {
         _audio = State(initialValue: audio)
         _soundName = State(initialValue: audio.name)
     }
 
+    // MARK: - Body
     var body: some View {
         NavigationView {
             Form {
-                Section(header: Text("Sound Details")) {
-                    TextField("Sound Name", text: $soundName)
-                        .autocapitalization(.none)
-                        .disableAutocorrection(true)
-                }
-
-                // Trimming section
-                Section(header: Text("Trim Audio")) {
-                    GeometryReader { geometry in
-                        ZStack(alignment: .leading) {
-                            Rectangle()
-                                .fill(Color.blue.opacity(0.3))
-                                .frame(height: 40)
-
-                            // Start Trim Marker
-                            Rectangle()
-                                .fill(Color.red)
-                                .frame(width: 2, height: 50)
-                                .position(x: max(1, startTime * geometry.size.width / duration),
-                                          y: geometry.size.height / 2 - 2)
-                                .gesture(
-                                    DragGesture(minimumDistance: 0)
-                                        .onChanged { value in
-                                            let newPosition = max(0, min(value.location.x, geometry.size.width))
-                                            let newStartTime = (newPosition / geometry.size.width) * duration
-                                            // 确保 startTime 不会超过 endTime
-                                            startTime = min(newStartTime, endTime - 0.1) // 0.1 秒的最小间隔
-                                        }
-                                )
-
-                            // End Trim Marker
-                            Rectangle()
-                                .fill(Color.red)
-                                .frame(width: 2, height: 50)
-                                .position(
-                                    x: min(endTime / duration * geometry.size.width, geometry.size.width - 1),
-                                    y: geometry.size.height / 2 - 2
-                                )
-                                .gesture(
-                                    DragGesture(minimumDistance: 0)
-                                        .onChanged { value in
-                                            let newPosition = max(0, min(value.location.x, geometry.size.width))
-                                            let newEndTime = (newPosition / geometry.size.width) * duration
-                                            // 确保 endTime 不会小于 startTime
-                                            endTime = max(newEndTime, startTime + 0.1) // 0.1 秒的最小间隔
-                                        }
-                                )
-                        }
-                    }
-                    .frame(width: .infinity, height: 70)
-
-                    HStack {
-                        Text("Start: \(String(format: "%.2f", startTime))s")
-                        Spacer()
-                        Text("End: \(String(format: "%.2f", endTime))s")
-                    }
-                }
+                soundDetailsSection
+                audioTrimSection
             }
-            .onAppear {
-                // Load duration asynchronously
-                Task {
-                    let asset: AVAsset = AVURLAsset(url: audio.url)
-                    do {
-                        let loadedDuration = try await asset.load(.duration)
-                        duration = CGFloat(loadedDuration.seconds)
-                        endTime = CGFloat(loadedDuration.seconds)
-                        print("duration: \(duration)")
-                    } catch {
-                        print("Error loading asset duration: \(error)")
-                    }
-                }
-            }
+            .onAppear(perform: loadAudioDuration)
             .navigationTitle("Edit Sound")
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button("Cancel") {
-                        dismiss()
-                    }
+                    cancelButton
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Save") {
-                        isSaving = true
-                        Task {
-                            await saveChanges()
-                        }
-                    }
-                    .disabled(isSaving)
+                    saveButton
                 }
+            }
+            .alert(item: $errorWrapper) { wrapper in
+                Alert(title: Text("Error"), message: Text(wrapper.error), dismissButton: .default(Text("OK")))
+            }
+        }
+    }
+    
+    // MARK: - UI Components
+    private var soundDetailsSection: some View {
+        Section(header: Text("Sound Details")) {
+            TextField("Sound Name", text: $soundName)
+                .autocapitalization(.none)
+                .disableAutocorrection(true)
+        }
+    }
+    
+    private var audioTrimSection: some View {
+        Section(header: Text("Trim Audio")) {
+            GeometryReader { geometry in
+                ZStack(alignment: .leading) {
+                    backgroundRectangle
+                    startTrimMarker(in: geometry)
+                    endTrimMarker(in: geometry)
+                }
+            }
+            .frame(height: 70)
+            
+            HStack {
+                Text("Start: \(String(format: "%.2f", startTime))s")
+                Spacer()
+                Text("End: \(String(format: "%.2f", endTime))s")
+            }
+        }
+    }
+    
+    private var backgroundRectangle: some View {
+        Rectangle()
+            .fill(Color.blue.opacity(0.3))
+            .frame(height: 40)
+    }
+    
+    private func trimMarker(at position: CGFloat, in geometry: GeometryProxy) -> some View {
+        Rectangle()
+            .fill(Color.red)
+            .frame(width: 2, height: 50)
+            .position(x: position, y: geometry.size.height / 2 - 2)
+    }
+    
+    private func startTrimMarker(in geometry: GeometryProxy) -> some View {
+        trimMarker(at: max(1, startTime * geometry.size.width / duration), in: geometry)
+            .gesture(
+                DragGesture(minimumDistance: 0)
+                    .onChanged { updateStartTime(with: $0, in: geometry) }
+            )
+    }
+    
+    private func endTrimMarker(in geometry: GeometryProxy) -> some View {
+        trimMarker(at: min(endTime / duration * geometry.size.width, geometry.size.width - 1), in: geometry)
+            .gesture(
+                DragGesture(minimumDistance: 0)
+                    .onChanged { updateEndTime(with: $0, in: geometry) }
+            )
+    }
+    
+    private var cancelButton: some View {
+        Button("Cancel") {
+            dismiss()
+        }
+    }
+    
+    private var saveButton: some View {
+        Button("Save") {
+            isSaving = true
+            Task {
+                await saveChanges()
+            }
+        }
+        .disabled(isSaving)
+    }
+    
+    // MARK: - Helper Methods
+    private func updateStartTime(with value: DragGesture.Value, in geometry: GeometryProxy) {
+        let newPosition = max(0, min(value.location.x, geometry.size.width))
+        let newStartTime = (newPosition / geometry.size.width) * duration
+        startTime = min(newStartTime, endTime - 0.1) // 0.1 秒的最小间隔
+    }
+    
+    private func updateEndTime(with value: DragGesture.Value, in geometry: GeometryProxy) {
+        let newPosition = max(0, min(value.location.x, geometry.size.width))
+        let newEndTime = (newPosition / geometry.size.width) * duration
+        endTime = max(newEndTime, startTime + 0.1) // 0.1 秒的最小间隔
+    }
+    
+    private func loadAudioDuration() {
+        Task {
+            do {
+                let asset = AVURLAsset(url: audio.url)
+                let loadedDuration = try await asset.load(.duration)
+                duration = CGFloat(loadedDuration.seconds)
+                endTime = duration
+            } catch {
+                errorWrapper = ErrorWrapper(error: "Error loading audio duration: \(error.localizedDescription)")
             }
         }
     }
@@ -121,13 +153,13 @@ struct AudioTrimView: View {
             isSaving = false
             dismiss()
         } catch {
-            print("Error saving changes: \(error)")
-//            errorMessage = error.localizedDescription
+            errorWrapper = ErrorWrapper(error: "Error saving changes: \(error.localizedDescription)")
             isSaving = false
         }
     }
 
-    func cutAudio(_ audio: Audio, _ startTime: Double, _ endTime: Double) async throws -> URL {
+    // MARK: - Audio Processing
+    private func cutAudio(_ audio: Audio, _ startTime: Double, _ endTime: Double) async throws -> URL {
         let asset = AVAsset(url: audio.url)
         let composition = AVMutableComposition()
 
@@ -188,6 +220,7 @@ struct AudioTrimView: View {
     }
 }
 
+// MARK: - Supporting Types
 struct ErrorWrapper: Identifiable {
     let id = UUID()
     let error: String

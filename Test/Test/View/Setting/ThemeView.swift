@@ -31,20 +31,19 @@ enum ThemeMode: String, CaseIterable, Identifiable {
 }
 
 struct ThemeView: View {
-    @AppStorage("themeMode") private var themeMode: ThemeMode = .system
+    @EnvironmentObject private var appState: AppState
     @Environment(\.colorScheme) private var systemColorScheme
     
     var body: some View {
         List {
             ForEach(ThemeMode.allCases) { mode in
                 Button(action: {
-                    themeMode = mode
+                    appState.themeMode = mode
                 }) {
                     HStack {
-                        Text(mode.displayName)
-                            .foregroundStyle(themeMode == .dark ? .white : .black)
+                        Text(mode.displayName).foregroundColor(.primary)
                         Spacer()
-                        if themeMode == mode {
+                        if appState.themeMode == mode {
                             Image(systemName: "checkmark")
                                 .foregroundColor(.blue)
                         }
@@ -52,20 +51,18 @@ struct ThemeView: View {
                 }
             }
         }
-        .navigationTitle("主题设置")
+//        .navigationTitle("主题设置")
         .onAppear {
-            if themeMode == .system {
-                // 获取系统当前的明暗模式
+            if appState.themeMode == .system {
                 print("当前系统模式: \(systemColorScheme == .dark ? "深色" : "浅色")")
             }
         }
-        // 应用主题
-        .preferredColorScheme(themeMode.colorScheme)
     }
 }
 
 #Preview {
     NavigationView {
         ThemeView()
+            .environmentObject(AppState())
     }
 }

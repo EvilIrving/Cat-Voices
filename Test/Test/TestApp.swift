@@ -9,10 +9,13 @@ import SwiftUI
 
 @main
 struct TestApp: App {
+    @StateObject private var appState = AppState()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(appState)
+                .preferredColorScheme(appState.themeMode.colorScheme)
         }
-        .modelContainer(for: [Cat.self, Audio.self])
     }
 }

@@ -17,7 +17,8 @@ struct SettingView: View {
                     checkForNewVersion()
                 }) {
                     HStack {
-                        Text("Version \(currentVersion)").foregroundStyle(.black)
+                        Text("Version \(currentVersion)")
+                            .foregroundColor(.primary)
                         Spacer()
                         if isCheckingVersion {
                             ProgressView()
@@ -30,7 +31,7 @@ struct SettingView: View {
                         } else {
                             Text("当前是最新版本")
                                 .font(.footnote)
-                                .foregroundColor(.gray)
+                                .foregroundColor(.secondary)
                         }
                     }
                 }
@@ -59,4 +60,5 @@ struct SettingView: View {
 
 #Preview {
     SettingView()
+        .environmentObject(AppState())
 }

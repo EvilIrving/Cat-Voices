@@ -3,7 +3,8 @@ import Foundation
 import AVFoundation
 
 
-// 定义 Cat 类，使用 @Model 注解，表示它是一个 SwiftData 模型
+// MARK: - Cat Model
+
 @Model
 final class Cat: Identifiable {
     // 使用 @Attribute 注解，表示 id 属性是一个唯一的属性
@@ -31,24 +32,24 @@ final class Cat: Identifiable {
     }
 }
 
-// 定义 Gender 枚举类型，使用 Codable 注解，表示它可以被编码和解码
-enum Gender: String, CaseIterable, Codable { // 使用 CaseIterable
-    case male = "Male"
-    case female = "Female"
-    case unknown = "Unknown"
+// MARK: - Cat Extensions
+
+extension Cat {
+    func addAudio(_ audio: Audio) {
+        audios.append(audio)
+        audio.cat = self
+    }
+
+    func removeAudio(_ audio: Audio) {
+        audios.removeAll { $0.id == audio.id }
+        audio.cat = nil
+    }
 }
 
-// 定义 BodyType 枚举类型，使用 Codable 注解，表示它可以被编码和解码
-enum BodyType: String,CaseIterable, Codable {
-     
-    case small = "Small"
-    case medium = "Meduim"
-    case large = "Large"
-}
+// MARK: - Audio Model
 
-// 定义 Audio 类，使用 @Model 注解，表示它是一个 SwiftData 模型
 @Model
-final class Audio {
+final class Audio: Identifiable {
     // 使用 @Attribute 注解，表示 id 属性是一个唯一的属性
     @Attribute(.unique) let id: UUID
     var url: URL
@@ -63,33 +64,33 @@ final class Audio {
         self.id = id
         self.url = url
         self.name = name
-        duration = 0.0 // 初始化为 0，稍后会更新
+        self.duration = 0.0 // 初始化为 0，稍后会更新
     }
 
     // 使用 async/await 定义异步方法，用于更新音频时长
+    @MainActor
     func updateDuration() async {
         let asset = AVAsset(url: url)
         do {
             let duration = try await asset.load(.duration)
-            await MainActor.run {
-                self.duration = duration.seconds
-            }
+            self.duration = duration.seconds
         } catch {
             print("Error loading audio duration: \(error)")
         }
     }
 }
 
-extension Cat {
-    func addAudio(_ audio: Audio) {
-        audios.append(audio)
-        audio.cat = self
-    }
+// MARK: - Enums
 
-    func removeAudio(_ audio: Audio) {
-        if let index = audios.firstIndex(where: { $0.id == audio.id }) {
-            audios.remove(at: index)
-            audio.cat = nil
-        }
-    }
+enum Gender: String, CaseIterable, Codable { // 使用 CaseIterable
+    case male = "Male"
+    case female = "Female"
+    case unknown = "Unknown"
+}
+
+enum BodyType: String,CaseIterable, Codable {
+     
+    case small = "Small"
+    case medium = "Medium"
+    case large = "Large"
 }

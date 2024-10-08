@@ -36,6 +36,7 @@ struct CatsView: View {
             .toolbar {
                 Button("Add Cat") {
                     isAddingCat = true // 显示添加猫咪的 Sheet
+                    selectedCat = nil
                 }
             }
             .sheet(isPresented: $isAddingCat) {

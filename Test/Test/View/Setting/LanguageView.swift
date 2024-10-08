@@ -39,7 +39,7 @@ struct LanguageView: View {
                 }
             }
         }
-        .navigationTitle("Select Language")
+//        .navigationTitle("Select Language")
     }
 }
 
