@@ -72,6 +72,7 @@ struct CatsView: View {
         let previewer = try Previewer()
         return CatsView()
             .modelContainer(previewer.container)
+            .environmentObject(AppState())
     } catch {
         return Text("Failed to create preview: \(error.localizedDescription)")
     }

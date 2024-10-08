@@ -89,7 +89,6 @@ enum Gender: String, CaseIterable, Codable { // 使用 CaseIterable
 }
 
 enum BodyType: String,CaseIterable, Codable {
-     
     case small = "Small"
     case medium = "Medium"
     case large = "Large"

@@ -1,4 +1,5 @@
 import SwiftUI
+import SwiftData
 
 /// 添加和编辑猫咪的 Sheet 视图
 struct AddAndEditCatView: View {
