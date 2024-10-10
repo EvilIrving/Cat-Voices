@@ -2,12 +2,12 @@
 
 ## 说明
 
-- Test 是 app 开发的代码,包含最新的实现, 只用看这一个项目的代码就可以了.
-- cutAudioFunc.swift 是音频剪辑函数的最小实现, 包含如何使用 AVFoundation 实现音频剪辑. 但代码运行还需要重新传入参数,音频等.
+- Test 是 app 开发的代码,包含最新的实现，只用看这一个项目的代码就可以了
+- cutAudioFunc.swift 是音频剪辑函数的最小实现，包含如何使用 AVFoundation 实现音频剪辑，但代码运行还需要重新传入参数、音频等
 - Voices 可以忽略了
 - Code with Cursor 是波形显示 Demo，波形会反映出音频的播放进度
 
-后续完成后会将不同的 demo 放在不同的 git 分支.
+后续完成后会将不同的 demo 放在不同的 git 分支
 
 ## 待办
 
@@ -29,8 +29,8 @@
 
 - [WWDC23 初识 SwiftData](https://www.swiftdict.com/wwdc23-meet-swiftdata.swift/WWDC23+%E5%88%9D%E8%AF%86+SwiftData)  
 
-[ ] 录音存储管理 FileManager 存储在猫咪 id 对应的文件夹下
-[ ] 音频剪辑
+[ ] 录音存储管理 FileManager 存储在猫咪 id 对应的文件夹下  
+[ ] 音频剪辑  
 
 ## 录音实现
 
