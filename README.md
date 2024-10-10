@@ -5,24 +5,31 @@
 - Test 是 app 开发的代码,包含最新的实现, 只用看这一个项目的代码就可以了.
 - cutAudioFunc.swift 是音频剪辑函数的最小实现, 包含如何使用 AVFoundation 实现音频剪辑. 但代码运行还需要重新传入参数,音频等.
 - Voices 可以忽略了
+- Code with Cursor 是波形显示 Demo，波形会反映出音频的播放进度
 
 后续完成后会将不同的 demo 放在不同的 git 分支.
 
 ## 待办
 
-[*] 录音
-[ ] 数据持久化: 结合 SwiftData 或 CoreData 与文件系统进行数据持久化，再利用 Localizable.strings 和 UserDefaults 进行多语言和主题色的管理
-    [ ] 用户设置 UserDefaults
-      [ ] 主题色
-      [ ] 语言
-      [ ] 关于我们
-    [ ] 猫咪数据 SwiftData
-        - ⭐️⭐️⭐️⭐️⭐️: [如何使用SwiftData？如何与SwiftUI配合使用](https://blog.zhheo.com/p/92aa21b4.html)  
-        - [Let's Integrate SwiftData CRUD into the Notes App, youtube 视频](https://www.youtube.com/watch?v=uK-OIchqh08)
-        - ⭐️⭐️⭐️⭐️⭐️⭐️ : [using-swiftdata-to-store-large-files-from-an-api-call](https://medium.com/@jpmtech/using-swiftdata-to-store-large-files-from-an-api-call-11ad83404f76)
-        - [SwiftData 实战：用现代方法构建 SwiftUI 应用](https://fatbobman.com/zh/posts/practical-swiftdata-building-swiftui-applications-with-modern-approaches/#%E6%96%B0%E7%9A%84%E9%97%AE%E9%A2%98%E6%95%B0%E6%8D%AE%E6%9B%B4%E6%96%B0%E5%90%8E%E8%A7%86%E5%9B%BE%E6%B2%A1%E6%9C%89%E5%88%B7%E6%96%B0)
-        - [WWDC23 初识 SwiftData](https://www.swiftdict.com/wwdc23-meet-swiftdata.swift/WWDC23+%E5%88%9D%E8%AF%86+SwiftData)
-    [ ] 录音存储管理 FileManager 存储在猫咪 id 对应的文件夹下
+[✔️] 录音  
+[ ] 数据持久化: 结合 SwiftData 或 CoreData 与文件系统进行数据持久化，再利用 Localizable.strings 和 UserDefaults 进行多语言和主题色的管理  
+[ ] 用户设置 UserDefaults  
+[ ] 主题色  
+[ ] 语言  
+[ ] 关于我们  
+[ ] 猫咪数据 SwiftData  
+
+- ⭐️⭐️⭐️⭐️⭐️ : [如何使用SwiftData？如何与SwiftUI配合使用](https://blog.zhheo.com/p/92aa21b4.html)  
+
+- [Let's Integrate SwiftData CRUD into the Notes App, youtube 视频](https://www.youtube.com/watch?v=uK-OIchqh08)  
+
+- ⭐️⭐️⭐️⭐️⭐️⭐️ : [using-swiftdata-to-store-large-files-from-an-api-call](https://medium.com/@jpmtech/using-swiftdata-to-store-large-files-from-an-api-call-11ad83404f76)  
+
+- [SwiftData 实战：用现代方法构建 SwiftUI 应用](https://fatbobman.com/zh/posts/practical-swiftdata-building-swiftui-applications-with-modern-approaches/#%E6%96%B0%E7%9A%84%E9%97%AE%E9%A2%98%E6%95%B0%E6%8D%AE%E6%9B%B4%E6%96%B0%E5%90%8E%E8%A7%86%E5%9B%BE%E6%B2%A1%E6%9C%89%E5%88%B7%E6%96%B0)  
+
+- [WWDC23 初识 SwiftData](https://www.swiftdict.com/wwdc23-meet-swiftdata.swift/WWDC23+%E5%88%9D%E8%AF%86+SwiftData)  
+
+[ ] 录音存储管理 FileManager 存储在猫咪 id 对应的文件夹下
 [ ] 音频剪辑
 
 ## 录音实现
@@ -112,9 +119,9 @@ AVFoundation 库提供了音频剪辑的功能，包括音频录制、音频播�
 
 ## 参考资料
 
-[SwiftAudioEx: Swift 音频播放库](https://github.com/doublesymmetry/SwiftAudioEx):SwiftAudioEx is an audio player written in Swift, making it simpler to work with audio playback from streams and files.
+[SwiftAudioEx: Swift 音频播放库](https://github.com/doublesymmetry/SwiftAudioEx): SwiftAudioEx is an audio player written in Swift, making it simpler to work with audio playback from streams and files.
 [AudioKit Cookbook: 音频合成、处理和分析库](https://github.com/AudioKit/Cookbook)
-AVAudioSession：用于管理音频会话和处理音频中断。
+AVAudioSession: 用于管理音频会话和处理音频中断
 
 ## SwiftData
 
