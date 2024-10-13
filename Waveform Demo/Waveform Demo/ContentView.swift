@@ -13,7 +13,7 @@ struct ContentView: View {
             VStack {
                 // TODO
                 // 不用 CADisplayLink 是怎么做到实时显示的
-                
+
                 WaveformView(
                     samples: viewModel.samples, progress: viewModel.progress
                 )

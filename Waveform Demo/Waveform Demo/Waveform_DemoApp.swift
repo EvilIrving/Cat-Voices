@@ -2,7 +2,7 @@
 import SwiftUI
 
 @main
-struct Code_with_CursorApp: App {
+struct Waveform_DemoApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()

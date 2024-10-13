@@ -3,138 +3,175 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 77;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D2F69F202CA867BF001E714C /* Inject in Frameworks */ = {isa = PBXBuildFile; productRef = D2F69F1F2CA867BF001E714C /* Inject */; };
+		D2815FFA2CBB0682002746BD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2815FF92CBB0682002746BD /* ContentView.swift */; };
+		D2815FFD2CBB06B5002746BD /* Inject in Frameworks */ = {isa = PBXBuildFile; productRef = D2815FFC2CBB06B5002746BD /* Inject */; };
+		D2A9F10F2CBB0318008F35D9 /* Waveform_DemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A9F10E2CBB0318008F35D9 /* Waveform_DemoApp.swift */; };
+		D2A9F1132CBB031A008F35D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2A9F1122CBB031A008F35D9 /* Assets.xcassets */; };
+		D2A9F1172CBB031A008F35D9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2A9F1162CBB031A008F35D9 /* Preview Assets.xcassets */; };
+		D2A9F11E2CBB0346008F35D9 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A9F11D2CBB0346008F35D9 /* ProgressBar.swift */; };
+		D2A9F1222CBB0357008F35D9 /* numbers.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D2A9F11F2CBB0357008F35D9 /* numbers.mp3 */; };
+		D2A9F1232CBB0357008F35D9 /* WaveformView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A9F1202CBB0357008F35D9 /* WaveformView.swift */; };
+		D2A9F1242CBB0357008F35D9 /* AudioPlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A9F1212CBB0357008F35D9 /* AudioPlayerViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D2F69F0C2CA867B0001E714C /* Code with Cursor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Code with Cursor.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2815FF92CBB0682002746BD /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		D2A9F10B2CBB0318008F35D9 /* Waveform Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Waveform Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2A9F10E2CBB0318008F35D9 /* Waveform_DemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Waveform_DemoApp.swift; sourceTree = "<group>"; };
+		D2A9F1122CBB031A008F35D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D2A9F1142CBB031A008F35D9 /* Waveform_Demo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Waveform_Demo.entitlements; sourceTree = "<group>"; };
+		D2A9F1162CBB031A008F35D9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D2A9F11D2CBB0346008F35D9 /* ProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
+		D2A9F11F2CBB0357008F35D9 /* numbers.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = numbers.mp3; sourceTree = "<group>"; };
+		D2A9F1202CBB0357008F35D9 /* WaveformView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveformView.swift; sourceTree = "<group>"; };
+		D2A9F1212CBB0357008F35D9 /* AudioPlayerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayerViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		D2F69F0E2CA867B0001E714C /* Code with Cursor */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "Code with Cursor";
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
-
 /* Begin PBXFrameworksBuildPhase section */
-		D2F69F092CA867B0001E714C /* Frameworks */ = {
+		D2A9F1082CBB0318008F35D9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2F69F202CA867BF001E714C /* Inject in Frameworks */,
+				D2815FFD2CBB06B5002746BD /* Inject in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		D2F69F032CA867B0001E714C = {
+		D2A9F1022CBB0318008F35D9 = {
 			isa = PBXGroup;
 			children = (
-				D2F69F0E2CA867B0001E714C /* Code with Cursor */,
-				D2F69F0D2CA867B0001E714C /* Products */,
+				D2A9F10D2CBB0318008F35D9 /* Waveform Demo */,
+				D2A9F10C2CBB0318008F35D9 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		D2F69F0D2CA867B0001E714C /* Products */ = {
+		D2A9F10C2CBB0318008F35D9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D2F69F0C2CA867B0001E714C /* Code with Cursor.app */,
+				D2A9F10B2CBB0318008F35D9 /* Waveform Demo.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		D2A9F10D2CBB0318008F35D9 /* Waveform Demo */ = {
+			isa = PBXGroup;
+			children = (
+				D2A9F10E2CBB0318008F35D9 /* Waveform_DemoApp.swift */,
+				D2A9F11D2CBB0346008F35D9 /* ProgressBar.swift */,
+				D2A9F1212CBB0357008F35D9 /* AudioPlayerViewModel.swift */,
+				D2815FF92CBB0682002746BD /* ContentView.swift */,
+				D2A9F11F2CBB0357008F35D9 /* numbers.mp3 */,
+				D2A9F1202CBB0357008F35D9 /* WaveformView.swift */,
+				D2A9F1122CBB031A008F35D9 /* Assets.xcassets */,
+				D2A9F1142CBB031A008F35D9 /* Waveform_Demo.entitlements */,
+				D2A9F1152CBB031A008F35D9 /* Preview Content */,
+			);
+			path = "Waveform Demo";
+			sourceTree = "<group>";
+		};
+		D2A9F1152CBB031A008F35D9 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				D2A9F1162CBB031A008F35D9 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D2F69F0B2CA867B0001E714C /* Code with Cursor */ = {
+		D2A9F10A2CBB0318008F35D9 /* Waveform Demo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D2F69F1B2CA867B2001E714C /* Build configuration list for PBXNativeTarget "Code with Cursor" */;
+			buildConfigurationList = D2A9F11A2CBB031A008F35D9 /* Build configuration list for PBXNativeTarget "Waveform Demo" */;
 			buildPhases = (
-				D2F69F082CA867B0001E714C /* Sources */,
-				D2F69F092CA867B0001E714C /* Frameworks */,
-				D2F69F0A2CA867B0001E714C /* Resources */,
+				D2A9F1072CBB0318008F35D9 /* Sources */,
+				D2A9F1082CBB0318008F35D9 /* Frameworks */,
+				D2A9F1092CBB0318008F35D9 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			fileSystemSynchronizedGroups = (
-				D2F69F0E2CA867B0001E714C /* Code with Cursor */,
-			);
-			name = "Code with Cursor";
+			name = "Waveform Demo";
 			packageProductDependencies = (
-				D2F69F1F2CA867BF001E714C /* Inject */,
+				D2815FFC2CBB06B5002746BD /* Inject */,
 			);
-			productName = "Code with Cursor";
-			productReference = D2F69F0C2CA867B0001E714C /* Code with Cursor.app */;
+			productName = "Waveform Demo";
+			productReference = D2A9F10B2CBB0318008F35D9 /* Waveform Demo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		D2F69F042CA867B0001E714C /* Project object */ = {
+		D2A9F1032CBB0318008F35D9 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1600;
-				LastUpgradeCheck = 1600;
+				LastSwiftUpdateCheck = 1540;
+				LastUpgradeCheck = 1540;
 				TargetAttributes = {
-					D2F69F0B2CA867B0001E714C = {
-						CreatedOnToolsVersion = 16.0;
+					D2A9F10A2CBB0318008F35D9 = {
+						CreatedOnToolsVersion = 15.4;
 					};
 				};
 			};
-			buildConfigurationList = D2F69F072CA867B0001E714C /* Build configuration list for PBXProject "Code with Cursor" */;
+			buildConfigurationList = D2A9F1062CBB0318008F35D9 /* Build configuration list for PBXProject "Waveform Demo" */;
+			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = D2F69F032CA867B0001E714C;
-			minimizedProjectReferenceProxies = 1;
+			mainGroup = D2A9F1022CBB0318008F35D9;
 			packageReferences = (
-				D2F69F1E2CA867BF001E714C /* XCRemoteSwiftPackageReference "Inject" */,
+				D2815FFB2CBB06B5002746BD /* XCRemoteSwiftPackageReference "Inject" */,
 			);
-			preferredProjectObjectVersion = 77;
-			productRefGroup = D2F69F0D2CA867B0001E714C /* Products */;
+			productRefGroup = D2A9F10C2CBB0318008F35D9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D2F69F0B2CA867B0001E714C /* Code with Cursor */,
+				D2A9F10A2CBB0318008F35D9 /* Waveform Demo */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		D2F69F0A2CA867B0001E714C /* Resources */ = {
+		D2A9F1092CBB0318008F35D9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2A9F1172CBB031A008F35D9 /* Preview Assets.xcassets in Resources */,
+				D2A9F1132CBB031A008F35D9 /* Assets.xcassets in Resources */,
+				D2A9F1222CBB0357008F35D9 /* numbers.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		D2F69F082CA867B0001E714C /* Sources */ = {
+		D2A9F1072CBB0318008F35D9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2A9F1242CBB0357008F35D9 /* AudioPlayerViewModel.swift in Sources */,
+				D2815FFA2CBB0682002746BD /* ContentView.swift in Sources */,
+				D2A9F11E2CBB0346008F35D9 /* ProgressBar.swift in Sources */,
+				D2A9F10F2CBB0318008F35D9 /* Waveform_DemoApp.swift in Sources */,
+				D2A9F1232CBB0357008F35D9 /* WaveformView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		D2F69F192CA867B2001E714C /* Debug */ = {
+		D2A9F1182CBB031A008F35D9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -195,7 +232,7 @@
 			};
 			name = Debug;
 		};
-		D2F69F1A2CA867B2001E714C /* Release */ = {
+		D2A9F1192CBB031A008F35D9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -248,15 +285,15 @@
 			};
 			name = Release;
 		};
-		D2F69F1C2CA867B2001E714C /* Debug */ = {
+		D2A9F11B2CBB031A008F35D9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "Code with Cursor/Code_with_Cursor.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Waveform Demo/Waveform_Demo.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Code with Cursor/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Waveform Demo/Preview Content\"";
 				DEVELOPMENT_TEAM = 4L297SXL3H;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -271,16 +308,16 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.5;
 				MARKETING_VERSION = 1.0;
 				"OTHER_LDFLAGS[arch=*]" = (
 					"-Xlinker",
 					"-interposable",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.leungsekyu.Code-with-Cursor";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.leungsekyu.Waveform-Demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -288,19 +325,18 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
-				XROS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Debug;
 		};
-		D2F69F1D2CA867B2001E714C /* Release */ = {
+		D2A9F11C2CBB031A008F35D9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "Code with Cursor/Code_with_Cursor.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Waveform Demo/Waveform_Demo.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Code with Cursor/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Waveform Demo/Preview Content\"";
 				DEVELOPMENT_TEAM = 4L297SXL3H;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -315,12 +351,12 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.5;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.leungsekyu.Code-with-Cursor";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.leungsekyu.Waveform-Demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -328,27 +364,26 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
-				XROS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D2F69F072CA867B0001E714C /* Build configuration list for PBXProject "Code with Cursor" */ = {
+		D2A9F1062CBB0318008F35D9 /* Build configuration list for PBXProject "Waveform Demo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D2F69F192CA867B2001E714C /* Debug */,
-				D2F69F1A2CA867B2001E714C /* Release */,
+				D2A9F1182CBB031A008F35D9 /* Debug */,
+				D2A9F1192CBB031A008F35D9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D2F69F1B2CA867B2001E714C /* Build configuration list for PBXNativeTarget "Code with Cursor" */ = {
+		D2A9F11A2CBB031A008F35D9 /* Build configuration list for PBXNativeTarget "Waveform Demo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D2F69F1C2CA867B2001E714C /* Debug */,
-				D2F69F1D2CA867B2001E714C /* Release */,
+				D2A9F11B2CBB031A008F35D9 /* Debug */,
+				D2A9F11C2CBB031A008F35D9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -356,9 +391,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		D2F69F1E2CA867BF001E714C /* XCRemoteSwiftPackageReference "Inject" */ = {
+		D2815FFB2CBB06B5002746BD /* XCRemoteSwiftPackageReference "Inject" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/krzysztofzablocki/Inject.git";
+			repositoryURL = "https://github.com/krzysztofzablocki/Inject";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 1.5.2;
@@ -367,12 +402,12 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		D2F69F1F2CA867BF001E714C /* Inject */ = {
+		D2815FFC2CBB06B5002746BD /* Inject */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D2F69F1E2CA867BF001E714C /* XCRemoteSwiftPackageReference "Inject" */;
+			package = D2815FFB2CBB06B5002746BD /* XCRemoteSwiftPackageReference "Inject" */;
 			productName = Inject;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
-	rootObject = D2F69F042CA867B0001E714C /* Project object */;
+	rootObject = D2A9F1032CBB0318008F35D9 /* Project object */;
 }
