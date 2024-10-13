@@ -5,7 +5,7 @@
 - Test 是 app 开发的代码,包含最新的实现，只用看这一个项目的代码就可以了
 - cutAudioFunc.swift 是音频剪辑函数的最小实现，包含如何使用 AVFoundation 实现音频剪辑，但代码运行还需要重新传入参数、音频等
 - Voices 可以忽略了
-- Code with Cursor 是波形显示 Demo，波形会反映出音频的播放进度
+- Waveform Demo 是兼容 Xcode 15.4 的波形显示 Demo，波形会反映出音频的播放进度
 
 后续完成后会将不同的 demo 放在不同的 git 分支
 
