@@ -33,6 +33,8 @@ final class Cat: Identifiable {
     var currentStatus: CurrentStatus
     // 使用 @Relationship 注解，表示 audios 属性是一个关联关系，并定义了删除规则为级联删除
     @Relationship(deleteRule: .cascade) var audios: [Audio] = []
+    // 添加与 Event 的关系
+    @Relationship(deleteRule: .cascade) var events: [Event] = []
 
     // 初始化方法
     init(id: UUID = UUID(), name: String, avatar: URL? = nil, breed: Breed, birthDate: Date? = nil, adoptionDate: Date? = nil, gender: Gender, neuteringStatus: NeuteringStatus, currentStatus: CurrentStatus) {

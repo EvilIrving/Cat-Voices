@@ -63,6 +63,12 @@ struct CatsView: View {
     private func deleteCat(at offsets: IndexSet) {
         for index in offsets {
             let cat = cats[index]
+            
+            // 删除与猫咪相关的提醒
+            for event in cat.events {
+                modelContext.delete(event)
+            }
+
             // 删除关联的音频文件
             for audio in cat.audios {
                 try? FileManager.default.removeItem(at: audio.url)

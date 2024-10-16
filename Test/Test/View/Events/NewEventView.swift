@@ -1,5 +1,5 @@
-import SwiftUI
 import SwiftData
+import SwiftUI
 
 struct NewEventView: View {
     @Environment(\.modelContext) private var modelContext
@@ -13,7 +13,9 @@ struct NewEventView: View {
     @State private var notes = ""
     @State private var showingAddCustomTypeAlert = false
     @State private var customEventType: String = ""
-    
+    @State private var showingValidationAlert = false
+    @State private var isSaveDisabled: Bool = true // 添加保存按钮禁用状态
+
     var body: some View {
         NavigationView {
             Form {
@@ -31,7 +33,7 @@ struct NewEventView: View {
                         selectedEventType = oldValue
                     }
                 }
-               
+
                 Picker("选择猫咪", selection: $selectedCat) {
                     Text("请选择").tag(nil as Cat?)
                     ForEach(cats) { cat in
@@ -53,7 +55,11 @@ struct NewEventView: View {
                 dismiss()
             }, trailing: Button("保存") {
                 saveEvent()
-            })
+            }.disabled(isSaveDisabled)) // 禁用保存按钮
+            .alert("校验失败", isPresented: $showingValidationAlert) {
+                Text("请确保所有字段都已填写。")
+                Button("确定", role: .cancel) {}
+            }
             .alert("添加自定义类型", isPresented: $showingAddCustomTypeAlert) {
                 TextField("输入自定义类型", text: $customEventType)
                 Button("添加") {
@@ -65,24 +71,40 @@ struct NewEventView: View {
                 }
                 Button("取消", role: .cancel) {}
             }
+            .onChange(of: selectedCat) {
+                isSaveDisabled = !validateEvent()
+            }
+            .onChange(of: notes) {
+                isSaveDisabled = !validateEvent()
+            }
         }
     }
-    
+
     private func saveEvent() {
+        guard validateEvent() else {
+            showingValidationAlert = true // 显示校验失败警告
+            return
+        }
         guard let selectedCat = selectedCat else {
             // 处理未选择猫咪的情况,可能显示一个警告
             return
         }
         let newEvent = Event(eventType: selectedEventType, cat: selectedCat, reminderDate: reminderDate, reminderTime: reminderTime, repeatInterval: repeatInterval, notes: notes)
-        modelContext.insert(newEvent)
+
+        modelContext.insert(newEvent!)
         dismiss()
     }
-    
+
     private func addCustomEventType() {
         if !customEventType.isEmpty {
             Event.EventType.addCustomType(customEventType)
             selectedEventType = .custom(customEventType)
             customEventType = ""
         }
+    }
+
+    private func validateEvent() -> Bool {
+        // 校验逻辑
+        return selectedCat != nil // 确保猫咪选择不为空
     }
 }
