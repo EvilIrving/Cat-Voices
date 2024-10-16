@@ -20,6 +20,9 @@
 		1A408FDB2CB44245004B78A4 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A408FDA2CB44245004B78A4 /* AboutView.swift */; };
 		1A408FDE2CB44793004B78A4 /* AddAndEditCatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A408FDD2CB44793004B78A4 /* AddAndEditCatView.swift */; };
 		1A408FE02CB59C20004B78A4 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A408FDF2CB59C20004B78A4 /* AppState.swift */; };
+		1A84E1AA2CBF99F9003EAE2F /* EventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A84E1A92CBF99F9003EAE2F /* EventsView.swift */; };
+		1A84E1AD2CBF9CC0003EAE2F /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A84E1AC2CBF9CC0003EAE2F /* Event.swift */; };
+		1A84E1AF2CBF9CDA003EAE2F /* NewEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A84E1AE2CBF9CDA003EAE2F /* NewEventView.swift */; };
 		1A932ABE2CAD8F6500954B71 /* TestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A932ABD2CAD8F6500954B71 /* TestApp.swift */; };
 		1A932AC02CAD8F6500954B71 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A932ABF2CAD8F6500954B71 /* ContentView.swift */; };
 		1A932AC22CAD8F6700954B71 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A932AC12CAD8F6700954B71 /* Assets.xcassets */; };
@@ -41,6 +44,9 @@
 		1A408FDA2CB44245004B78A4 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		1A408FDD2CB44793004B78A4 /* AddAndEditCatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAndEditCatView.swift; sourceTree = "<group>"; };
 		1A408FDF2CB59C20004B78A4 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		1A84E1A92CBF99F9003EAE2F /* EventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsView.swift; sourceTree = "<group>"; };
+		1A84E1AC2CBF9CC0003EAE2F /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		1A84E1AE2CBF9CDA003EAE2F /* NewEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEventView.swift; sourceTree = "<group>"; };
 		1A932ABA2CAD8F6500954B71 /* Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A932ABD2CAD8F6500954B71 /* TestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestApp.swift; sourceTree = "<group>"; };
 		1A932ABF2CAD8F6500954B71 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -66,6 +72,7 @@
 				1AF4226E2CBCB42700533A7E /* Audio */,
 				1AF4226D2CBCB41F00533A7E /* Cats */,
 				1A408FDC2CB4476C004B78A4 /* Setting */,
+				1A84E1AB2CBF9CA9003EAE2F /* Events */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -74,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				1A408FBE2CB3C854004B78A4 /* Model.swift */,
+				1A84E1AC2CBF9CC0003EAE2F /* Event.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -105,6 +113,15 @@
 				1A408FD62CB44227004B78A4 /* ThemeView.swift */,
 			);
 			path = Setting;
+			sourceTree = "<group>";
+		};
+		1A84E1AB2CBF9CA9003EAE2F /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				1A84E1A92CBF99F9003EAE2F /* EventsView.swift */,
+				1A84E1AE2CBF9CDA003EAE2F /* NewEventView.swift */,
+			);
+			path = Events;
 			sourceTree = "<group>";
 		};
 		1A932AB12CAD8F6500954B71 = {
@@ -237,13 +254,16 @@
 			files = (
 				1A408FCA2CB3C91A004B78A4 /* RecordButton.swift in Sources */,
 				1A932AC02CAD8F6500954B71 /* ContentView.swift in Sources */,
+				1A84E1AF2CBF9CDA003EAE2F /* NewEventView.swift in Sources */,
 				1A408FD92CB44237004B78A4 /* LanguageView.swift in Sources */,
 				1A932ABE2CAD8F6500954B71 /* TestApp.swift in Sources */,
 				1A408FDE2CB44793004B78A4 /* AddAndEditCatView.swift in Sources */,
 				1A932AD02CAD93DF00954B71 /* Previewer.swift in Sources */,
 				1A408FD72CB44227004B78A4 /* ThemeView.swift in Sources */,
+				1A84E1AA2CBF99F9003EAE2F /* EventsView.swift in Sources */,
 				1A408FC82CB3C900004B78A4 /* SettingView.swift in Sources */,
 				1A408FC12CB3C886004B78A4 /* CatsView.swift in Sources */,
+				1A84E1AD2CBF9CC0003EAE2F /* Event.swift in Sources */,
 				1A408FDB2CB44245004B78A4 /* AboutView.swift in Sources */,
 				1A408FCC2CB3C93A004B78A4 /* AudioRecordHelp.swift in Sources */,
 				1A408FE02CB59C20004B78A4 /* AppState.swift in Sources */,

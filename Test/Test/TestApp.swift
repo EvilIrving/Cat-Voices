@@ -17,6 +17,6 @@ struct TestApp: App {
                 .environmentObject(appState)
                 .preferredColorScheme(appState.themeMode.colorScheme)
         }
-        .modelContainer(for: [Cat.self, Audio.self])
+        .modelContainer(for: [Cat.self, Audio.self,Event.self])
     }
 }
