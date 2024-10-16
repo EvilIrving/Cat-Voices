@@ -188,3 +188,7 @@ ModelConfiguration 用于配置存储位置和方式
 3. 想看看比较适合初学者的开源 app, 看看厉害的人代码是怎么写的
 4. app 开发好之后,可以在哪些地方推广, 推广是否有什么策略呢? 尤其是针对海外用户
 5. 用户调研应该是怎么一个流程? 问卷? 群里问? 我在一些群里发消息,但是引导大家一起交流好像挺困难的
+
+### 相关第三方库
+
+[PermissionsSwiftUI](https://github.com/jevonmao/PermissionsSwiftUI): 权限请求

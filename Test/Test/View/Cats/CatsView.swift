@@ -4,19 +4,34 @@ import SwiftUI
 struct CatsView: View {
     @Query private var cats: [Cat]
     @Environment(\.modelContext) private var modelContext
-    @State private var isAddingCat = false // 控制是否显示添加猫咪的 Sheet
-    @State private var selectedCat: Cat? // 用于存储被选中的猫咪
+    @State private var isAddingCat = false
+    @State private var selectedCat: Cat?
 
     var body: some View {
         NavigationView {
             List {
                 ForEach(cats) { cat in
                     HStack {
+                        if let avatarURL = cat.avatar, let uiImage = UIImage(contentsOfFile: avatarURL.path) {
+                            Image(uiImage: uiImage)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 50, height: 50)
+                                .clipShape(Circle())
+                        } else {
+                            Image(systemName: "photo")
+                                .frame(width: 50, height: 50)
+                        }
+                        
                         VStack(alignment: .leading) {
                             Text(cat.name)
                                 .font(.headline)
-                            Text("Age: \(cat.age)")
+                            Text("品种: \(cat.breed.rawValue)")
                                 .font(.subheadline)
+                            if let birthDate = cat.birthDate {
+                                Text("年龄: \(Calendar.current.dateComponents([.year], from: birthDate, to: Date()).year ?? 0)岁")
+                                    .font(.subheadline)
+                            }
                         }
 
                         Spacer()
@@ -25,22 +40,22 @@ struct CatsView: View {
                             .foregroundColor(.blue)
                             .font(.title)
                             .onTapGesture {
-                                selectedCat = cat // 选择猫咪
-                                isAddingCat = true // 显示编辑猫咪的 Sheet
+                                selectedCat = cat
+                                isAddingCat = true
                             }
                     }
                 }
                 .onDelete(perform: deleteCat)
             }
-            .navigationTitle("Cats")
+            .navigationTitle("猫咪列表")
             .toolbar {
-                Button("Add Cat") {
-                    isAddingCat = true // 显示添加猫咪的 Sheet
+                Button("添加猫咪") {
+                    isAddingCat = true
                     selectedCat = nil
                 }
             }
             .sheet(isPresented: $isAddingCat) {
-                AddAndEditCatView(isPresented: $isAddingCat, cat: $selectedCat) // 传递 selectedCat
+                AddAndEditCatView(isPresented: $isAddingCat, cat: $selectedCat)
             }
         }
     }
@@ -53,18 +68,21 @@ struct CatsView: View {
                 try? FileManager.default.removeItem(at: audio.url)
             }
 
-            // Assuming 'cat.audios' contains the path to the folder
+            // 删除头像文件
+            if let avatarURL = cat.avatar {
+                try? FileManager.default.removeItem(at: avatarURL)
+            }
+
+            // 删除文件夹
             if let folderURL = cat.audios.first?.url.deletingLastPathComponent() {
-                // Delete the folder recursively
                 try? FileManager.default.removeItem(at: folderURL)
             }
+            
             // 从数据库中删除猫咪
             modelContext.delete(cat)
         }
     }
 }
-
-
 
 // 预览代码
 #Preview {

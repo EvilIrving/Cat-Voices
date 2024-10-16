@@ -8,17 +8,22 @@ struct ContentView: View {
         TabView {
             SoundsView()
                 .tabItem {
-                    Label("Sounds", systemImage: "music.note")
+                    Label("喵语", systemImage: "music.note")
                 }
 
             CatsView()
                 .tabItem {
-                    Label("Cats", systemImage: "pawprint")
+                    Label("猫咪档案", systemImage: "pawprint")
+                }
+            
+            CatsView()
+                .tabItem {
+                    Label("事项提醒", systemImage: "pawprint")
                 }
 
             SettingView()
                 .tabItem {
-                    Label("Settings", systemImage: "gear")
+                    Label("设置", systemImage: "gear")
                 }
         }
     }

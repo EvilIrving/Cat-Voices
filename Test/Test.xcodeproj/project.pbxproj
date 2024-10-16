@@ -63,12 +63,9 @@
 		1A408FC42CB3C8C5004B78A4 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1AF4226E2CBCB42700533A7E /* Audio */,
+				1AF4226D2CBCB41F00533A7E /* Cats */,
 				1A408FDC2CB4476C004B78A4 /* Setting */,
-				1A408FC22CB3C8B3004B78A4 /* SoundsView.swift */,
-				1A408FD22CB3EE79004B78A4 /* AudioTrimView.swift */,
-				1A408FC92CB3C91A004B78A4 /* RecordButton.swift */,
-				1A408FC02CB3C886004B78A4 /* CatsView.swift */,
-				1A408FDD2CB44793004B78A4 /* AddAndEditCatView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -147,6 +144,25 @@
 				1A932AC42CAD8F6700954B71 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		1AF4226D2CBCB41F00533A7E /* Cats */ = {
+			isa = PBXGroup;
+			children = (
+				1A408FC02CB3C886004B78A4 /* CatsView.swift */,
+				1A408FDD2CB44793004B78A4 /* AddAndEditCatView.swift */,
+			);
+			path = Cats;
+			sourceTree = "<group>";
+		};
+		1AF4226E2CBCB42700533A7E /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				1A408FC22CB3C8B3004B78A4 /* SoundsView.swift */,
+				1A408FD22CB3EE79004B78A4 /* AudioTrimView.swift */,
+				1A408FC92CB3C91A004B78A4 /* RecordButton.swift */,
+			);
+			path = Audio;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -371,11 +387,12 @@
 				DEVELOPMENT_TEAM = QZZ878S3NS;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "This app needs access to your microphone to record audio";
+				INFOPLIST_FILE = Test/Info.plist;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "This app requires access to the microphone to record audio.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "This app requires access to the photo library to save images.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -401,11 +418,12 @@
 				DEVELOPMENT_TEAM = QZZ878S3NS;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "This app needs access to your microphone to record audio";
+				INFOPLIST_FILE = Test/Info.plist;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "This app requires access to the microphone to record audio.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "This app requires access to the photo library to save images.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

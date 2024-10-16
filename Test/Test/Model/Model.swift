@@ -5,30 +5,46 @@ import AVFoundation
 
 // MARK: - Cat Model
 
+import AVFoundation
+import Foundation
+import SwiftData
+
+// MARK: - Cat Model
+
 @Model
 final class Cat: Identifiable {
     // 使用 @Attribute 注解，表示 id 属性是一个唯一的属性
     @Attribute(.unique) let id: UUID
+    // 头像（从相册选择，拍照，默认图片）
+    // 名字
+    // 品种（新增品种枚举：布偶，英短，美短，暹罗，缅因，其他）
+    // 出生日期（日期，可选）
+    // 到家日期（日期，且不能早于出生日期）
+    // 性别（新增枚举: MM，GG）
+    // 是否绝育（新增枚举: 已绝育，未绝育）
+    // 目前状态（新增枚举: 在身边，不在身边）
     var name: String
-    var age: String
-    var desc: String
     var avatar: URL?
-    var nickname: String?
+    var breed: Breed
+    var birthDate: Date?
+    var adoptionDate: Date?
     var gender: Gender
-    var birthday: Date?
-    var weight: Double?
-    var bodyType: BodyType
+    var neuteringStatus: NeuteringStatus
+    var currentStatus: CurrentStatus
     // 使用 @Relationship 注解，表示 audios 属性是一个关联关系，并定义了删除规则为级联删除
     @Relationship(deleteRule: .cascade) var audios: [Audio] = []
 
     // 初始化方法
-    init(id: UUID = UUID(), name: String, age: String, desc: String, gender: Gender, bodyType: BodyType) {
+    init(id: UUID = UUID(), name: String, avatar: URL? = nil, breed: Breed, birthDate: Date? = nil, adoptionDate: Date? = nil, gender: Gender, neuteringStatus: NeuteringStatus, currentStatus: CurrentStatus) {
         self.id = id
         self.name = name
-        self.age = age
-        self.desc = desc
+        self.avatar = avatar
+        self.breed = breed
+        self.birthDate = birthDate
+        self.adoptionDate = adoptionDate
         self.gender = gender
-        self.bodyType = bodyType
+        self.neuteringStatus = neuteringStatus
+        self.currentStatus = currentStatus
     }
 }
 
@@ -44,6 +60,33 @@ extension Cat {
         audios.removeAll { $0.id == audio.id }
         audio.cat = nil
     }
+}
+
+// MARK: - Enums
+
+enum Breed: String, CaseIterable, Codable {
+    case ragdoll = "布偶"
+    case britishShorthair = "英短"
+    case americanShorthair = "美短"
+    case siamese = "暹罗"
+    case maineCoon = "缅因"
+    case other = "其他"
+}
+
+enum Gender: String, CaseIterable, Codable {
+    case male = "GG"
+    case female = "MM"
+}
+
+enum NeuteringStatus: String, CaseIterable, Codable {
+    case neutered = "已绝育"
+    case notNeutered = "未绝育"
+    case unknown = "未知"
+}
+
+enum CurrentStatus: String, CaseIterable, Codable {
+    case present = "在身边"
+    case absent = "在喵星生活"
 }
 
 // MARK: - Audio Model
@@ -81,12 +124,6 @@ final class Audio: Identifiable {
 }
 
 // MARK: - Enums
-
-enum Gender: String, CaseIterable, Codable { // 使用 CaseIterable
-    case male = "Male"
-    case female = "Female"
-    case unknown = "Unknown"
-}
 
 enum BodyType: String,CaseIterable, Codable {
     case small = "Small"

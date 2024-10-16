@@ -1,4 +1,5 @@
 import SwiftData
+import Foundation
 
 @MainActor
 struct Previewer {
@@ -9,12 +10,17 @@ struct Previewer {
         let config = ModelConfiguration(isStoredInMemoryOnly: true)
         container = try ModelContainer(for: Cat.self, Audio.self, configurations: config)
         
-        // Create sample cats
-        let cat1 = Cat(name: "Whiskers", age: "3", desc: "Playful tabby", gender: .male, bodyType: .medium)
-        let cat2 = Cat(name: "Mittens", age: "5", desc: "Lazy Persian", gender: .female, bodyType: .large)
-        let cat3 = Cat(name: "Socks", age: "2", desc: "Energetic Siamese", gender: .male, bodyType: .small)
+        // 创建一个日期格式化器
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let defaultDate = dateFormatter.date(from: "2022-03-17")!
         
-        // Save cats to the container
+        // 创建示例猫咪
+        let cat1 = Cat(name: "咪咪", breed: .americanShorthair, birthDate: defaultDate, adoptionDate: defaultDate, gender: .female, neuteringStatus: .neutered, currentStatus: .present)
+        let cat2 = Cat(name: "花花", breed: .britishShorthair, birthDate: defaultDate, adoptionDate: defaultDate, gender: .male, neuteringStatus: .notNeutered, currentStatus: .present)
+        let cat3 = Cat(name: "小黑", breed: .other, birthDate: defaultDate, adoptionDate: defaultDate, gender: .male, neuteringStatus: .neutered, currentStatus: .absent)
+
+        // 将猫咪保存到容器中
         container.mainContext.insert(cat1)
         container.mainContext.insert(cat2)
         container.mainContext.insert(cat3)
