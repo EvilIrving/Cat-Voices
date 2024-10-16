@@ -45,7 +45,7 @@ struct ThemeView: View {
                         Spacer()
                         if appState.themeMode == mode {
                             Image(systemName: "checkmark")
-                                .foregroundColor(.blue)
+                                .foregroundColor(.accentColor)
                         }
                     }
                 }

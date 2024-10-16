@@ -27,7 +27,7 @@ struct EventsView: View {
                 }
                 .onDelete(perform: deleteEvent)
             }
-            .navigationTitle("提醒事项")
+            .navigationTitle("提醒事项").toolbarTitleDisplayMode(.inline)
             .toolbar {
                 Button(action: {
                     showingNewEventSheet = true

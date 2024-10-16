@@ -35,6 +35,8 @@ final class Cat: Identifiable {
     @Relationship(deleteRule: .cascade) var audios: [Audio] = []
     // 添加与 Event 的关系
     @Relationship(deleteRule: .cascade) var events: [Event] = []
+    // 体重
+@Relationship(deleteRule: .cascade) var weights: [Weight] = []
 
     // 初始化方法
     init(id: UUID = UUID(), name: String, avatar: URL? = nil, breed: Breed, birthDate: Date? = nil, adoptionDate: Date? = nil, gender: Gender, neuteringStatus: NeuteringStatus, currentStatus: CurrentStatus) {
@@ -132,3 +134,28 @@ enum BodyType: String,CaseIterable, Codable {
     case medium = "Medium"
     case large = "Large"
 }
+
+// MARK: - Weight Model
+
+@Model
+final class Weight: Identifiable {
+    @Attribute(.unique) let id: UUID
+    var date: Date
+    var cat: Cat
+    var weightInKg: Double // 以千克为单位存储体重
+
+    var formattedWeightInKg: String {
+        return String(format: "%.2f", weightInKg) // 读取时保留小数点后 2 位
+    }
+
+    // 初始化方法
+    init(id: UUID = UUID(), date: Date, cat: Cat, weightInKg: Double) {
+        self.id = id
+        self.date = date
+        self.cat = cat
+        self.weightInKg = weightInKg
+    }
+}
+
+// 使用 @Relationship 注解，表示 weights 属性是一个关联关系，并定义了删除规则为级联删除
+

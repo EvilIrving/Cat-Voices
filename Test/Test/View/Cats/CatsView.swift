@@ -47,7 +47,7 @@ struct CatsView: View {
                 }
                 .onDelete(perform: deleteCat)
             }
-            .navigationTitle("猫咪列表")
+            .navigationTitle("猫咪列表").toolbarTitleDisplayMode(.inline)
             .toolbar {
                 Button("添加猫咪") {
                     isAddingCat = true
@@ -64,6 +64,11 @@ struct CatsView: View {
         for index in offsets {
             let cat = cats[index]
             
+            // 删除与猫咪相关的体重记录
+            for weight in cat.weights {
+                modelContext.delete(weight)
+            }
+
             // 删除与猫咪相关的提醒
             for event in cat.events {
                 modelContext.delete(event)

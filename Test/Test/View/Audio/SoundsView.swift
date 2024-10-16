@@ -31,12 +31,13 @@ struct SoundsView: View {
             VStack {
                 if !cats.isEmpty {
                     if let cat = selectedCat ?? cats.first {
-                        Text("Sounds for \(cat.name)")
-                            .font(.headline)
-
+                        if !cat.audios.isEmpty {
+                            Text("\(cat.name) 的声音")
+                                .font(.headline)
+                        }
                         // 如果 cat 的 audios 列表为空，则显示无音频提示
                         if cat.audios.isEmpty {
-                            Text("No sounds available for this cat.")
+                            Text("\(cat.name) 还没有录制声音哦")
                                 .foregroundColor(.secondary)
                         } else {
                             // 使用 List 视图显示猫的音频列表
@@ -82,6 +83,7 @@ struct SoundsView: View {
                             }
                             .listStyle(PlainListStyle())
                             .background(Color(.systemBackground))
+                           
                         }
 
                         Spacer()
@@ -91,21 +93,24 @@ struct SoundsView: View {
                             RecordButton(isRecording: $isRecording, cat: selectedCat)
                         } else {
                             // 如果 selectedCat 为空，则显示提示信息
-                            Text("Please select a cat.")
+                            Text("选择猫猫")
                                 .foregroundColor(.secondary)
                         }
                     }
                 } else {
                     // 如果没有猫，则显示无猫提示
-                    Text("No cats available. Please add a cat first.")
+                    Text("没有猫猫，也没有录制声音")
                         .foregroundColor(.secondary)
                 }
+                
+//                    .navigationBarTitle(Text("mao"))
             }
-            .navigationTitle("Cat Sounds")
+            
+            .navigationTitle(Text("喵语")).toolbarTitleDisplayMode(.inline)
             .toolbar {
                 // 添加一个工具栏按钮，用于选择猫
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Menu(selectedCat?.name ?? "Select Cat") {
+                    Menu(selectedCat?.name ?? "选择猫猫") {
                         // 遍历 cats 列表，为每个猫添加一个按钮
                         ForEach(cats) { cat in
                             Button(cat.name) {
@@ -136,6 +141,8 @@ struct SoundsView: View {
                     AudioTrimView(audio: audioToTrim)
                 }
             }
+            
+            
         }
     }
 

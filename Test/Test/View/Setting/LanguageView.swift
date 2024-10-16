@@ -6,10 +6,12 @@ struct LanguageView: View {
         case english = "English"
         case japanese = "日本語"
         case chinese = "中文"
+        case traditionalChinese = "繁體中文" // 添加繁体中文选项
         
         static func fromLocale() -> Language {
             let systemLanguage = Locale.current.language.languageCode?.identifier
             switch systemLanguage {
+            case "zh-Hant": return .traditionalChinese // 处理繁体中文
             case "zh": return .chinese
             case "ja": return .japanese
             default: return .english
@@ -33,7 +35,7 @@ struct LanguageView: View {
                         if selectedLanguage == language {
                             // 显示 checkmark 图标
                             Image(systemName: "checkmark")
-                                .foregroundColor(.blue)
+                                .foregroundColor(.accentColor)
                         }
                     }
                 }
