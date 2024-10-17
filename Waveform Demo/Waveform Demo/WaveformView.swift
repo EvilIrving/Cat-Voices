@@ -28,10 +28,6 @@ struct WaveformView: View {
                     }
                 }
                 .frame(width: geometry.size.width, height: geometry.size.height)
-
-                // Rectangle()  // 充当border
-                //     .stroke(Color.white, lineWidth: 2)
-                //     .frame(width: geometry.size.width, height: geometry.size.height)
             }
         }
     }

@@ -32,6 +32,7 @@
 		1A84E1C02CC038A8003EAE2F /* CustomInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A84E1BF2CC038A8003EAE2F /* CustomInputField.swift */; };
 		1A84E1C22CC03B23003EAE2F /* WeightsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A84E1C12CC03B23003EAE2F /* WeightsView.swift */; };
 		1A84E1E52CC151CE003EAE2F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1A84E1E32CC151CE003EAE2F /* Localizable.strings */; };
+		1A84E1EA2CC16F9F003EAE2F /* WaveformView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A84E1E92CC16F9F003EAE2F /* WaveformView.swift */; };
 		1A932ABE2CAD8F6500954B71 /* MeowApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A932ABD2CAD8F6500954B71 /* MeowApp.swift */; };
 		1A932AC02CAD8F6500954B71 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A932ABF2CAD8F6500954B71 /* ContentView.swift */; };
 		1A932AC22CAD8F6700954B71 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A932AC12CAD8F6700954B71 /* Assets.xcassets */; };
@@ -68,6 +69,7 @@
 		1A84E1E62CC151F7003EAE2F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		1A84E1E72CC15211003EAE2F /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		1A84E1E82CC15213003EAE2F /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1A84E1E92CC16F9F003EAE2F /* WaveformView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WaveformView.swift; path = "../../../../Waveform Demo/Waveform Demo/WaveformView.swift"; sourceTree = "<group>"; };
 		1A932ABA2CAD8F6500954B71 /* Meow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Meow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A932ABD2CAD8F6500954B71 /* MeowApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeowApp.swift; sourceTree = "<group>"; };
 		1A932ABF2CAD8F6500954B71 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -231,6 +233,7 @@
 			children = (
 				1A408FC22CB3C8B3004B78A4 /* SoundsView.swift */,
 				1A408FD22CB3EE79004B78A4 /* AudioTrimView.swift */,
+				1A84E1E92CC16F9F003EAE2F /* WaveformView.swift */,
 				1A408FC92CB3C91A004B78A4 /* RecordButton.swift */,
 			);
 			path = Audio;
@@ -333,6 +336,7 @@
 				1A84E1B62CC02B70003EAE2F /* WeightUnitView.swift in Sources */,
 				1A84E1B12CC0254A003EAE2F /* Extension.swift in Sources */,
 				1A408FC32CB3C8B3004B78A4 /* SoundsView.swift in Sources */,
+				1A84E1EA2CC16F9F003EAE2F /* WaveformView.swift in Sources */,
 				1A408FCF2CB3CC45004B78A4 /* AudioPlayManagerHelp.swift in Sources */,
 				1A408FBF2CB3C854004B78A4 /* Model.swift in Sources */,
 				1A84E1BA2CC02F15003EAE2F /* SwitchHome.swift in Sources */,

@@ -42,48 +42,49 @@ struct SoundsView: View {
                         } else {
                             // 使用 List 视图显示猫的音频列表
                             List(cat.audios, id: \.id) { audio in
-                                HStack {
-                                    Text(audio.name)
-                                    Spacer()
-                                    // 显示音频时长
-                                    Text(String(format: "%.1f sec", audio.duration))
-                                        .foregroundColor(.secondary)
-
+                                VStack {
                                     HStack {
-                                        Image(systemName: playingSound == audio && audioManager.isPlaying ? "pause.circle" : "play.circle")
-                                            .font(.title)
-                                            .foregroundColor(.blue)
-                                            .onTapGesture {
-                                                // 播放声音逻辑
-                                                if playingSound == audio && audioManager.isPlaying {
-                                                    audioManager.pause()
-                                                    playingSound = nil
-                                                } else {
-                                                    playOf(sound: audio)
+                                        Text(audio.name)
+                                        Spacer()
+                                        // 显示音频时长
+                                        Text(String(format: "%.1f s", audio.duration))
+                                            .foregroundColor(.secondary)
+
+                                        HStack {
+                                            IconButton(
+                                                systemName: playingSound == audio && audioManager.isPlaying ? "pause.circle" : "play.circle",
+                                                size: 30,
+                                                action: {
+                                                    // 播放声音逻辑
+                                                    if playingSound == audio && audioManager.isPlaying {
+                                                        audioManager.pause()
+                                                        playingSound = nil
+                                                    } else {
+                                                        playOf(sound: audio)
+                                                    }
                                                 }
-                                            }
+                                            )
 
-                                        Image(systemName: "trash")
-                                            .font(.title) // 保持与播放按钮大小一致
-                                            .foregroundColor(.red)
-                                            .onTapGesture {
-                                                deleteAudio(audio: audio)
-                                            }
-
-                                        Image(systemName: "pencil")
-                                            .font(.title) // 保持与播放按钮大小一致
-                                            .foregroundColor(.blue)
-                                            .onTapGesture {
-                                                audioToTrim = audio
-                                                pauseAudio()
-                                                showingTrimView = true
-                                            }
+                                            // 循环播放按钮
+                                            IconButton(
+                                                systemName: "repeat.1",
+                                                size: 30,
+                                                action: {}
+                                            )
+                                        }
                                     }
+                                    WaveformView(
+                                        samples: audio.waves, progress: viewModel.progress
+                                    )
+                                    .frame(height: 40)
                                 }
+
+                                // 水平间距
+                                .padding(.horizontal, 10)
                             }
+
                             .listStyle(PlainListStyle())
                             .background(Color(.systemBackground))
-                           
                         }
 
                         Spacer()
@@ -102,10 +103,10 @@ struct SoundsView: View {
                     Text("没有猫猫，也没有录制声音")
                         .foregroundColor(.secondary)
                 }
-                
+
 //                    .navigationBarTitle(Text("mao"))
             }
-            
+
             .navigationTitle(Text("喵语")).toolbarTitleDisplayMode(.inline)
             .toolbar {
                 // 添加一个工具栏按钮，用于选择猫
@@ -121,7 +122,7 @@ struct SoundsView: View {
                     .disabled(cats.isEmpty)
                 }
             }
-            .onChange(of: cats) { oldValue, newValue in
+            .onChange(of: cats) { _, newValue in
                 if newValue.isEmpty {
                     selectedCat = nil
                 } else if selectedCat == nil || !newValue.contains(where: { $0.id == selectedCat?.id }) {
@@ -141,8 +142,6 @@ struct SoundsView: View {
                     AudioTrimView(audio: audioToTrim)
                 }
             }
-            
-            
         }
     }
 
@@ -168,6 +167,26 @@ struct SoundsView: View {
 
         // 从数据库中删除音频
         modelContext.delete(audio)
+    }
+}
+
+/// 自定义图标按钮视图
+struct IconButton: View {
+    let systemName: String
+    let size: CGFloat
+    let action: () -> Void
+
+    var body: some View {
+        Image(systemName: systemName)
+            .resizable()
+            .frame(width: size, height: size)
+            .foregroundColor(.accentColor)
+            .gesture(
+                DragGesture(minimumDistance: 0)
+                    .onEnded { _ in
+                        action()
+                    }
+            )
     }
 }
 
