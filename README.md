@@ -9,16 +9,6 @@
 
 后续完成后会将不同的 demo 放在不同的 git 分支
 
-## 待办
-
-[✔️] 录音  
-[ ] 数据持久化: 结合 SwiftData 或 CoreData 与文件系统进行数据持久化，再利用 Localizable.strings 和 UserDefaults 进行多语言和主题色的管理  
-[ ] 用户设置 UserDefaults  
-[ ] 主题色  
-[ ] 语言  
-[ ] 关于我们  
-[ ] 猫咪数据 SwiftData  
-
 - ⭐️⭐️⭐️⭐️⭐️ : [如何使用SwiftData？如何与SwiftUI配合使用](https://blog.zhheo.com/p/92aa21b4.html)  
 
 - [Let's Integrate SwiftData CRUD into the Notes App, youtube 视频](https://www.youtube.com/watch?v=uK-OIchqh08)  
@@ -122,6 +112,10 @@ AVFoundation 库提供了音频剪辑的功能，包括音频录制、音频播�
 [SwiftAudioEx: Swift 音频播放库](https://github.com/doublesymmetry/SwiftAudioEx): SwiftAudioEx is an audio player written in Swift, making it simpler to work with audio playback from streams and files.
 [AudioKit Cookbook: 音频合成、处理和分析库](https://github.com/AudioKit/Cookbook)
 AVAudioSession: 用于管理音频会话和处理音频中断
+Logo 生成: https://www.logo.surf/#generate-favicon
+App Icon 生成:https://www.appicon.co/#app-icon
+自定义导航栏: https://medium.com/@fabricelemfu/customizing-the-navigation-bar-in-swiftui-a-step-by-step-guide-f32dc556d313
+introsepect: https://github.com/siteline/SwiftUI-Introspect
 
 ## SwiftData
 
@@ -192,5 +186,3 @@ ModelConfiguration 用于配置存储位置和方式
 ## 相关第三方库
 
 [PermissionsSwiftUI](https://github.com/jevonmao/PermissionsSwiftUI): 权限请求
-
-## 

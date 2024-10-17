@@ -28,7 +28,7 @@
 		1A84E1B62CC02B70003EAE2F /* WeightUnitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A84E1B52CC02B70003EAE2F /* WeightUnitView.swift */; };
 		1A84E1B82CC02C0A003EAE2F /* PetMedicalRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A84E1B72CC02C0A003EAE2F /* PetMedicalRecordView.swift */; };
 		1A84E1BA2CC02F15003EAE2F /* SwitchHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A84E1B92CC02F15003EAE2F /* SwitchHome.swift */; };
-		1A84E1BD2CC0333D003EAE2F /* WeightRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A84E1BC2CC0333D003EAE2F /* WeightRecordView.swift */; };
+		1A84E1BD2CC0333D003EAE2F /* NewAndEditWeightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A84E1BC2CC0333D003EAE2F /* NewAndEditWeightView.swift */; };
 		1A84E1C02CC038A8003EAE2F /* CustomInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A84E1BF2CC038A8003EAE2F /* CustomInputField.swift */; };
 		1A84E1C22CC03B23003EAE2F /* WeightsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A84E1C12CC03B23003EAE2F /* WeightsView.swift */; };
 		1A932ABE2CAD8F6500954B71 /* TestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A932ABD2CAD8F6500954B71 /* TestApp.swift */; };
@@ -60,7 +60,7 @@
 		1A84E1B52CC02B70003EAE2F /* WeightUnitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightUnitView.swift; sourceTree = "<group>"; };
 		1A84E1B72CC02C0A003EAE2F /* PetMedicalRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetMedicalRecordView.swift; sourceTree = "<group>"; };
 		1A84E1B92CC02F15003EAE2F /* SwitchHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchHome.swift; sourceTree = "<group>"; };
-		1A84E1BC2CC0333D003EAE2F /* WeightRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightRecordView.swift; sourceTree = "<group>"; };
+		1A84E1BC2CC0333D003EAE2F /* NewAndEditWeightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAndEditWeightView.swift; sourceTree = "<group>"; };
 		1A84E1BF2CC038A8003EAE2F /* CustomInputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInputField.swift; sourceTree = "<group>"; };
 		1A84E1C12CC03B23003EAE2F /* WeightsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightsView.swift; sourceTree = "<group>"; };
 		1A932ABA2CAD8F6500954B71 /* Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Test.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -164,7 +164,7 @@
 		1A84E1BE2CC03341003EAE2F /* WeightRecord */ = {
 			isa = PBXGroup;
 			children = (
-				1A84E1BC2CC0333D003EAE2F /* WeightRecordView.swift */,
+				1A84E1BC2CC0333D003EAE2F /* NewAndEditWeightView.swift */,
 				1A84E1C12CC03B23003EAE2F /* WeightsView.swift */,
 				1A84E1BF2CC038A8003EAE2F /* CustomInputField.swift */,
 			);
@@ -311,7 +311,7 @@
 				1A932AD02CAD93DF00954B71 /* Previewer.swift in Sources */,
 				1A408FD72CB44227004B78A4 /* ThemeView.swift in Sources */,
 				1A84E1AA2CBF99F9003EAE2F /* EventsView.swift in Sources */,
-				1A84E1BD2CC0333D003EAE2F /* WeightRecordView.swift in Sources */,
+				1A84E1BD2CC0333D003EAE2F /* NewAndEditWeightView.swift in Sources */,
 				1A408FC82CB3C900004B78A4 /* SettingView.swift in Sources */,
 				1A84E1C02CC038A8003EAE2F /* CustomInputField.swift in Sources */,
 				1A84E1B32CC02AC0003EAE2F /* FinanceView.swift in Sources */,
