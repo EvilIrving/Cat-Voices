@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct TestApp: App {
+struct MeowApp: App {
     @StateObject private var appState = AppState()
     
     var body: some Scene {

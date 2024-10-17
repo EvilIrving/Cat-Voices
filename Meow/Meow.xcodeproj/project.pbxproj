@@ -31,7 +31,7 @@
 		1A84E1BD2CC0333D003EAE2F /* NewAndEditWeightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A84E1BC2CC0333D003EAE2F /* NewAndEditWeightView.swift */; };
 		1A84E1C02CC038A8003EAE2F /* CustomInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A84E1BF2CC038A8003EAE2F /* CustomInputField.swift */; };
 		1A84E1C22CC03B23003EAE2F /* WeightsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A84E1C12CC03B23003EAE2F /* WeightsView.swift */; };
-		1A932ABE2CAD8F6500954B71 /* TestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A932ABD2CAD8F6500954B71 /* TestApp.swift */; };
+		1A932ABE2CAD8F6500954B71 /* MeowApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A932ABD2CAD8F6500954B71 /* MeowApp.swift */; };
 		1A932AC02CAD8F6500954B71 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A932ABF2CAD8F6500954B71 /* ContentView.swift */; };
 		1A932AC22CAD8F6700954B71 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A932AC12CAD8F6700954B71 /* Assets.xcassets */; };
 		1A932AC52CAD8F6700954B71 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A932AC42CAD8F6700954B71 /* Preview Assets.xcassets */; };
@@ -63,8 +63,8 @@
 		1A84E1BC2CC0333D003EAE2F /* NewAndEditWeightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAndEditWeightView.swift; sourceTree = "<group>"; };
 		1A84E1BF2CC038A8003EAE2F /* CustomInputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInputField.swift; sourceTree = "<group>"; };
 		1A84E1C12CC03B23003EAE2F /* WeightsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightsView.swift; sourceTree = "<group>"; };
-		1A932ABA2CAD8F6500954B71 /* Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Test.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		1A932ABD2CAD8F6500954B71 /* TestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestApp.swift; sourceTree = "<group>"; };
+		1A932ABA2CAD8F6500954B71 /* Meow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Meow.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A932ABD2CAD8F6500954B71 /* MeowApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeowApp.swift; sourceTree = "<group>"; };
 		1A932ABF2CAD8F6500954B71 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		1A932AC12CAD8F6700954B71 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1A932AC42CAD8F6700954B71 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -174,7 +174,7 @@
 		1A932AB12CAD8F6500954B71 = {
 			isa = PBXGroup;
 			children = (
-				1A932ABC2CAD8F6500954B71 /* Test */,
+				1A932ABC2CAD8F6500954B71 /* Meow */,
 				1A932ABB2CAD8F6500954B71 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -182,12 +182,12 @@
 		1A932ABB2CAD8F6500954B71 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1A932ABA2CAD8F6500954B71 /* Test.app */,
+				1A932ABA2CAD8F6500954B71 /* Meow.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		1A932ABC2CAD8F6500954B71 /* Test */ = {
+		1A932ABC2CAD8F6500954B71 /* Meow */ = {
 			isa = PBXGroup;
 			children = (
 				1A408FC62CB3C8DE004B78A4 /* Other */,
@@ -195,12 +195,12 @@
 				1A408FC42CB3C8C5004B78A4 /* View */,
 				1A408FC52CB3C8D2004B78A4 /* Model */,
 				1A932ABF2CAD8F6500954B71 /* ContentView.swift */,
-				1A932ABD2CAD8F6500954B71 /* TestApp.swift */,
+				1A84E1B02CC0254A003EAE2F /* Extension.swift */,
+				1A932ABD2CAD8F6500954B71 /* MeowApp.swift */,
 				1A932AC12CAD8F6700954B71 /* Assets.xcassets */,
 				1A932AC32CAD8F6700954B71 /* Preview Content */,
-				1A84E1B02CC0254A003EAE2F /* Extension.swift */,
 			);
-			path = Test;
+			path = Meow;
 			sourceTree = "<group>";
 		};
 		1A932AC32CAD8F6700954B71 /* Preview Content */ = {
@@ -233,9 +233,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1A932AB92CAD8F6500954B71 /* Test */ = {
+		1A932AB92CAD8F6500954B71 /* Meow */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1A932AC82CAD8F6700954B71 /* Build configuration list for PBXNativeTarget "Test" */;
+			buildConfigurationList = 1A932AC82CAD8F6700954B71 /* Build configuration list for PBXNativeTarget "Meow" */;
 			buildPhases = (
 				1A932AB62CAD8F6500954B71 /* Sources */,
 				1A932AB72CAD8F6500954B71 /* Frameworks */,
@@ -245,9 +245,9 @@
 			);
 			dependencies = (
 			);
-			name = Test;
-			productName = Test;
-			productReference = 1A932ABA2CAD8F6500954B71 /* Test.app */;
+			name = Meow;
+			productName = Meow;
+			productReference = 1A932ABA2CAD8F6500954B71 /* Meow.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -265,7 +265,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 1A932AB52CAD8F6500954B71 /* Build configuration list for PBXProject "Test" */;
+			buildConfigurationList = 1A932AB52CAD8F6500954B71 /* Build configuration list for PBXProject "Meow" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -278,7 +278,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1A932AB92CAD8F6500954B71 /* Test */,
+				1A932AB92CAD8F6500954B71 /* Meow */,
 			);
 		};
 /* End PBXProject section */
@@ -304,7 +304,7 @@
 				1A932AC02CAD8F6500954B71 /* ContentView.swift in Sources */,
 				1A84E1AF2CBF9CDA003EAE2F /* NewEventView.swift in Sources */,
 				1A408FD92CB44237004B78A4 /* LanguageView.swift in Sources */,
-				1A932ABE2CAD8F6500954B71 /* TestApp.swift in Sources */,
+				1A932ABE2CAD8F6500954B71 /* MeowApp.swift in Sources */,
 				1A84E1C22CC03B23003EAE2F /* WeightsView.swift in Sources */,
 				1A84E1B82CC02C0A003EAE2F /* PetMedicalRecordView.swift in Sources */,
 				1A408FDE2CB44793004B78A4 /* AddAndEditCatView.swift in Sources */,
@@ -459,11 +459,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Test/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Meow/Preview Content\"";
 				DEVELOPMENT_TEAM = QZZ878S3NS;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Test/Info.plist;
+				INFOPLIST_FILE = Meow/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "喵声";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "This app requires access to the microphone to record audio.";
@@ -478,7 +478,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.cain.Test;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cain.Meow;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -497,11 +497,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Test/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Meow/Preview Content\"";
 				DEVELOPMENT_TEAM = QZZ878S3NS;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Test/Info.plist;
+				INFOPLIST_FILE = Meow/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "喵声";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "This app requires access to the microphone to record audio.";
@@ -516,7 +516,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.cain.Test;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cain.Meow;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -531,7 +531,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1A932AB52CAD8F6500954B71 /* Build configuration list for PBXProject "Test" */ = {
+		1A932AB52CAD8F6500954B71 /* Build configuration list for PBXProject "Meow" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1A932AC62CAD8F6700954B71 /* Debug */,
@@ -540,7 +540,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1A932AC82CAD8F6700954B71 /* Build configuration list for PBXNativeTarget "Test" */ = {
+		1A932AC82CAD8F6700954B71 /* Build configuration list for PBXNativeTarget "Meow" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1A932AC92CAD8F6700954B71 /* Debug */,

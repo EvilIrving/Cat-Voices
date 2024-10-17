@@ -66,20 +66,12 @@ struct CatsView: View {
 
             // 删除与猫咪相关的体重记录
             for weight in cat.weights {
-                do {
-                    modelContext.delete(weight)
-                } catch {
-                    print("删除猫咪 \(cat.name) 的体重记录时发生错误: \(error.localizedDescription)")
-                }
+                modelContext.delete(weight)
             }
 
             // 删除与猫咪相关的提醒
             for event in cat.events {
-                do {
-                    modelContext.delete(event)
-                } catch {
-                    print("删除猫咪 \(cat.name) 的提醒时发生错误: \(error.localizedDescription)")
-                }
+                modelContext.delete(event)
             }
 
             // 删除关联的音频文件
