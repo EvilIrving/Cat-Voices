@@ -1,24 +1,18 @@
 import SwiftUI
 
-struct CustomInputField<T>: View where T: Numeric {
+struct CustomInputField<T: Numeric>: View {
     let label: String
     let placeholder: String
     let suffix: String
     @Binding var value: T?
-    var formatter: NumberFormatter
+    let formatter: NumberFormatter
     
     init(
         label: String,
         placeholder: String,
         suffix: String,
         value: Binding<T?>,
-        formatter: NumberFormatter = {
-            let formatter = NumberFormatter()
-            formatter.numberStyle = .decimal
-            // 允许空值
-//            formatter.hasThousandSeparators = false
-            return formatter
-        }()
+        formatter: NumberFormatter = CustomInputField.defaultFormatter()
     ) {
         self.label = label
         self.placeholder = placeholder
@@ -29,38 +23,42 @@ struct CustomInputField<T>: View where T: Numeric {
     
     var body: some View {
         HStack(spacing: 8) {
-            // 左侧标签
             Text(label)
                 .frame(width: 60, alignment: .leading)
             
-            // 输入框区域
             HStack(spacing: 8) {
-                // 使用中间变量处理可选值的转换
-                let binding = Binding<String>(
-                    get: {
-                        if let number = value {
-                            return formatter.string(from: NSNumber(value: Double("\(number)")!)) ?? ""
-                        }
-                        return ""
-                    },
-                    set: { newValue in
-                        if let number = formatter.number(from: newValue) {
-                            value = number.doubleValue as? T
-                        } else {
-                            value = nil
-                        }
-                    }
-                )
-                
-                TextField(placeholder, text: binding)
+                TextField(placeholder, text: formattedBinding)
                     .keyboardType(.decimalPad)
                     .multilineTextAlignment(.trailing)
                     .frame(maxWidth: .infinity)
                 
-                // 后缀单位
                 Text(suffix)
                     .foregroundColor(.secondary)
             }
         }
+    }
+    
+    private var formattedBinding: Binding<String> {
+        Binding<String>(
+            get: {
+                if let number = value {
+                    return formatter.string(from: NSNumber(value: Double("\(number)")!)) ?? ""
+                }
+                return ""
+            },
+            set: { newValue in
+                if let number = formatter.number(from: newValue) {
+                    value = number.doubleValue as? T
+                } else {
+                    value = nil
+                }
+            }
+        )
+    }
+    
+    private static func defaultFormatter() -> NumberFormatter {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        return formatter
     }
 }

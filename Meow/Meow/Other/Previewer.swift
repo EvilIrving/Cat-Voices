@@ -48,10 +48,10 @@ struct Previewer {
         let event3 = Event(eventType: .feeding, cat: cats[2], reminderDate: Date().addingTimeInterval(3 * 86400), reminderTime: Date(), repeatInterval: .daily, notes: "使用新购买的猫粮")
 
         // 将事件保存到容器中
-        container.mainContext.insert(event1!)
-        container.mainContext.insert(event2!)
-        container.mainContext.insert(event3!)
+        container.mainContext.insert(event1)
+        container.mainContext.insert(event2)
+        container.mainContext.insert(event3)
 
-        events = [event1!, event2!, event3!]
+        events = [event1, event2, event3]
     }
 }

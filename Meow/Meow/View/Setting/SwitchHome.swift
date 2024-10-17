@@ -8,17 +8,31 @@
 import SwiftUI
 
 struct SwitchHome: View {
-    @AppStorage("defaultTab") private var defaultTab = 0 // 新增：存储默认标签
+    @AppStorage("defaultTab") private var defaultTab = 0
+
+    private enum Tab: Int, CaseIterable, Identifiable {
+        case meow, accounting, reminder, settings
+        
+        var id: Int { rawValue }
+        
+        var title: String {
+            switch self {
+            case .meow: return "喵语"
+            case .accounting: return "体重记录"
+            case .reminder: return "事项提醒"
+            case .settings: return "设置"
+            }
+        }
+    }
 
     var body: some View {
         VStack {
             Text("选择默认主页")
                 .font(.headline)
             Picker("选择主页", selection: $defaultTab) {
-                Text("喵语").tag(0)
-                Text("记账").tag(1)
-                Text("事项提醒").tag(2)
-                Text("设置").tag(3)
+                ForEach(Tab.allCases) { tab in
+                    Text(tab.title).tag(tab.rawValue)
+                }
             }
             .pickerStyle(SegmentedPickerStyle())
             .padding()
@@ -26,7 +40,6 @@ struct SwitchHome: View {
     }
 }
 
-// 预览代码
 #Preview {
     SwitchHome()
 }

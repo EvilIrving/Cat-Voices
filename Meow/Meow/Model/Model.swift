@@ -14,14 +14,6 @@ import SwiftData
 final class Cat: Identifiable {
     // 使用 @Attribute 注解，表示 id 属性是一个唯一的属性
     @Attribute(.unique) let id: UUID
-    // 头像（从相册选择，拍照，默认图片）
-    // 名字
-    // 品种（新增品种枚举：布偶，英短，美短，暹罗，缅因，其他）
-    // 出生日期（日期，可选）
-    // 到家日期（日期，且不能早于出生日期）
-    // 性别（新增枚举: MM，GG）
-    // 是否绝育（新增枚举: 已绝育，未绝育）
-    // 目前状态（新增枚举: 在身边，不在身边）
     var name: String
     var avatar: URL?
     var breed: Breed
@@ -155,5 +147,3 @@ final class Weight: Identifiable {
         self.weightInKg = weightInKg
     }
 }
-
-// 使用 @Relationship 注解，表示 weights 属性是一个关联关系，并定义了删除规则为级联删除

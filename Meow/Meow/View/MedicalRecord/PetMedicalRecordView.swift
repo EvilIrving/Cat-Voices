@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PetMedicalRecordView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"病历"/*@END_MENU_TOKEN@*/)
+        Text(/*@START_MENU_TOKEN@*/"TOOD：病历"/*@END_MENU_TOKEN@*/)
     }
 }
 

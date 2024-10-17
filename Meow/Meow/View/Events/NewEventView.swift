@@ -5,106 +5,153 @@ struct NewEventView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
     @Query private var cats: [Cat]
-    @State private var selectedEventType: Event.EventType = .bath
-    @State private var selectedCat: Cat?
-    @State private var reminderDate = Date()
-    @State private var reminderTime = Date()
-    @State private var repeatInterval = Event.RepeatInterval.daily
-    @State private var notes = ""
-    @State private var showingAddCustomTypeAlert = false
-    @State private var customEventType: String = ""
-    @State private var showingValidationAlert = false
-    @State private var isSaveDisabled: Bool = true // 添加保存按钮禁用状态
-
+    @StateObject private var viewModel = NewEventViewModel()
+    
     var body: some View {
         NavigationView {
             Form {
-                Picker("事件类型", selection: $selectedEventType) {
-                    ForEach(Event.EventType.allCases, id: \.self) { eventType in
-                        Text(eventType.description).tag(eventType)
-                    }
-                    Text("添加自定义类型").tag(Event.EventType.custom("新增自定义类型"))
-                }
-                .onChange(of: selectedEventType) { oldValue, newValue in
-                    print("事件类型从 \(oldValue) 变为 \(newValue)")
-                    if case .custom("新增自定义类型") = newValue {
-                        showingAddCustomTypeAlert = true
-                        // 重置选择，以便用户可以再次选择"添加自定义类型"
-                        selectedEventType = oldValue
-                    }
-                }
-
-                Picker("选择猫咪", selection: $selectedCat) {
-                    Text("请选择").tag(nil as Cat?)
-                    ForEach(cats) { cat in
-                        Text(cat.name).tag(cat as Cat?)
-                    }
-                }
-                DatePicker("提醒日期", selection: $reminderDate, displayedComponents: .date)
-                DatePicker("提醒时间", selection: $reminderTime, displayedComponents: .hourAndMinute)
-                Picker("重复", selection: $repeatInterval) {
-                    ForEach(Event.RepeatInterval.allCases, id: \.self) { interval in
-                        Text(interval.description).tag(interval)
-                    }
-                }
-                TextEditor(text: $notes)
-                    .frame(height: 100)
+                eventTypePicker
+                catPicker
+                dateTimePickers
+                repeatIntervalPicker
+                notesEditor
             }
             .navigationTitle("新增提醒").toolbarTitleDisplayMode(.inline)
-            .navigationBarItems(leading: Button("取消") {
-                dismiss()
-            }, trailing: Button("保存") {
-                saveEvent()
-            }.disabled(isSaveDisabled)) // 禁用保存按钮
-            .alert("校验失败", isPresented: $showingValidationAlert) {
+            .navigationBarItems(leading: cancelButton, trailing: saveButton)
+            .alert("校验失败", isPresented: $viewModel.showingValidationAlert) {
                 Text("请确保所有字段都已填写。")
                 Button("确定", role: .cancel) {}
             }
-            .alert("添加自定义类型", isPresented: $showingAddCustomTypeAlert) {
-                TextField("输入自定义类型", text: $customEventType)
-                Button("添加") {
-                    if !customEventType.isEmpty {
-                        Event.EventType.addCustomType(customEventType)
-                        selectedEventType = .custom(customEventType)
-                        customEventType = ""
-                    }
-                }
-                Button("取消", role: .cancel) {}
-            }
-            .onChange(of: selectedCat) {
-                isSaveDisabled = !validateEvent()
-            }
-            .onChange(of: notes) {
-                isSaveDisabled = !validateEvent()
+            .alert("添加自定义类型", isPresented: $viewModel.showingAddCustomTypeAlert) {
+                customTypeAlert
             }
         }
     }
+    
+    private var cancelButton: some View {
+        Button("取消") {
+            dismiss()
+        }
+    }
+    
+    private var saveButton: some View {
+        Button("保存") {
+            viewModel.saveEvent(modelContext: modelContext, dismiss: dismiss)
+        }
+        .disabled(!viewModel.isFormValid)
+    }
+}
 
-    private func saveEvent() {
-        guard validateEvent() else {
-            showingValidationAlert = true // 显示校验失败警告
+extension NewEventView {
+    private var eventTypePicker: some View {
+        Section(header: Text("事件类型")) {
+            Picker("选择事件类型", selection: $viewModel.selectedEventType) {
+                ForEach(Event.EventType.allCases, id: \.self) { type in
+                    Text(type.description).tag(type)
+                }
+            }
+            .pickerStyle(MenuPickerStyle())
+            
+            Button("添加自定义类型") {
+                viewModel.showingAddCustomTypeAlert = true
+            }
+        }
+    }
+    
+    private var catPicker: some View {
+        Section(header: Text("选择猫咪")) {
+            Picker("选择猫咪", selection: $viewModel.selectedCat) {
+                Text("请选择").tag(Cat?.none)
+                ForEach(cats) { cat in
+                    Text(cat.name).tag(Cat?.some(cat))
+                }
+            }
+            .pickerStyle(MenuPickerStyle())
+        }
+    }
+    
+    private var dateTimePickers: some View {
+        Section(header: Text("提醒时间")) {
+            DatePicker("日期", selection: $viewModel.reminderDate, displayedComponents: .date)
+            DatePicker("时间", selection: $viewModel.reminderTime, displayedComponents: .hourAndMinute)
+        }
+    }
+    
+    private var repeatIntervalPicker: some View {
+        Section(header: Text("重复间隔")) {
+            Picker("重复间隔", selection: $viewModel.repeatInterval) {
+                ForEach(Event.RepeatInterval.allCases, id: \.self) { interval in
+                    Text(interval.description).tag(interval)
+                }
+            }
+            .pickerStyle(MenuPickerStyle())
+        }
+    }
+    
+    private var notesEditor: some View {
+        Section(header: Text("备注")) {
+            TextEditor(text: $viewModel.notes)
+                .frame(height: 100)
+        }
+    }
+    
+    private var customTypeAlert: some View {
+        VStack {
+            TextField("输入自定义类型", text: $viewModel.customEventType)
+            Button("添加") {
+                viewModel.addCustomEventType()
+            }
+        }
+    }
+}
+
+class NewEventViewModel: ObservableObject {
+    @Published var selectedEventType: Event.EventType = .bath
+    @Published var selectedCat: Cat? {
+        didSet {
+            checkFormValidity()
+        }
+    }
+    @Published var reminderDate = Date()
+    @Published var reminderTime = Date()
+    @Published var repeatInterval = Event.RepeatInterval.daily
+    @Published var notes = ""
+    @Published var showingAddCustomTypeAlert = false
+    @Published var customEventType: String = ""
+    @Published var showingValidationAlert = false
+    @Published var isFormValid: Bool = false
+    
+    private func checkFormValidity() {
+        isFormValid = selectedCat != nil
+    }
+    
+    func validateEvent() -> Bool {
+        selectedCat != nil
+    }
+    
+    func saveEvent(modelContext: ModelContext, dismiss: DismissAction) {
+        guard isFormValid else {
+            showingValidationAlert = true
             return
         }
-        guard let selectedCat = selectedCat else {
-            // 处理未选择猫咪的情况,可能显示一个警告
-            return
-        }
-        let newEvent = Event(eventType: selectedEventType, cat: selectedCat, reminderDate: reminderDate, reminderTime: reminderTime, repeatInterval: repeatInterval, notes: notes)
-
-        modelContext.insert(newEvent!)
+        guard let selectedCat = selectedCat else { return }
+        
+        let newEvent = Event(eventType: selectedEventType,
+                             cat: selectedCat,
+                             reminderDate: reminderDate,
+                             reminderTime: reminderTime,
+                             repeatInterval: repeatInterval,
+                             notes: notes)
+        
+        modelContext.insert(newEvent)
         dismiss()
     }
-
-    private func addCustomEventType() {
+    
+    func addCustomEventType() {
         if !customEventType.isEmpty {
             Event.EventType.addCustomType(customEventType)
             selectedEventType = .custom(customEventType)
             customEventType = ""
         }
-    }
-
-    private func validateEvent() -> Bool {
-        // 校验逻辑
-        return selectedCat != nil // 确保猫咪选择不为空
     }
 }

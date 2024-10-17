@@ -21,29 +21,51 @@ struct EventsView: View {
     
     var body: some View {
         NavigationView {
-            List {
-                ForEach(events) { event in
-                    EventRow(event: event)
+            EventsList(events: events, onDelete: deleteEvents)
+                .navigationTitle("事项提醒").toolbarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        addButton
+                    }
                 }
-                .onDelete(perform: deleteEvent)
-            }
-            .navigationTitle("提醒事项").toolbarTitleDisplayMode(.inline)
-            .toolbar {
-                Button(action: {
-                    showingNewEventSheet = true
-                }) {
-                    Image(systemName: "plus")
+                .sheet(isPresented: $showingNewEventSheet) {
+                    NewEventView()
                 }
-            }
-            .sheet(isPresented: $showingNewEventSheet) {
-                NewEventView()
-            }
         }
     }
     
-    func deleteEvent(at offsets: IndexSet) {
-        for index in offsets {
-            modelContext.delete(events[index])
+    @ViewBuilder
+    private var addButton: some View {
+        Button(action: {
+            showingNewEventSheet = true
+        }) {
+            Image(systemName: "plus")
+        }
+    }
+    
+    private func deleteEvents(at offsets: IndexSet) {
+        do {
+            try offsets.forEach { index in
+                modelContext.delete(events[index])
+            }
+            try modelContext.save()
+        } catch {
+            print("删除事件失败: \(error)")
+            // 这里可以添加用户提示逻辑
+        }
+    }
+}
+
+struct EventsList: View {
+    let events: [Event]
+    let onDelete: (IndexSet) -> Void
+    
+    var body: some View {
+        List {
+            ForEach(events) { event in
+                EventRow(event: event)
+            }
+            .onDelete(perform: onDelete)
         }
     }
 }

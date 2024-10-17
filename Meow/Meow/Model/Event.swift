@@ -11,7 +11,7 @@ final class Event: Identifiable {
     var repeatInterval: RepeatInterval
     var notes: String?
 
-    init?(id: UUID = UUID(), eventType: EventType, cat: Cat, reminderDate: Date, reminderTime: Date, repeatInterval: RepeatInterval, notes: String? = nil) {
+    init(id: UUID = UUID(), eventType: EventType, cat: Cat, reminderDate: Date, reminderTime: Date, repeatInterval: RepeatInterval, notes: String? = nil) {
         // 校验
 //        let validationResult = validate(eventType: eventType, cat: cat, reminderDate: reminderDate, reminderTime: reminderTime, repeatInterval: repeatInterval)
 //        if !validationResult.isValid {

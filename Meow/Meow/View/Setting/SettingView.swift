@@ -4,6 +4,7 @@ struct SettingView: View {
     @State private var currentVersion = "1.0.0" // 默认版本号
     @State private var isNewVersionAvailable = false // 是否有新版本
     @State private var isCheckingVersion = false // 是否正在检查新版本
+    @State private var isNotificationEnabled = true // 新增：通知开关状态
     
     var body: some View {
         NavigationStack {
@@ -15,41 +16,49 @@ struct SettingView: View {
                    
                 }
                 Section(header: Text("功能")) {
+                      Toggle(isOn: $isNotificationEnabled) {
+                        Text("消息通知")
+                    }
                     NavigationLink("主题", destination: ThemeView())
                     NavigationLink("多语言", destination: LanguageView())
                     NavigationLink("体重单位", destination: WeightUnitView())
-                    NavigationLink("自定主页", destination: SwitchHome())
+                    NavigationLink("自定主页", destination: SwitchHome()) 
                 }
                
 
                 Section(header: Text("更多")) {
-                     NavigationLink("关于我们", destination: AboutView())
-                    // 版本显示
-                    Button(action: {
-                        checkForNewVersion()
-                    }) {
-                        HStack {
-                            Text("检查版本 \(currentVersion)")
-                                .foregroundColor(.primary)
-                            Spacer()
-                            if isCheckingVersion {
-                                ProgressView()
-                                    .progressViewStyle(CircularProgressViewStyle())
-                            } else if isNewVersionAvailable {
-                                // 如果有新版本，显示小红点
-                                Circle()
-                                    .fill(Color.red)
-                                    .frame(width: 10, height: 10)
-                            } else {
-                                Text("当前是最新版本")
-                                    .font(.footnote)
-                                    .foregroundColor(.secondary)
-                            }
-                        }
-                    }
+                    NavigationLink("关于我们", destination: AboutView())
+                    versionCheckButton
                 }
             }
             .navigationTitle("设置").toolbarTitleDisplayMode(.inline)
+        }
+    }
+    
+    private var versionCheckButton: some View {
+        Button(action: checkForNewVersion) {
+            HStack {
+                Text("检查版本 \(currentVersion)")
+                    .foregroundColor(.primary)
+                Spacer()
+                versionStatusView
+            }
+        }
+    }
+    
+    @ViewBuilder
+    private var versionStatusView: some View {
+        if isCheckingVersion {
+            ProgressView()
+                .progressViewStyle(CircularProgressViewStyle())
+        } else if isNewVersionAvailable {
+            Circle()
+                .fill(Color.red)
+                .frame(width: 10, height: 10)
+        } else {
+            Text("当前是最新版本")
+                .font(.footnote)
+                .foregroundColor(.secondary)
         }
     }
     
