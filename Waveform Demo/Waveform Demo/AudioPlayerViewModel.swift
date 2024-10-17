@@ -1,6 +1,7 @@
 import AVFoundation
 import Foundation
 
+/// 音频播放器视图模型类
 class AudioPlayerViewModel: ObservableObject {
     @Published var samples: [Float] = []
     @Published var progress: Double = 0
@@ -10,6 +11,8 @@ class AudioPlayerViewModel: ObservableObject {
     private var audioPlayer: AVAudioPlayer?
     private var displayLink: CADisplayLink?
 
+    /// 加载音频文件
+    /// - Parameter fileName: 音频文件名（不包含扩展名）
     func loadAudio(fileName: String) {
         guard
             let url = Bundle.main.url(
@@ -34,6 +37,7 @@ class AudioPlayerViewModel: ObservableObject {
         }
     }
 
+    /// 切换播放/暂停状态
     func togglePlayPause() {
         if isPlaying {
             audioPlayer?.pause()
@@ -46,11 +50,14 @@ class AudioPlayerViewModel: ObservableObject {
         isPlaying.toggle()
     }
 
+    /// 切换循环播放状态
     func toggleLoop() {
         isLooping.toggle()
         audioPlayer?.numberOfLoops = isLooping ? -1 : 0
     }
 
+    /// 跳转到指定进度
+    /// - Parameter percentage: 目标进度（0-1之间的小数）
     func seek(to percentage: Double) {
         guard let audioPlayer = audioPlayer else { return }
         let newTime = percentage * audioPlayer.duration
@@ -58,6 +65,7 @@ class AudioPlayerViewModel: ObservableObject {
         updateProgress()
     }
 
+    /// 生成波形样本数据
     private func generateWaveformSamples() {
         guard let audioPlayer: AVAudioPlayer = audioPlayer,
             let url = audioPlayer.url
@@ -99,12 +107,14 @@ class AudioPlayerViewModel: ObservableObject {
         }
     }
 
+    /// 设置显示链接以更新进度
     private func setupDisplayLink() {
         displayLink = CADisplayLink(
             target: self, selector: #selector(updateProgress))
         displayLink?.add(to: .main, forMode: .default)
     }
 
+    /// 停止显示链接
     private func stopDisplayLink() {
         displayLink?.invalidate()
         displayLink = nil
@@ -114,6 +124,7 @@ class AudioPlayerViewModel: ObservableObject {
         stopDisplayLink()
     }
 
+    /// 更新播放进度
     @objc private func updateProgress() {
         guard let audioPlayer = audioPlayer else { return }
         progress = audioPlayer.currentTime / audioPlayer.duration

@@ -1,5 +1,6 @@
 import SwiftUI
 
+/// 自定义进度条视图
 struct ProgressBar: View {
     let progress: Double
     var onSeek: (Double) -> Void
@@ -12,9 +13,11 @@ struct ProgressBar: View {
 
             HStack {
                 ZStack(alignment: .leading) {
+                    // 背景条
                     RoundedRectangle(cornerRadius: cornerRadius)
                         .fill(Color.gray)
 
+                    // 进度条
                     RoundedRectangle(cornerRadius: cornerRadius)
                         .fill(Color.white)
                         .frame(width: barWidth * CGFloat(progress))
