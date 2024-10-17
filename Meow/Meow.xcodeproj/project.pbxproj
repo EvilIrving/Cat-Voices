@@ -31,6 +31,7 @@
 		1A84E1BD2CC0333D003EAE2F /* NewAndEditWeightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A84E1BC2CC0333D003EAE2F /* NewAndEditWeightView.swift */; };
 		1A84E1C02CC038A8003EAE2F /* CustomInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A84E1BF2CC038A8003EAE2F /* CustomInputField.swift */; };
 		1A84E1C22CC03B23003EAE2F /* WeightsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A84E1C12CC03B23003EAE2F /* WeightsView.swift */; };
+		1A84E1E52CC151CE003EAE2F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1A84E1E32CC151CE003EAE2F /* Localizable.strings */; };
 		1A932ABE2CAD8F6500954B71 /* MeowApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A932ABD2CAD8F6500954B71 /* MeowApp.swift */; };
 		1A932AC02CAD8F6500954B71 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A932ABF2CAD8F6500954B71 /* ContentView.swift */; };
 		1A932AC22CAD8F6700954B71 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A932AC12CAD8F6700954B71 /* Assets.xcassets */; };
@@ -63,6 +64,10 @@
 		1A84E1BC2CC0333D003EAE2F /* NewAndEditWeightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAndEditWeightView.swift; sourceTree = "<group>"; };
 		1A84E1BF2CC038A8003EAE2F /* CustomInputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInputField.swift; sourceTree = "<group>"; };
 		1A84E1C12CC03B23003EAE2F /* WeightsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightsView.swift; sourceTree = "<group>"; };
+		1A84E1E42CC151CE003EAE2F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1A84E1E62CC151F7003EAE2F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		1A84E1E72CC15211003EAE2F /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		1A84E1E82CC15213003EAE2F /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1A932ABA2CAD8F6500954B71 /* Meow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Meow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A932ABD2CAD8F6500954B71 /* MeowApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeowApp.swift; sourceTree = "<group>"; };
 		1A932ABF2CAD8F6500954B71 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -199,6 +204,7 @@
 				1A932ABD2CAD8F6500954B71 /* MeowApp.swift */,
 				1A932AC12CAD8F6700954B71 /* Assets.xcassets */,
 				1A932AC32CAD8F6700954B71 /* Preview Content */,
+				1A84E1E32CC151CE003EAE2F /* Localizable.strings */,
 			);
 			path = Meow;
 			sourceTree = "<group>";
@@ -272,6 +278,9 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
+				"zh-Hant",
+				ja,
 			);
 			mainGroup = 1A932AB12CAD8F6500954B71;
 			productRefGroup = 1A932ABB2CAD8F6500954B71 /* Products */;
@@ -289,6 +298,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A932AC52CAD8F6700954B71 /* Preview Assets.xcassets in Resources */,
+				1A84E1E52CC151CE003EAE2F /* Localizable.strings in Resources */,
 				1A932AC22CAD8F6700954B71 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -331,6 +341,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		1A84E1E32CC151CE003EAE2F /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1A84E1E42CC151CE003EAE2F /* en */,
+				1A84E1E62CC151F7003EAE2F /* zh-Hans */,
+				1A84E1E72CC15211003EAE2F /* zh-Hant */,
+				1A84E1E82CC15213003EAE2F /* ja */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		1A932AC62CAD8F6700954B71 /* Debug */ = {
@@ -385,7 +409,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -442,7 +466,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;

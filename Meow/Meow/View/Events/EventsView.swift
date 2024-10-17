@@ -44,14 +44,16 @@ struct EventsView: View {
     }
     
     private func deleteEvents(at offsets: IndexSet) {
-        do {
-            try offsets.forEach { index in
+        withAnimation {
+            offsets.forEach { index in
                 modelContext.delete(events[index])
             }
-            try modelContext.save()
-        } catch {
-            print("删除事件失败: \(error)")
-            // 这里可以添加用户提示逻辑
+            do {
+                try modelContext.save()
+            } catch {
+                print("保存更改时出错: \(error)")
+                // 这里可以添加用户提示逻辑
+            }
         }
     }
 }

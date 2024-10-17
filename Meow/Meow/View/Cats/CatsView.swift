@@ -15,7 +15,7 @@ struct CatsView: View {
                         if let avatarURL = cat.avatar, let uiImage = UIImage(contentsOfFile: avatarURL.path) {
                             Image(uiImage: uiImage)
                                 .resizable()
-                                .scaledToFit()
+                                // .scaledToFit()
                                 .frame(width: 50, height: 50)
                                 .clipShape(Circle())
                         } else {

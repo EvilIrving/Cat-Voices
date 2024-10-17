@@ -20,6 +20,7 @@ struct WeightUnitView: View {
                         Image(systemName: "checkmark").foregroundColor(.accentColor)// 显示选中图标
                     }
                 }
+                .contentShape(Rectangle()) // 确保整个区域都可以响应点击
                 .onTapGesture {
                     weightUnit = unit // 更新选中状态
                 }

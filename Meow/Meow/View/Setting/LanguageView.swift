@@ -7,7 +7,7 @@ struct LanguageView: View {
         case japanese = "日本語"
         case chinese = "中文"
         case traditionalChinese = "繁體中文" // 添加繁体中文选项
-        
+
         static func fromLocale() -> Language {
             let systemLanguage = Locale.current.language.languageCode?.identifier
             switch systemLanguage {
@@ -18,33 +18,37 @@ struct LanguageView: View {
             }
         }
     }
-    
+
     // 使用 @AppStorage 绑定到 UserDefaults
     @AppStorage("selectedLanguage") var selectedLanguage: Language = Language.fromLocale()
-    
+
     var body: some View {
-        List {
-            ForEach(Language.allCases, id: \.self) { language in
-                Button(action: {
-                    // 更新选择的语言
-                    selectedLanguage = language
-                }) {
-                    HStack {
-                        Text(language.rawValue).foregroundStyle(.black)
-                        Spacer()
-                        if selectedLanguage == language {
-                            // 显示 checkmark 图标
-                            Image(systemName: "checkmark")
-                                .foregroundColor(.accentColor)
+        VStack(spacing: 16) {
+            List {
+                ForEach(Language.allCases, id: \.self) { language in
+                    Button(action: {
+                        // 更新选择的语言
+                        selectedLanguage = language
+                    }) {
+                        HStack {
+                            Text(language.rawValue).foregroundStyle(Color.accentColor)
+                            Spacer()
+                            if selectedLanguage == language {
+                                // 显示 checkmark 图标
+                                Image(systemName: "checkmark")
+                                    .foregroundColor(.accentColor)
+                            }
                         }
                     }
                 }
             }
+
+            Text("Welcome")
         }
-//        .navigationTitle("Select Language")
     }
 }
 
 #Preview {
     LanguageView()
+        .environment(\.locale, .init(identifier: "en"))
 }
