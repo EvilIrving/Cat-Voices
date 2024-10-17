@@ -114,7 +114,9 @@ AVFoundation 库提供了音频剪辑的功能，包括音频录制、音频播�
 AVAudioSession: 用于管理音频会话和处理音频中断
 Logo 生成: https://www.logo.surf/#generate-favicon
 App Icon 生成:https://www.appicon.co/#app-icon
-自定义导航栏: https://medium.com/@fabricelemfu/customizing-the-navigation-bar-in-swiftui-a-step-by-step-guide-f32dc556d313
+自定义导航栏: 
+  - https://medium.com/@fabricelemfu/customizing-the-navigation-bar-in-swiftui-a-step-by-step-guide-f32dc556d313
+  - https://dev.to/shohe/swiftui-how-to-set-custom-font-to-navigationbartitle-2n2e
 introsepect: https://github.com/siteline/SwiftUI-Introspect
 
 ## SwiftData

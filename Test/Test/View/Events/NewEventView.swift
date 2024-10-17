@@ -50,7 +50,7 @@ struct NewEventView: View {
                 TextEditor(text: $notes)
                     .frame(height: 100)
             }
-            .navigationTitle("新增提醒")
+            .navigationTitle("新增提醒").toolbarTitleDisplayMode(.inline)
             .navigationBarItems(leading: Button("取消") {
                 dismiss()
             }, trailing: Button("保存") {

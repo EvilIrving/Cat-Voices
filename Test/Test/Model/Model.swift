@@ -1,7 +1,6 @@
-import SwiftData
-import Foundation
 import AVFoundation
-
+import Foundation
+import SwiftData
 
 // MARK: - Cat Model
 
@@ -36,7 +35,7 @@ final class Cat: Identifiable {
     // 添加与 Event 的关系
     @Relationship(deleteRule: .cascade) var events: [Event] = []
     // 体重
-@Relationship(deleteRule: .cascade) var weights: [Weight] = []
+    @Relationship(deleteRule: .cascade) var weights: [Weight] = []
 
     // 初始化方法
     init(id: UUID = UUID(), name: String, avatar: URL? = nil, breed: Breed, birthDate: Date? = nil, adoptionDate: Date? = nil, gender: Gender, neuteringStatus: NeuteringStatus, currentStatus: CurrentStatus) {
@@ -111,7 +110,7 @@ final class Audio: Identifiable {
         self.id = id
         self.url = url
         self.name = name
-        self.duration = 0.0 // 初始化为 0，稍后会更新
+        duration = 0.0 // 初始化为 0，稍后会更新
     }
 
     // 使用 async/await 定义异步方法，用于更新音频时长
@@ -129,7 +128,7 @@ final class Audio: Identifiable {
 
 // MARK: - Enums
 
-enum BodyType: String,CaseIterable, Codable {
+enum BodyType: String, CaseIterable, Codable {
     case small = "Small"
     case medium = "Medium"
     case large = "Large"
@@ -158,4 +157,3 @@ final class Weight: Identifiable {
 }
 
 // 使用 @Relationship 注解，表示 weights 属性是一个关联关系，并定义了删除规则为级联删除
-

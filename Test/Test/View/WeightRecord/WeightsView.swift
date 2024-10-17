@@ -62,7 +62,3 @@ private var dateFormatter: DateFormatter {
     formatter.dateStyle = .short
     return formatter
 }
-
-#Preview {
-    WeightsView()
-}

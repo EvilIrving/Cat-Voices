@@ -22,7 +22,7 @@ struct CatsView: View {
                             Image(systemName: "photo")
                                 .frame(width: 50, height: 50)
                         }
-                        
+
                         VStack(alignment: .leading) {
                             Text(cat.name)
                                 .font(.headline)
@@ -63,32 +63,53 @@ struct CatsView: View {
     private func deleteCat(at offsets: IndexSet) {
         for index in offsets {
             let cat = cats[index]
-            
+
             // 删除与猫咪相关的体重记录
             for weight in cat.weights {
-                modelContext.delete(weight)
+                do {
+                    modelContext.delete(weight)
+                } catch {
+                    print("删除猫咪 \(cat.name) 的体重记录时发生错误: \(error.localizedDescription)")
+                }
             }
 
             // 删除与猫咪相关的提醒
             for event in cat.events {
-                modelContext.delete(event)
+                do {
+                    modelContext.delete(event)
+                } catch {
+                    print("删除猫咪 \(cat.name) 的提醒时发生错误: \(error.localizedDescription)")
+                }
             }
 
             // 删除关联的音频文件
             for audio in cat.audios {
-                try? FileManager.default.removeItem(at: audio.url)
+                do {
+                    try FileManager.default.removeItem(at: audio.url)
+                } catch {
+                    print("删除猫咪 \(cat.name) 的音频文件时发生错误: \(error.localizedDescription)")
+                }
             }
 
             // 删除头像文件
             if let avatarURL = cat.avatar {
-                try? FileManager.default.removeItem(at: avatarURL)
+                do {
+                    try FileManager.default.removeItem(at: avatarURL)
+                    print("成功删除猫咪 \(cat.name) 的头像文件")
+                } catch {
+                    print("删除猫咪 \(cat.name) 的头像文件时发生错误: \(error.localizedDescription)")
+                }
             }
 
             // 删除文件夹
             if let folderURL = cat.audios.first?.url.deletingLastPathComponent() {
-                try? FileManager.default.removeItem(at: folderURL)
+                do {
+                    try FileManager.default.removeItem(at: folderURL)
+                } catch {
+                    print("删除猫咪 \(cat.name) 的文件夹时发生错误: \(error.localizedDescription)")
+                }
             }
-            
+
             // 从数据库中删除猫咪
             modelContext.delete(cat)
         }

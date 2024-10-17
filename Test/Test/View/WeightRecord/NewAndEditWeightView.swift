@@ -21,6 +21,7 @@ struct NewAndEditWeightView: View {
 
     @State private var weightToEdit: Weight?
     @State private var validateSave: Bool = false
+    @State private var showNoCatsAlert: Bool = false
 
     init(weightToEdit: Weight? = nil) {
         self.weightToEdit = weightToEdit
@@ -30,53 +31,64 @@ struct NewAndEditWeightView: View {
     }
 
     var body: some View {
-        NavigationView{
+        NavigationView {
             Form {
-            Picker("选择猫咪", selection: $selectedCat) {
-                // 假设有一个 cats 数组可供选择
-                ForEach(cats) { cat in
-                    Text(cat.name).tag(cat as Cat?)
+                Picker("选择猫咪", selection: $selectedCat) {
+                    // 假设有一个 cats 数组可供选择
+                    ForEach(cats) { cat in
+                        Text(cat.name).tag(cat as Cat?)
+                    }
                 }
+
+                DatePicker("日期", selection: $weightDate, displayedComponents: .date)
+
+                CustomInputField(
+                    label: "体重",
+                    placeholder: "请输入体重",
+                    suffix: "kg",
+                    value: $weightInKg
+                )
             }
-
-            DatePicker("日期", selection: $weightDate, displayedComponents: .date)
-
-            CustomInputField(
-                label: "体重",
-                placeholder: "请输入体重",
-                suffix: "kg",
-                value: $weightInKg
+            .onAppear {
+                validateInitialState()
+            }
+            .navigationTitle(weightToEdit == nil ? "记录体重" : "编辑体重").toolbarTitleDisplayMode(.inline)
+            .navigationBarItems(
+                leading: Button("取消") {
+                    dismiss()
+                },
+                trailing: Button("保存") {
+                    saveWeightRecord()
+                }.disabled(!isFormValid)
             )
-
-//
-//                HStack {
-//                    Text("体重") // Label
-//                    TextField("请输入体重", value: $weightInKg, formatter: NumberFormatter())
-//                        .keyboardType(.decimalPad) // 允许 有一个 占位符
-//                        .multilineTextAlignment(.trailing) // 文字靠右对齐
-//
-//                    Text(weightUnit) // 显示单位后缀
-//                }
-        }
-        }
-        .navigationTitle(weightToEdit == nil ? "记录体重" : "编辑体重")
-        .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                Button("取消") {
+            .alert("请先添加猫咪", isPresented: $showNoCatsAlert) {
+                Button("确定") {
                     dismiss()
                 }
-            }
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button("保存") {
-                    saveWeightRecord()
-                }.disabled(validateSave)
+            } message: {
+                Text("请先在猫咪列表中添加至少一只猫咪。")
             }
         }
     }
 
+    private var isFormValid: Bool {
+        selectedCat != nil && weightInKg != nil && weightInKg! > 0
+    }
+
+    private func validateInitialState() {
+        if cats.isEmpty {
+            showNoCatsAlert = true
+        } else if selectedCat == nil {
+            selectedCat = cats.first
+        }
+        validateSave = !isFormValid
+    }
+
     private func saveWeightRecord() {
+        print(selectedCat ?? "no cat", weightInKg ?? "no kg")
         guard let cat = selectedCat, let weight = weightInKg else {
             // 处理未选择猫咪或未输入体重的情况
+            
             validateSave = true
             return
         }

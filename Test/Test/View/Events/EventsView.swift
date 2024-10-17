@@ -61,15 +61,3 @@ struct EventRow: View {
         }
     }
 }
-
-// 预览代码
-#Preview {
-    do {
-        let previewer = try Previewer()
-        return EventsView()
-            .modelContainer(previewer.container)
-            .environmentObject(AppState())
-    } catch {
-        return Text("Failed to create preview: \(error.localizedDescription)")
-    }
-}
