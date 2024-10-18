@@ -10,12 +10,17 @@ import SwiftUI
 @main
 struct MeowApp: App {
     @StateObject private var appState = AppState()
+    @StateObject private var languageManager = LanguageManager.shared
+    
     
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environmentObject(appState)
                 .preferredColorScheme(appState.themeMode.colorScheme)
+                .environmentObject(languageManager)
+                .environment(\.locale, .init(identifier: languageManager.currentLanguage.rawValue))
+        
         }
         .modelContainer(for: [Cat.self, Audio.self,Event.self])
     }

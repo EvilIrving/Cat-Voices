@@ -8,4 +8,25 @@
 
 
 "Welcome" = "ようこそ";
-
+"Languages" = "言語";
+"Settings" = "設定";
+"About" = "関於";
+"Cats" = "猫猫檔案";
+"Pet Medical Record" = "寵物病歷";
+"Weight Unit" = "體重單位";
+"Switch Home" = "自定主頁";
+"Theme" = "主題";
+"Language" = "語言";  
+"Check Version %@" = "バージョンを確認 %@";
+"Current Version" = "現在のバージョン";
+"Restart Required" = "再起動が必要";
+"Up to date" = "最新バージョン";
+"Please restart the app for the language change to take effect." = "言語の変更を有効にするには、アプリを再起動してください。";
+"OK" = "OK";
+"LanguageChanged" = "言語が変更されました";
+"Please restart the app for the language change to take effect." = "言語の変更を有効にするには、アプリを再起動してください。";
+"OK" = "OK";
+"More" = "もっと";
+"Data" = "データ";
+"Function" = "機能";
+"Message Notification" = "メッセージ通知";

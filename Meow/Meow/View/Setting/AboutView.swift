@@ -10,6 +10,7 @@ import SwiftUI
 struct AboutView: View {
     var body: some View {
         Text("TODO：关于")
+        Text("Languages")
     }
 }
 

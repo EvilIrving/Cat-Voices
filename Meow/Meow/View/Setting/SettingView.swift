@@ -9,36 +9,51 @@ struct SettingView: View {
     var body: some View {
         NavigationStack {
             List {
-                Section(header:Text("数据")) {
-                    NavigationLink("猫猫档案", destination:  CatsView())
+                Section(header:Text("Data")) {
+                    NavigationLink(destination: CatsView()) {
+                        
+                        LocalizedText(key: "Cats")
+                    }
                    
-                    NavigationLink("宠物病历", destination: PetMedicalRecordView())
+                    NavigationLink(destination: PetMedicalRecordView()) {
+                        LocalizedText(key: "Pet Medical Record")
+                    }
                    
                 }
-                Section(header: Text("功能")) {
+                Section(header: Text("Function")) {
                       Toggle(isOn: $isNotificationEnabled) {
-                        Text("消息通知")
+                        LocalizedText(key: "Message Notification")
                     }
-                    NavigationLink("主题", destination: ThemeView())
-                    NavigationLink("多语言", destination: LanguageView())
-                    NavigationLink("体重单位", destination: WeightUnitView())
-                    NavigationLink("自定主页", destination: SwitchHome()) 
+                    NavigationLink(destination: ThemeView()) {
+                        LocalizedText(key: "Theme")
+                    }
+                    NavigationLink(destination: LanguageView()) {
+                        LocalizedText(key: "Languages")
+                    }
+                    NavigationLink(destination: WeightUnitView()) {
+                        LocalizedText(key: "Weight Unit")
+                    }
+                    NavigationLink(destination: SwitchHome()) {
+                        LocalizedText(key: "Switch Home")
+                    } 
                 }
                
 
-                Section(header: Text("更多")) {
-                    NavigationLink("关于我们", destination: AboutView())
+                Section(header: Text("More")) {
+                    NavigationLink(destination: AboutView()) {
+                        LocalizedText(key: "About")
+                    }
                     versionCheckButton
                 }
             }
-            .navigationTitle("设置").toolbarTitleDisplayMode(.inline)
+            .navigationTitle(Text("Settings")).toolbarTitleDisplayMode(.inline)
         }
     }
     
     private var versionCheckButton: some View {
         Button(action: checkForNewVersion) {
             HStack {
-                Text("检查版本 \(currentVersion)")
+                LocalizedText(key: "Check Version \(currentVersion)")
                     .foregroundColor(.primary)
                 Spacer()
                 versionStatusView
@@ -56,7 +71,7 @@ struct SettingView: View {
                 .fill(Color.red)
                 .frame(width: 10, height: 10)
         } else {
-            Text("当前是最新版本")
+            LocalizedText(key: "Up to date")
                 .font(.footnote)
                 .foregroundColor(.secondary)
         }

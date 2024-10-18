@@ -1,6 +1,9 @@
 import SwiftUI
 
 struct LanguageView: View {
+    @StateObject private var languageManager = LanguageManager.shared
+//    @State private var showRestartAlert = false
+    
     // 支持的语言枚举
     enum Language: String, CaseIterable {
         case english = "English"
@@ -16,25 +19,21 @@ struct LanguageView: View {
             case "ja": return .japanese
             default: return .english
             }
-        }
+        } 
     }
-
-    // 使用 @AppStorage 绑定到 UserDefaults
-    @AppStorage("selectedLanguage") var selectedLanguage: Language = Language.fromLocale()
 
     var body: some View {
         VStack(spacing: 16) {
             List {
                 ForEach(Language.allCases, id: \.self) { language in
                     Button(action: {
-                        // 更新选择的语言
-                        selectedLanguage = language
+                        languageManager.currentLanguage = language
                     }) {
                         HStack {
-                            Text(language.rawValue).foregroundStyle(Color.accentColor)
+                            LocalizedText(key: LocalizedStringKey(language.rawValue))
+                                .foregroundStyle(Color.accentColor)
                             Spacer()
-                            if selectedLanguage == language {
-                                // 显示 checkmark 图标
+                            if languageManager.currentLanguage == language {
                                 Image(systemName: "checkmark")
                                     .foregroundColor(.accentColor)
                             }
@@ -43,8 +42,19 @@ struct LanguageView: View {
                 }
             }
 
-            Text("Welcome")
+            Text("Welcome".localized(using:languageManager.currentLanguage?.identifier ?? "en"))
+        //    LocalizedText(key: "Welcome")
         }
+//        .onChange(of: languageManager.currentLanguage) {
+//            showRestartAlert = true
+//        }
+//        .alert(isPresented: $showRestartAlert) {
+//            Alert(
+//                title: Text("Restart Required"),
+//                message: Text("Please restart the app for the language change to take effect."),
+//                dismissButton: .default(Text("OK"))
+//            )
+//        }
     }
 }
 

@@ -6,3 +6,25 @@
   
 */
 "Welcome" = "Welcome to Meow";
+"Languages" = "Muti Languages";
+"Settings" = "Settings";
+"About" = "About";
+"Cats" = "Cats";
+"Pet Medical Record" = "Pet Medical Record";
+"Weight Unit" = "Weight Unit";
+"Switch Home" = "Switch Home";
+"Theme" = "Theme";
+"Language" = "Language";
+"Check Version %@" = "Check Version %@";
+"Current Version" = "Current Version";
+"Up to date" = "Up to date";
+"Restart Required" = "Restart Required";
+"Please restart the app for the language change to take effect." = "Please restart the app for the language change to take effect.";
+"OK" = "OK";
+"LanguageChanged" = "LanguageChanged";
+"Please restart the app for the language change to take effect." = "Please restart the app for the language change to take effect.";
+"OK" = "OK";
+"More" = "More";
+"Data" = "Data";
+"Function" = "Function";
+"Message Notification" = "Message Notification";

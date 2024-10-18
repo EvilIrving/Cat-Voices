@@ -7,3 +7,25 @@
 */
 
 "Welcome" = "欢迎你好";
+"Languages" = "多语言";
+"Settings" = "设置";
+"About" = "关于";
+"Cats" = "猫猫档案";
+"Pet Medical Record" = "宠物病历";
+"Weight Unit" = "体重单位";
+"Switch Home" = "自定主页";
+"Theme" = "主题";
+"Language" = "语言";
+"Check Version %@" = "检查版本 %@";
+"Current Version" = "当前版本";
+"Up to date" = "已是最新版本";
+"Restart Required" = "需要重启";
+"Please restart the app for the language change to take effect." = "请重新启动应用程序以使语言更改生效。";
+"OK" = "好的";
+"LanguageChanged" = "语言已更改";
+"Please restart the app for the language change to take effect." = "请重新启动应用程序以使语言更改生效。";
+"OK" = "好的";
+"More" = "更多";
+"Data" = "数据";
+"Function" = "功能";
+"Message Notification" = "消息通知";
