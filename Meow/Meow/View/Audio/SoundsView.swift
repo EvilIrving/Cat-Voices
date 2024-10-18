@@ -73,10 +73,9 @@ struct SoundsView: View {
                                             )
                                         }
                                     }
-                                    WaveformView(
-                                        samples: audio.waves, progress: viewModel.progress
-                                    )
-                                    .frame(height: 40)
+
+                                    WavesView(waves: audio.waves, progress: 0)
+                                        .frame(width: .infinity, height: 30)
                                 }
 
                                 // 水平间距

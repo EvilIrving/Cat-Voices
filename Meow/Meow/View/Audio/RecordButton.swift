@@ -44,6 +44,7 @@ struct RecordButton: View {
                             // 可选：调用 updateDuration() 更新音频时长
                             Task {
                                 await sound.updateDuration()
+                                await sound.generateWaves()
                             }
                         }
                         isRecording = false

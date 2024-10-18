@@ -16,7 +16,7 @@ struct ContentView: View {
             VStack {
                 // 波形视图，显示音频波形
                 WaveformView(
-                    samples: viewModel.samples, progress: viewModel.progress
+                    waves: viewModel.samples, progress: viewModel.progress
                 )
                 .frame(height: 40)
                 .padding(.bottom, 30)
