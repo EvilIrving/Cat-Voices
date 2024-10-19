@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct CustomInputField<T: Numeric>: View {
+    @StateObject private var languageManager = LanguageManager.shared
+
     let label: String
     let placeholder: String
     let suffix: String
@@ -23,11 +25,11 @@ struct CustomInputField<T: Numeric>: View {
     
     var body: some View {
         HStack(spacing: 8) {
-            Text(label)
+            Text(label.localised(using: languageManager.selectedLanguage))
                 .frame(width: 60, alignment: .leading)
             
             HStack(spacing: 8) {
-                TextField(placeholder, text: formattedBinding)
+                TextField(placeholder.localised(using: languageManager.selectedLanguage), text: formattedBinding)
                     .keyboardType(.decimalPad)
                     .multilineTextAlignment(.trailing)
                     .frame(maxWidth: .infinity)

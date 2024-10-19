@@ -2,6 +2,8 @@ import SwiftData
 import SwiftUI
 
 struct WeightsView: View {
+    @StateObject private var languageManager = LanguageManager.shared
+
     @Query private var weights: [Weight]
     @AppStorage("weightUnit") private var weightUnit: String = "kg"
     @State private var isPresentingNewWeightView = false
@@ -17,11 +19,11 @@ struct WeightsView: View {
                     })
                 }
             }
-            .navigationTitle("体重记录").toolbarTitleDisplayMode(.inline)
+            .navigationTitle("Weight Record".localised(using: languageManager.selectedLanguage)).toolbarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: { isPresentingNewWeightView = true }) {
-                        Label("添加体重记录", systemImage: "plus")
+                        Label("Add Weight Record".localised(using: languageManager.selectedLanguage), systemImage: "plus")
                     }
                 }
             }
@@ -34,13 +36,14 @@ struct WeightsView: View {
 }
 
 struct WeightRowView: View {
+    @StateObject private var languageManager = LanguageManager.shared
     let weight: Weight
     let weightUnit: String
     let onEdit: () -> Void
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text("体重: \(weight.formattedWeightInKg) \(weightUnit)")
+            Text("Weight: \(weight.formattedWeightInKg) \(weightUnit)")
             HStack {
                 Text("\(weight.date, formatter: dateFormatter)")
                 Spacer()

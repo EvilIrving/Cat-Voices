@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SwitchHome: View {
+    @StateObject private var languageManager = LanguageManager.shared
     @AppStorage("defaultTab") private var defaultTab = 0
 
     private enum Tab: Int, CaseIterable, Identifiable {
@@ -18,20 +19,20 @@ struct SwitchHome: View {
         var title: String {
             switch self {
             case .meow: return "喵语"
-            case .accounting: return "体重记录"
-            case .reminder: return "事项提醒"
-            case .settings: return "设置"
+            case .accounting: return "Weight Record"
+            case .reminder: return "Event Reminder"
+            case .settings: return "Settings"
             }
         }
     }
 
     var body: some View {
         VStack {
-            Text("选择默认主页")
+            Text("Set Home".localised(using: languageManager.selectedLanguage))
                 .font(.headline)
-            Picker("选择主页", selection: $defaultTab) {
+            Picker("Set Home".localised(using: languageManager.selectedLanguage), selection: $defaultTab) {
                 ForEach(Tab.allCases) { tab in
-                    Text(tab.title).tag(tab.rawValue)
+                    Text(tab.title.localised(using: languageManager.selectedLanguage)).tag(tab.rawValue)
                 }
             }
             .pickerStyle(SegmentedPickerStyle())

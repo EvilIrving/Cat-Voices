@@ -8,13 +8,14 @@
 import SwiftUI
 
 struct WeightUnitView: View {
+    @StateObject private var languageManager = LanguageManager.shared
     @AppStorage("weightUnit") private var weightUnit: String = "kg" // 用于跟踪选中的单位，默认值为 kg
 
     var body: some View {
         List {
             ForEach(["kg", "g", "斤"], id: \.self) { unit in
                 HStack {
-                    Text(unit)
+                    Text(unit.localised(using: languageManager.selectedLanguage))
                     Spacer()
                     if weightUnit == unit {
                         Image(systemName: "checkmark").foregroundColor(.accentColor)// 显示选中图标

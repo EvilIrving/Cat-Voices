@@ -1,32 +1,118 @@
-/* 
-  Localizable.strings
-  Meow
+ 
 
-  Created by Actor on 2024/10/17.
-  
-*/
-
-
+// 全局文字
 "Welcome" = "ようこそ";
-"Languages" = "言語";
-"Settings" = "設定";
-"About" = "関於";
-"Cats" = "猫猫檔案";
-"Pet Medical Record" = "寵物病歷";
-"Weight Unit" = "體重單位";
-"Switch Home" = "自定主頁";
-"Theme" = "主題";
-"Language" = "語言";  
-"Check Version %@" = "バージョンを確認 %@";
-"Current Version" = "現在のバージョン";
-"Restart Required" = "再起動が必要";
-"Up to date" = "最新バージョン";
-"Please restart the app for the language change to take effect." = "言語の変更を有効にするには、アプリを再起動してください。";
+"Cancel" = "キャンセル";
+"Save" = "保存";
 "OK" = "OK";
-"LanguageChanged" = "言語が変更されました";
-"Please restart the app for the language change to take effect." = "言語の変更を有効にするには、アプリを再起動してください。";
-"OK" = "OK";
+"Confirm" = "確認";
+"Go to Settings" = "設定に移動";
 "More" = "もっと";
 "Data" = "データ";
-"Function" = "機能";
-"Message Notification" = "メッセージ通知";
+"Features" = "機能";
+"Notifications" = "通知";
+"Validation Failed" = "検証に失敗しました";
+"Please ensure all fields are filled." = "すべてのフィールドが入力されていることを確認してください。";
+"Camera permission required" = "カメラの許可が必要です";
+"Please allow this app to access your camera in Settings" = "設定でこのアプリにカメラのアクセスを許可してください";
+"Photo album permission required" = "写真アルバムの許可が必要です";
+"Please allow this app to access your photo album in Settings" = "設定でこのアプリに写真アルバムのアクセスを許可してください";
+
+// 設定に関する文字
+"Multilingual" = "多言語";
+"Settings" = "設定";
+"About" = "情報";
+"Cat Profile" = "猫のプロファイル";
+"Pet Medical Records" = "ペットの医療記録";
+"Weight Unit" = "体重の単位";
+"Set Home" = "ホームページを設定";
+"Theme" = "テーマ";
+"Language" = "言語";
+"Check Version %@" = "バージョンを確認 %@";
+"Current Version" = "現在のバージョン";
+"Up to date" = "最新バージョンです";
+"Restart Required" = "再起動が必要です";
+"Please restart the app for the language change to take effect." = "言語変更を反映するためにアプリを再起動してください。";
+"Language Changed" = "言語が変更されました";
+
+// 猫のプロファイルに関する文字
+"Basic Information" = "基本情報";
+"Name" = "名前";
+"Avatar" = "アバター";
+"Breed" = "品種";
+"Date Information" = "日付情報";
+"Birth Date" = "誕生日";
+"Arrival Date" = "到着日";
+"Other Information" = "その他の情報";
+"Gender" = "性別";
+"Neutering Status" = "去勢状態";
+"Current Status" = "現在の状態";
+"Add Cat" = "猫を追加";
+"Edit Cat" = "猫を編集";
+"Breed %@" = "品種 %@";
+"Age %@" = "年齢 %@";
+
+// イベントリマインダーに関する文字
+"Event Reminder" = "イベントリマインダー";
+"Pet %@" = "ペット %@";
+"Reminder Time %@" = "リマインダー時間 %@";
+"Repeat %@" = "繰り返し %@";
+"Add Reminder" = "リマインダーを追加";
+"Add Custom Type" = "カスタムタイプを追加";
+"Please enter a custom type name." = "カスタムタイプの名前を入力してください。";
+"Event Type" = "イベントタイプ";
+"Select Event Type" = "イベントタイプを選択";
+"Select Cat" = "猫を選択";
+"Reminder Time" = "リマインダー時間";
+"Date" = "日付";
+"Time" = "時間";
+"Repeat Interval" = "繰り返し間隔";
+"Notes" = "メモ";
+"Please Select" = "選択してください";
+"Enter Custom Type" = "カスタムタイプを入力";
+
+// 体重記録に関する文字
+"Record Weight" = "体重を記録";
+"Edit Weight" = "体重を編集";
+"Please add a cat first" = "まず猫を追加してください";
+"Please add at least one cat in the cat list." = "猫リストに少なくとも1匹の猫を追加してください。";
+"Weight" = "体重";
+"Add Weight Record" = "体重記録を追加";
+"Weight Record" = "体重記録";
+
+// 猫の品種と状態に関する文字
+"Ragdoll" = "ラグドール";
+"British Shorthair" = "ブリティッシュショートヘア";
+"American Shorthair" = "アメリカンショートヘア";
+"Siamese" = "シャム猫";
+"Maine Coon" = "メインクーン";
+"Other" = "その他";
+
+"Male" = "オス";
+"Female" = "メス";
+"Neutered" = "去勢済み";
+"Not Neutered" = "去勢していない";
+"Unknown" = "不明";
+"With Me" = "私と一緒に";
+"Living in Cat Heaven" = "猫天国で暮らしている";
+
+// 時間間隔に関する文字
+"Every Day" = "毎日";
+"Every Three Days" = "3日ごと";
+"Every Week" = "毎週";
+"Every Two Weeks" = "2週間ごと";
+"Every Three Weeks" = "3週間ごと";
+"Every Month" = "毎月";
+"Every Two Months" = "2ヶ月ごと";
+"Every Three Months" = "3ヶ月ごと";
+"Every Year" = "毎年";
+
+// イベントタイプに関する文字
+"Bathing" = "入浴";
+"Litter Cleaning" = "トイレ掃除";
+"Feeding" = "給餌";
+"Outdoor Play" = "外遊び";
+"Vet Visit" = "獣医の訪問";
+"Health Check" = "健康診断";
+"Surgery" = "手術";
+

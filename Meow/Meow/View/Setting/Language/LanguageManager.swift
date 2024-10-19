@@ -10,34 +10,31 @@ import SwiftUI
 
 class LanguageManager: ObservableObject {
     static let shared = LanguageManager()
-    
-    @Published var currentLanguage: LanguageView.Language {
-        didSet {
-            UserDefaults.standard.set(currentLanguage.rawValue, forKey: "selectedLanguage")
-            updateLocale()
-            NotificationCenter.default.post(name: Notification.Name("LanguageChanged"), object: nil)
+    @Published var selectedLanguage = "en"
+
+    func setLanguage(_ languageCode: String) {
+        if Bundle.main.localizations.contains(languageCode) {
+            UserDefaults.standard.set([languageCode], forKey: "MyLanguages")
+            selectedLanguage = languageCode
         }
     }
-    
-    private init() {
-        if let savedLanguage = UserDefaults.standard.string(forKey: "selectedLanguage"),
-           let language = LanguageView.Language(rawValue: savedLanguage) {
-            currentLanguage = language
-        } else {
-            currentLanguage = LanguageView.Language.fromLocale()
-        }
-        updateLocale()
+
+    var supportedLanguages: [String] {
+        return ["en", "zh-Hans", "zh-Hant", "ja"]
     }
-    
-    private func updateLocale() {
-        let localeIdentifier: String
-        switch currentLanguage {
-        case .english: localeIdentifier = "en"
-        case .japanese: localeIdentifier = "ja"
-        case .chinese: localeIdentifier = "zh-Hans"
-        case .traditionalChinese: localeIdentifier = "zh-Hant"
+
+    func languageDisplayName(for languageCode: String) -> String {
+        switch languageCode {
+        case "en":
+            return "English"
+        case "zh-Hans":
+            return "简体中文"
+        case "zh-Hant":
+            return "繁体中文"
+        case "ja":
+            return "日本語"
+        default:
+            return "English"
         }
-        UserDefaults.standard.set([localeIdentifier], forKey: "AppleLanguages")
-        UserDefaults.standard.synchronize()
     }
 }

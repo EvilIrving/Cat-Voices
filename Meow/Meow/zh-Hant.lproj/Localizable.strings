@@ -1,31 +1,117 @@
-/* 
-  Localizable.strings
-  Meow
+ 
 
-  Created by Actor on 2024/10/17.
-  
-*/
-
+// Global Text
 "Welcome" = "歡迎你好";
-"Languages" = "多語言";
+"Cancel" = "取消";
+"Save" = "保存";
+"OK" = "好的";
+"Confirm" = "確定";
+"Go to Settings" = "去設定";
+"More" = "更多";
+"Data" = "數據";
+"Features" = "功能";
+"Notifications" = "消息通知";
+"Validation Failed" = "校驗失敗";
+"Please ensure all fields are filled." = "請確保所有字段都已填寫。";
+"Camera permission required" = "需要相機權限";
+"Please allow this app to access your camera in Settings" = "請在設定中允許此應用訪問您的相機";
+"Photo album permission required" = "需要相簿權限";
+"Please allow this app to access your photo album in Settings" = "請在設定中允許此應用訪問您的相簿";
+
+// Settings Text
+"Multilingual" = "多語言";
 "Settings" = "設定";
 "About" = "關於";
-"Cats" = "貓貓檔案";
-"Pet Medical Record" = "寵物病歷";
+"Cat Profile" = "貓咪檔案";
+"Pet Medical Records" = "寵物病歷";
 "Weight Unit" = "體重單位";
-"Switch Home" = "自定主頁";
+"Set Home" = "設置主頁";
 "Theme" = "主題";
 "Language" = "語言";
 "Check Version %@" = "檢查版本 %@";
 "Current Version" = "當前版本";
 "Up to date" = "已是最新版本";
 "Restart Required" = "需要重啟";
-"Please restart the app for the language change to take effect." = "請重新啟動應用程序以使語言更改生效。";
-"OK" = "好的";
-"LanguageChanged" = "語言已更改";
-"Please restart the app for the language change to take effect." = "請重新啟動應用程序以使語言更改生效。";
-"OK" = "好的";
-"More" = "更多";
-"Data" = "數據";
-"Function" = "功能";
-"Message Notification" = "消息通知";
+"Please restart the app for the language change to take effect." = "請重新啟動應用以使語言變更生效。";
+"Language Changed" = "語言已變更";
+
+// Cat Profile Text
+"Basic Information" = "基本信息";
+"Name" = "名字";
+"Avatar" = "頭像";
+"Breed" = "品種";
+"Date Information" = "日期信息";
+"Birth Date" = "出生日期";
+"Arrival Date" = "到家日期";
+"Other Information" = "其他信息";
+"Gender" = "性別";
+"Neutering Status" = "絕育狀態";
+"Current Status" = "目前狀態";
+"Add Cat" = "添加貓咪";
+"Edit Cat" = "編輯貓咪";
+"Breed %@" = "品種 %@";
+"Age %@" = "年齡 %@";
+
+// Event Reminder Text
+"Event Reminder" = "事項提醒";
+"Pet %@" = "寵物 %@";
+"Reminder Time %@" = "提醒時間 %@";
+"Repeat %@" = "重複 %@";
+"Add Reminder" = "新增提醒";
+"Add Custom Type" = "添加自訂類型";
+"Please enter a custom type name." = "請輸入自訂類型名稱。";
+"Event Type" = "事件類型";
+"Select Event Type" = "選擇事件類型";
+"Select Cat" = "選擇貓咪";
+"Reminder Time" = "提醒時間";
+"Date" = "日期";
+"Time" = "時間";
+"Repeat Interval" = "重複間隔";
+"Notes" = "備註";
+"Please Select" = "請選擇";
+"Enter Custom Type" = "輸入自訂類型";
+
+// Weight Record Text
+"Record Weight" = "記錄體重";
+"Edit Weight" = "編輯體重";
+"Please add a cat first" = "請先添加貓咪";
+"Please add at least one cat in the cat list." = "請在貓咪列表中添加至少一隻貓咪。";
+"Weight" = "體重";
+"Add Weight Record" = "添加體重記錄";
+"Weight Record" = "體重記錄";
+
+// Cat Breed and Status Text
+"Ragdoll" = "布偶貓";
+"British Shorthair" = "英短";
+"American Shorthair" = "美短";
+"Siamese" = "暹羅";
+"Maine Coon" = "緬因";
+"Other" = "其他";
+
+"Male" = "GG";
+"Female" = "MM";
+"Neutered" = "已絕育";
+"Not Neutered" = "未絕育";
+"Unknown" = "未知";
+"With Me" = "在身邊";
+"Living in Cat Heaven" = "在喵星生活";
+
+// Time Interval Text
+"Every Day" = "每天";
+"Every Three Days" = "每三天";
+"Every Week" = "每週";
+"Every Two Weeks" = "每兩週";
+"Every Three Weeks" = "每三週";
+"Every Month" = "每月";
+"Every Two Months" = "每兩月";
+"Every Three Months" = "每三月";
+"Every Year" = "每年";
+
+// Event Type Text
+"Bathing" = "洗澡";
+"Litter Cleaning" = "鏟屎";
+"Feeding" = "餵食";
+"Outdoor Play" = "出門玩";
+"Vet Visit" = "看醫生";
+"Health Check" = "體檢";
+"Surgery" = "手術";

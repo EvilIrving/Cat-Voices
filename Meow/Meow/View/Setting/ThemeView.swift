@@ -8,15 +8,16 @@
 import SwiftUI
 
 enum ThemeMode: String, CaseIterable, Identifiable {
+    
     case system, light, dark
     
     var id: Self { self }
     
     var displayName: String {
         switch self {
-        case .system: return "跟随系统"
-        case .light: return "浅色模式"
-        case .dark: return "深色模式"
+        case .system: return "System"
+        case .light: return "Light"
+        case .dark: return "Dark"
         }
     }
     
@@ -33,6 +34,7 @@ enum ThemeMode: String, CaseIterable, Identifiable {
 struct ThemeView: View {
     @EnvironmentObject private var appState: AppState
     @Environment(\.colorScheme) private var systemColorScheme
+    @StateObject private var languageManager = LanguageManager.shared
     
     var body: some View {
         List {
@@ -41,7 +43,7 @@ struct ThemeView: View {
                     appState.themeMode = mode
                 }) {
                     HStack {
-                        Text(mode.displayName).foregroundColor(.primary)
+                        Text(mode.displayName.localised(using: languageManager.selectedLanguage)).foregroundColor(.primary)
                         Spacer()
                         if appState.themeMode == mode {
                             Image(systemName: "checkmark")

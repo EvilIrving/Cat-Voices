@@ -5,6 +5,7 @@ import AVFoundation
 /// 添加和编辑猫咪的 Sheet 视图
 struct AddAndEditCatView: View {
     // MARK: - Properties
+    @StateObject private var languageManager = LanguageManager.shared
     @Binding var isPresented: Bool
     @Binding var cat: Cat?
     @Environment(\.modelContext) private var modelContext
@@ -28,11 +29,11 @@ struct AddAndEditCatView: View {
     var body: some View {
         NavigationView {
             Form {
-                Section(header: Text("基本信息")) {
-                    TextField("名字", text: $name)
+                Section(header: Text("Basic Information".localised(using: languageManager.selectedLanguage))) {
+                    TextField("Name".localised(using: languageManager.selectedLanguage), text: $name)
                     
                     HStack {
-                        Text("头像")
+                        Text("Avatar".localised(using: languageManager.selectedLanguage))
                         Spacer()
                         if let avatarImage = avatarImage {
                             avatarImage
@@ -48,47 +49,47 @@ struct AddAndEditCatView: View {
                         checkPhotoLibraryPermission()
                     }
                     
-                    Picker("品种", selection: $breed) {
+                    Picker("Breed".localised(using: languageManager.selectedLanguage), selection: $breed) {
                         ForEach(Breed.allCases, id: \.self) { breed in
                             Text(breed.rawValue).tag(breed)
                         }
                     }
                 }
                 
-                Section(header: Text("日期信息")) {
-                    DatePicker("出生日期", selection: $birthDate, displayedComponents: .date)
-                    DatePicker("到家日期", selection: $adoptionDate, displayedComponents: .date)
+                Section(header: Text("Date Information".localised(using: languageManager.selectedLanguage))) {
+                    DatePicker("Birth Date".localised(using: languageManager.selectedLanguage), selection: $birthDate, displayedComponents: .date)
+                    DatePicker("Arrival Date".localised(using: languageManager.selectedLanguage), selection: $adoptionDate, displayedComponents: .date)
                 }
-                
-                Section(header: Text("其他信息")) {
-                    Picker("性别", selection: $gender) {
+
+                Section(header: Text("Other Information".localised(using: languageManager.selectedLanguage))) {
+                    Picker("Gender".localised(using: languageManager.selectedLanguage), selection: $gender) {
                         ForEach(Gender.allCases, id: \.self) { gender in
                             Text(gender.rawValue).tag(gender)
                         }
                     }
                     
-                    Picker("绝育状态", selection: $neuteringStatus) {
+                    Picker("Neutering Status".localised(using: languageManager.selectedLanguage), selection: $neuteringStatus) {
                         ForEach(NeuteringStatus.allCases, id: \.self) { status in
                             Text(status.rawValue).tag(status)
                         }
                     }
                     
-                    Picker("目前状态", selection: $currentStatus) {
+                    Picker("Current Status".localised(using: languageManager.selectedLanguage), selection: $currentStatus) {
                         ForEach(CurrentStatus.allCases, id: \.self) { status in
                             Text(status.rawValue).tag(status)
                         }
                     }
                 }
             }
-            .navigationTitle(cat == nil ? "添加猫咪" : "编辑猫咪")
+            .navigationTitle(cat == nil ? "Add Cat".localised(using: languageManager.selectedLanguage) : "Edit Cat".localised(using: languageManager.selectedLanguage))
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button("取消") {
+                    Button("Cancel".localised(using: languageManager.selectedLanguage)) {
                         isPresented = false
                     }
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("保存") {
+                    Button("Save".localised(using: languageManager.selectedLanguage)) {
                         saveCat()
                     }
                 }

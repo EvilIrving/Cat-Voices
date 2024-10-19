@@ -34,7 +34,6 @@
 		1A84E1E52CC151CE003EAE2F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1A84E1E32CC151CE003EAE2F /* Localizable.strings */; };
 		1A84E1EC2CC171F7003EAE2F /* WavesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A84E1EB2CC171F7003EAE2F /* WavesView.swift */; };
 		1A84E1EE2CC23AA0003EAE2F /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A84E1ED2CC23AA0003EAE2F /* LanguageManager.swift */; };
-		1A84E1F02CC23BCE003EAE2F /* LocalizedText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A84E1EF2CC23BCE003EAE2F /* LocalizedText.swift */; };
 		1A84E1F32CC243B2003EAE2F /* StringEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A84E1F22CC243B2003EAE2F /* StringEx.swift */; };
 		1A932ABE2CAD8F6500954B71 /* MeowApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A932ABD2CAD8F6500954B71 /* MeowApp.swift */; };
 		1A932AC02CAD8F6500954B71 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A932ABF2CAD8F6500954B71 /* ContentView.swift */; };
@@ -74,7 +73,6 @@
 		1A84E1E82CC15213003EAE2F /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1A84E1EB2CC171F7003EAE2F /* WavesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WavesView.swift; sourceTree = "<group>"; };
 		1A84E1ED2CC23AA0003EAE2F /* LanguageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageManager.swift; sourceTree = "<group>"; };
-		1A84E1EF2CC23BCE003EAE2F /* LocalizedText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedText.swift; sourceTree = "<group>"; };
 		1A84E1F22CC243B2003EAE2F /* StringEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringEx.swift; sourceTree = "<group>"; };
 		1A932ABA2CAD8F6500954B71 /* Meow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Meow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A932ABD2CAD8F6500954B71 /* MeowApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeowApp.swift; sourceTree = "<group>"; };
@@ -188,7 +186,6 @@
 			isa = PBXGroup;
 			children = (
 				1A408FD82CB44237004B78A4 /* LanguageView.swift */,
-				1A84E1EF2CC23BCE003EAE2F /* LocalizedText.swift */,
 				1A84E1ED2CC23AA0003EAE2F /* LanguageManager.swift */,
 				1A84E1F22CC243B2003EAE2F /* StringEx.swift */,
 			);
@@ -330,7 +327,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1A84E1F02CC23BCE003EAE2F /* LocalizedText.swift in Sources */,
 				1A408FCA2CB3C91A004B78A4 /* RecordButton.swift in Sources */,
 				1A84E1EE2CC23AA0003EAE2F /* LanguageManager.swift in Sources */,
 				1A932AC02CAD8F6500954B71 /* ContentView.swift in Sources */,

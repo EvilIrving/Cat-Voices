@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct SettingView: View {
+    @StateObject private var languageManager = LanguageManager.shared
+
     @State private var currentVersion = "1.0.0" // 默认版本号
     @State private var isNewVersionAvailable = false // 是否有新版本
     @State private var isCheckingVersion = false // 是否正在检查新版本
@@ -9,51 +11,50 @@ struct SettingView: View {
     var body: some View {
         NavigationStack {
             List {
-                Section(header:Text("Data")) {
+                Section(header:Text("Data".localised(using: languageManager.selectedLanguage))) {
                     NavigationLink(destination: CatsView()) {
-                        
-                        LocalizedText(key: "Cats")
+                        Text("Cat Profile".localised(using: languageManager.selectedLanguage))
                     }
                    
                     NavigationLink(destination: PetMedicalRecordView()) {
-                        LocalizedText(key: "Pet Medical Record")
+                        Text("Pet Medical Records".localised(using: languageManager.selectedLanguage))
                     }
                    
                 }
-                Section(header: Text("Function")) {
+                Section(header: Text("Features".localised(using: languageManager.selectedLanguage))) {
                       Toggle(isOn: $isNotificationEnabled) {
-                        LocalizedText(key: "Message Notification")
+                        Text("Notifications".localised(using: languageManager.selectedLanguage))
                     }
                     NavigationLink(destination: ThemeView()) {
-                        LocalizedText(key: "Theme")
+                        Text("Theme".localised(using: languageManager.selectedLanguage))
                     }
                     NavigationLink(destination: LanguageView()) {
-                        LocalizedText(key: "Languages")
+                        Text("Language".localised(using: languageManager.selectedLanguage))
                     }
                     NavigationLink(destination: WeightUnitView()) {
-                        LocalizedText(key: "Weight Unit")
+                        Text("Weight Unit".localised(using: languageManager.selectedLanguage))
                     }
                     NavigationLink(destination: SwitchHome()) {
-                        LocalizedText(key: "Switch Home")
+                        Text("Set Home".localised(using: languageManager.selectedLanguage))
                     } 
                 }
                
 
-                Section(header: Text("More")) {
+                Section(header: Text("More".localised(using: languageManager.selectedLanguage))) {
                     NavigationLink(destination: AboutView()) {
-                        LocalizedText(key: "About")
+                        Text("About".localised(using: languageManager.selectedLanguage))
                     }
                     versionCheckButton
                 }
             }
-            .navigationTitle(Text("Settings")).toolbarTitleDisplayMode(.inline)
+            .navigationTitle(Text("Settings".localised(using: languageManager.selectedLanguage))).toolbarTitleDisplayMode(.inline)
         }
     }
     
     private var versionCheckButton: some View {
         Button(action: checkForNewVersion) {
             HStack {
-                LocalizedText(key: "Check Version \(currentVersion)")
+                Text(String(format: "Check Version %@".localised(using: languageManager.selectedLanguage), currentVersion))
                     .foregroundColor(.primary)
                 Spacer()
                 versionStatusView
@@ -71,7 +72,7 @@ struct SettingView: View {
                 .fill(Color.red)
                 .frame(width: 10, height: 10)
         } else {
-            LocalizedText(key: "Up to date")
+            Text("Up to date".localised(using: languageManager.selectedLanguage))
                 .font(.footnote)
                 .foregroundColor(.secondary)
         }

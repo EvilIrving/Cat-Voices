@@ -2,6 +2,7 @@ import SwiftData
 import SwiftUI
 
 struct CatsView: View {
+    @StateObject private var languageManager = LanguageManager.shared   
     @Query private var cats: [Cat]
     @Environment(\.modelContext) private var modelContext
     @State private var isAddingCat = false
@@ -26,7 +27,7 @@ struct CatsView: View {
                         VStack(alignment: .leading) {
                             Text(cat.name)
                                 .font(.headline)
-                            Text("品种: \(cat.breed.rawValue)")
+                            Text("Breed: \(cat.breed.rawValue)")
                                 .font(.subheadline)
                             if let birthDate = cat.birthDate {
                                 Text("年龄: \(Calendar.current.dateComponents([.year], from: birthDate, to: Date()).year ?? 0)岁")
@@ -49,7 +50,7 @@ struct CatsView: View {
             }
             .navigationTitle("猫咪列表").toolbarTitleDisplayMode(.inline)
             .toolbar {
-                Button("添加猫咪") {
+                Button("Add Cat".localised(using: languageManager.selectedLanguage)) {
                     isAddingCat = true
                     selectedCat = nil
                 }

@@ -9,6 +9,7 @@ import SwiftData
 import SwiftUI
 
 struct NewAndEditWeightView: View {
+    @StateObject private var languageManager = LanguageManager.shared
     @AppStorage("weightUnit") private var weightUnit: String = "kg"
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
@@ -32,42 +33,42 @@ struct NewAndEditWeightView: View {
         NavigationView {
             Form {
                 catPicker
-                DatePicker("日期", selection: $weightDate, displayedComponents: .date)
+                DatePicker("Date".localised(using: languageManager.selectedLanguage), selection: $weightDate, displayedComponents: .date)
                 weightInput
             }
             .onAppear(perform: validateInitialState)
-            .navigationTitle(weightToEdit == nil ? "记录体重" : "编辑体重").toolbarTitleDisplayMode(.inline)
+            .navigationTitle(weightToEdit == nil ? "Record Weight".localised(using: languageManager.selectedLanguage) : "Edit Weight".localised(using: languageManager.selectedLanguage)).toolbarTitleDisplayMode(.inline)
             .navigationBarItems(
-                leading: Button("取消") {
+                leading: Button("Cancel".localised(using: languageManager.selectedLanguage)) {
                     dismiss()
                 },
-                trailing: Button("保存") {
+                trailing: Button("Save".localised(using: languageManager.selectedLanguage)) {
                     saveWeightRecord()
                 }
                 .disabled(!isFormValid)
             )
-            .alert("请先添加猫咪", isPresented: $showNoCatsAlert) {
-                Button("确定") {
+            .alert("Please add a cat first".localised(using: languageManager.selectedLanguage), isPresented: $showNoCatsAlert) {
+                Button("OK".localised(using: languageManager.selectedLanguage)) {
                     dismiss()
                 }
             } message: {
-                Text("请先在猫咪列表中添加至少一只猫咪。")
+                Text("Please add at least one cat in the cat list.".localised(using: languageManager.selectedLanguage))
             }
         }
     }
 
     private var catPicker: some View {
-        Picker("选择猫咪", selection: $selectedCat) {
+        Picker("Select Cat".localised(using: languageManager.selectedLanguage), selection: $selectedCat) {
             ForEach(cats) { cat in
-                Text(cat.name).tag(cat as Cat?)
+                Text(cat.name.localised(using: languageManager.selectedLanguage)).tag(cat as Cat?)
             }
         }
     }
 
     private var weightInput: some View {
         CustomInputField(
-            label: "体重",
-            placeholder: "请输入体重",
+            label: "Weight",
+            placeholder: "Please enter weight",
             suffix: "kg",
             value: $weightInKg
         )

@@ -19,7 +19,7 @@ struct MeowApp: App {
                 .environmentObject(appState)
                 .preferredColorScheme(appState.themeMode.colorScheme)
                 .environmentObject(languageManager)
-                .environment(\.locale, .init(identifier: languageManager.currentLanguage.rawValue))
+//                .environment(\.locale, .init(identifier: languageManager.currentLanguage.rawValue))
         
         }
         .modelContainer(for: [Cat.self, Audio.self,Event.self])

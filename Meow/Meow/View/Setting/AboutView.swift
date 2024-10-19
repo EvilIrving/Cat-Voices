@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct AboutView: View {
+    @StateObject private var languageManager = LanguageManager.shared
     var body: some View {
         Text("TODO：关于")
-        Text("Languages")
+        Text("Languages".localised(using: languageManager.selectedLanguage))
     }
 }
 
