@@ -18,9 +18,9 @@ struct SwitchHome: View {
         
         var title: String {
             switch self {
-            case .meow: return "喵语"
-            case .accounting: return "Weight Record"
-            case .reminder: return "Event Reminder"
+            case .meow: return "Sounds"
+            case .accounting: return "Weights"
+            case .reminder: return "Reminder"
             case .settings: return "Settings"
             }
         }

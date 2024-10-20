@@ -646,6 +646,7 @@
 				INFOPLIST_FILE = Meow/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "喵声";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
+				INFOPLIST_KEY_NSDocumentsFolderUsageDescription = "save audio file";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "This app requires access to the microphone to record audio.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "This app requires access to the photo library to save images.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -684,6 +685,7 @@
 				INFOPLIST_FILE = Meow/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "喵声";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
+				INFOPLIST_KEY_NSDocumentsFolderUsageDescription = "save audio file";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "This app requires access to the microphone to record audio.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "This app requires access to the photo library to save images.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

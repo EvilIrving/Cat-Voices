@@ -3,14 +3,15 @@ import SwiftUI
 
 // 定义标签页枚举
 enum Tab: Int, CaseIterable {
+    
     case sounds, weights, events, settings
     
     var label: (String, String) {
         switch self {
-        case .sounds: return ("喵语", "music.note")
-        case .weights: return ("体重记录", "chart.bar")
-        case .events: return ("事项提醒", "calendar")
-        case .settings: return ("设置", "gear")
+        case .sounds: return ("Sounds", "music.note")
+        case .weights: return ("Weights", "chart.bar")
+        case .events: return ("Reminder", "calendar")
+        case .settings: return ("Settings", "gear")
         }
     }
     
@@ -26,6 +27,7 @@ enum Tab: Int, CaseIterable {
 }
 
 struct ContentView: View {
+    @StateObject private var languageManager = LanguageManager.shared
     @State private var selectedTab: Tab = .sounds
     @AppStorage("defaultTab") private var defaultTab: Tab.RawValue = 0
 
@@ -34,7 +36,7 @@ struct ContentView: View {
             ForEach(Tab.allCases, id: \.self) { tab in
                 tab.view()
                     .tabItem {
-                        Label(tab.label.0, systemImage: tab.label.1)
+                        Label(tab.label.0.localised(using: languageManager.selectedLanguage), systemImage: tab.label.1)
                     }
                     .tag(tab)
             }

@@ -53,7 +53,7 @@
 "Age %@" = "年齡 %@";
 
 // Event Reminder Text
-"Event Reminder" = "事項提醒";
+"Reminder" = "事項提醒";
 "Pet: %@" = "寵物: %@";
 "Reminder Time: %@" = "提醒時間: %@";
 "Repeat: %@" = "重複: %@";
@@ -79,7 +79,7 @@
 "Weight" = "體重";
 "Weight: %@ %@" = "體重: %@ %@";
 "Add Weight Record" = "添加體重記錄";
-"Weight Record" = "體重記錄";
+"Weights" = "體重記錄";
 "Please enter weight" = "請輸入體重";
 
 // Cat Breed and Status Text
@@ -121,3 +121,8 @@
 "System" = "跟隨系統";
 "Light" = "淺色模式";
 "Dark" = "深色模式";
+
+// Sounds Text
+"Sounds" = "喵语";
+
+"audio_load_failed" = "載入音訊失敗: %@";

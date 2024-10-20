@@ -11,8 +11,11 @@ final class Audio: Identifiable {
     var duration: Double
     var waves: [Float] = []
     var createdAt: Date
+<<<<<<< HEAD
     var isLooping: Bool = false
 
+=======
+>>>>>>> 4136427b9bc7aa359e4406b62ebec7bfc370ab52
     // 使用 @Relationship 注解，表示 cat 属性是一个反向关联关系，并定义了关联的属性为 Cat 类的 audios 属性
     @Relationship(inverse: \Cat.audios) var cat: Cat?
 

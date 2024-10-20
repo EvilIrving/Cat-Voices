@@ -53,7 +53,7 @@
 "Age %@" = "年齢 %@";
 
 // イベントリマインダーに関する文字
-"Event Reminder" = "イベントリマインダー";
+"Reminder" = "リマインダー";
 "Pet: %@" = "ペット: %@";
 "Reminder Time: %@" = "リマインダー時間: %@";
 "Repeat: %@" = "繰り返し: %@";
@@ -79,13 +79,13 @@
 "Weight" = "体重";
 "Weight: %@ %@" = "体重: %@ %@";
 "Add Weight Record" = "体重記録を追加";
-"Weight Record" = "体重記録";
+"Weights" = "体重記録";
 "Please enter weight" = "体重を入力してください";
 
 // 猫の品種と状態に関する文字
 "Ragdoll" = "ラグドール";
 "British Shorthair" = "ブリティッシュショートヘア";
-"American Shorthair" = "アメリカンショートヘア";
+"American Shorthair" = "アメリカン��ョートヘア";
 "Siamese" = "シャム猫";
 "Maine Coon" = "メインクーン";
 "Other" = "その他";
@@ -121,3 +121,8 @@
 "System" = "システム";
 "Light" = "浅色モード";
 "Dark" = "深色モード";
+
+// Sounds Text
+"Sounds" = "喵语";
+
+"audio_load_failed" = "音声の読み込みに失敗しました: %@";
