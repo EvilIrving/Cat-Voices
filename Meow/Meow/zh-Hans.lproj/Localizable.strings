@@ -12,7 +12,7 @@
 "Features" = "功能";
 "Notifications" = "消息通知";
 "Validation Failed" = "校验失败";
-"Please ensure all fields are filled." = "请确保所有字段都已填写。";
+"Validation Filled" = "请确保所有字段都已填写。";
 "Camera permission required" = "需要相机权限";
 "Please allow this app to access your camera in Settings" = "请在设置中允许此应用访问您的相机";
 "Photo album permission required" = "需要相册权限";
@@ -54,9 +54,9 @@
 
 // Event Reminder Text
 "Event Reminder" = "事项提醒";
-"Pet %@" = "宠物 %@";
-"Reminder Time %@" = "提醒时间 %@";
-"Repeat %@" = "重复 %@";
+"Pet: %@" = "宠物: %@";
+"Reminder Time: %@" = "提醒时间: %@";
+"Repeat: %@" = "重复: %@";
 "Add Reminder" = "新增提醒";
 "Add Custom Type" = "添加自定义类型";
 "Please enter a custom type name." = "请输入自定义类型名称。";
@@ -77,6 +77,7 @@
 "Please add a cat first" = "请先添加猫咪";
 "Please add at least one cat in the cat list." = "请先在猫咪列表中添加至少一只猫咪。";
 "Weight" = "体重";
+"Weight: %@ %@" = "体重: %@ %@";
 "Add Weight Record" = "添加体重记录";
 "Weight Record" = "体重记录";
 "Please enter weight" = "请输入体重";
@@ -118,3 +119,6 @@
 "Surgery" = "手术";
 
 
+"System" = "跟随系统";
+"Light" = "浅色模式";
+"Dark" = "深色模式";

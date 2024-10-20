@@ -112,12 +112,20 @@ AVFoundation 库提供了音频剪辑的功能，包括音频录制、音频播�
 [SwiftAudioEx: Swift 音频播放库](https://github.com/doublesymmetry/SwiftAudioEx): SwiftAudioEx is an audio player written in Swift, making it simpler to work with audio playback from streams and files.
 [AudioKit Cookbook: 音频合成、处理和分析库](https://github.com/AudioKit/Cookbook)
 AVAudioSession: 用于管理音频会话和处理音频中断
-Logo 生成: https://www.logo.surf/#generate-favicon
-App Icon 生成:https://www.appicon.co/#app-icon
-自定义导航栏: 
-  - https://medium.com/@fabricelemfu/customizing-the-navigation-bar-in-swiftui-a-step-by-step-guide-f32dc556d313
-  - https://dev.to/shohe/swiftui-how-to-set-custom-font-to-navigationbartitle-2n2e
-introsepect: https://github.com/siteline/SwiftUI-Introspect
+
+- 多语言参考:
+  - <https://fatbobman.com/zh/posts/localizationapp-1/>
+  - <https://liudasbar.medium.com/localization-in-swiftui-on-the-fly-685f8e650d91>
+- Logo 生成: <https://www.logo.surf/#generate-favicon>
+- App Icon 生成:<https://www.appicon.co/#app-icon>
+- 自定义导航栏:
+  - <https://medium.com/@fabricelemfu/customizing-the-navigation-bar-in-swiftui-a-step-by-step-guide-f32dc556d313>
+  - <https://dev.to/shohe/swiftui-how-to-set-custom-font-to-navigationbartitle-2n2e>
+  - introsepect: <https://github.com/siteline/SwiftUI-Introspect>
+- Swift Chart:
+  - 第三方库: <https://github.com/ChartsOrg/Charts>
+  - 官方: <https://developer.apple.com/documentation/charts>
+  - <https://blorenzop.medium.com/swiftui-charts-b6fa4aca46db>
 
 ## SwiftData
 

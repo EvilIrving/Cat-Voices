@@ -43,8 +43,9 @@ struct WeightRowView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text("Weight: \(weight.formattedWeightInKg) \(weightUnit)")
+            Text(String(format: "Weight: %@ %@".localised(using: languageManager.selectedLanguage), weight.formattedWeightInKg, weightUnit))
             HStack {
+                // TODO: 日期本地化
                 Text("\(weight.date, formatter: dateFormatter)")
                 Spacer()
                 Text(weight.cat.name)

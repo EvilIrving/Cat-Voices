@@ -16,44 +16,79 @@ struct RecordButton: View {
     @StateObject private var audioRecorder = AudioRecorder()
     // 使用 @Binding 注解，绑定 cat 属性，用于获取当前选中的猫
     let cat: Cat
+    
+    // 修改动画状态的范围
+    @State private var animationAmount: CGFloat = 0.8
+    @State private var lineWidth: CGFloat = 5
 
     var body: some View {
         HStack {
             Spacer()
 
-            // 显示录音按钮
-            Image(systemName: isRecording ? "stop.fill" : "mic.fill")
-                .resizable() // 使图标可调整大小
-                .scaledToFit()
-                .frame(width: 30, height: 30) // 固定宽高
-                .scaleEffect(isRecording ? 0.6 : 1.0) // 录音时缩小 stop 图标
-                .font(.largeTitle)
-                .padding()
-                .background(Color.blue)
-                .foregroundColor(.white)
-                .clipShape(Circle())
-                .shadow(radius: 10)
-                .onTapGesture {
-                    // 点击按钮时，根据 isRecording 状态，开始或停止录音
-                    if isRecording {
-                        audioRecorder.stopRecording()
-                        if let url = audioRecorder.recordingURL {
-                            let fileName = url.deletingPathExtension().lastPathComponent
-                            let sound = Audio(id: UUID(), url: url, name: fileName)
-                            cat.addAudio(sound) // 添加音频到猫的 audios 列表中
-                            // 可选：调用 updateDuration() 更新音频时长
-                            Task {
-                                await sound.updateDuration()
-                                await sound.generateWaves()
-                            }
+            // 使用固定大小的容器
+            ZStack {
+                // 只在录音时显示动态光圈
+                if isRecording {
+                    Circle()
+                        .stroke(Color.accentColor.opacity(0.7), lineWidth: lineWidth)
+                        .scaleEffect(animationAmount)
+                        .animation(
+                            Animation.easeInOut(duration: 1)
+                                .repeatForever(autoreverses: false),
+                            value: animationAmount
+                        )
+                        .animation(
+                            Animation.easeInOut(duration: 1)
+                                .repeatForever(autoreverses: false),
+                            value: lineWidth
+                        )
+                        .onAppear {
+                            animationAmount = 1
+                            lineWidth = 1
                         }
-                        isRecording = false
-                    } else {
-                        print("已选中的猫咪:\(cat.name)")
-                        audioRecorder.startRecording(cat: cat)
-                        isRecording = true
+                }
+
+                // 录音按钮
+                Image(systemName: isRecording ? "stop.fill" : "mic.fill")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 30, height: 30)
+                    .scaleEffect(isRecording ? 0.6 : 1.0)
+                    .font(.largeTitle)
+                    .padding()
+                    .background(Color.blue)
+                    .foregroundColor(.white)
+                    .clipShape(Circle())
+                    .shadow(radius: 10)
+            }
+            .frame(width: 80, height: 80) // 固定 ZStack 的大小
+            .onTapGesture {
+                isRecording.toggle() // 直接切换录音状态
+                if isRecording {
+                    print("开始录音")
+                    audioRecorder.startRecording(cat: cat)
+                    withAnimation {
+                        animationAmount = 1
+                        lineWidth = 1
+                    }
+                } else {
+                    print("停止录音")
+                    audioRecorder.stopRecording()
+                    if let url = audioRecorder.recordingURL {
+                        let fileName = url.deletingPathExtension().lastPathComponent
+                        let sound = Audio(id: UUID(), url: url, name: fileName)
+                        cat.addAudio(sound)
+                        Task {
+                            await sound.updateDuration()
+                            await sound.generateWaves()
+                        }
+                    }
+                    withAnimation {
+                        animationAmount = 0.8
+                        lineWidth = 5
                     }
                 }
+            }
         }
         .padding()
     }

@@ -12,7 +12,7 @@
 "Features" = "機能";
 "Notifications" = "通知";
 "Validation Failed" = "検証に失敗しました";
-"Please ensure all fields are filled." = "すべてのフィールドが入力されていることを確認してください。";
+"Validation Filled" = "すべてのフィールドが入力されていることを確認してください。";
 "Camera permission required" = "カメラの許可が必要です";
 "Please allow this app to access your camera in Settings" = "設定でこのアプリにカメラのアクセスを許可してください";
 "Photo album permission required" = "写真アルバムの許可が必要です";
@@ -54,9 +54,9 @@
 
 // イベントリマインダーに関する文字
 "Event Reminder" = "イベントリマインダー";
-"Pet %@" = "ペット %@";
-"Reminder Time %@" = "リマインダー時間 %@";
-"Repeat %@" = "繰り返し %@";
+"Pet: %@" = "ペット: %@";
+"Reminder Time: %@" = "リマインダー時間: %@";
+"Repeat: %@" = "繰り返し: %@";
 "Add Reminder" = "リマインダーを追加";
 "Add Custom Type" = "カスタムタイプを追加";
 "Please enter a custom type name." = "カスタムタイプの名前を入力してください。";
@@ -77,8 +77,10 @@
 "Please add a cat first" = "まず猫を追加してください";
 "Please add at least one cat in the cat list." = "猫リストに少なくとも1匹の猫を追加してください。";
 "Weight" = "体重";
+"Weight: %@ %@" = "体重: %@ %@";
 "Add Weight Record" = "体重記録を追加";
 "Weight Record" = "体重記録";
+"Please enter weight" = "体重を入力してください";
 
 // 猫の品種と状態に関する文字
 "Ragdoll" = "ラグドール";
@@ -116,3 +118,6 @@
 "Health Check" = "健康診断";
 "Surgery" = "手術";
 
+"System" = "システム";
+"Light" = "浅色モード";
+"Dark" = "深色モード";

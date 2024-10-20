@@ -12,7 +12,7 @@
 "Features" = "功能";
 "Notifications" = "消息通知";
 "Validation Failed" = "校驗失敗";
-"Please ensure all fields are filled." = "請確保所有字段都已填寫。";
+"Validation Filled" = "請確保所有字段都已填寫。";
 "Camera permission required" = "需要相機權限";
 "Please allow this app to access your camera in Settings" = "請在設定中允許此應用訪問您的相機";
 "Photo album permission required" = "需要相簿權限";
@@ -54,9 +54,9 @@
 
 // Event Reminder Text
 "Event Reminder" = "事項提醒";
-"Pet %@" = "寵物 %@";
-"Reminder Time %@" = "提醒時間 %@";
-"Repeat %@" = "重複 %@";
+"Pet: %@" = "寵物: %@";
+"Reminder Time: %@" = "提醒時間: %@";
+"Repeat: %@" = "重複: %@";
 "Add Reminder" = "新增提醒";
 "Add Custom Type" = "添加自訂類型";
 "Please enter a custom type name." = "請輸入自訂類型名稱。";
@@ -77,8 +77,10 @@
 "Please add a cat first" = "請先添加貓咪";
 "Please add at least one cat in the cat list." = "請在貓咪列表中添加至少一隻貓咪。";
 "Weight" = "體重";
+"Weight: %@ %@" = "體重: %@ %@";
 "Add Weight Record" = "添加體重記錄";
 "Weight Record" = "體重記錄";
+"Please enter weight" = "請輸入體重";
 
 // Cat Breed and Status Text
 "Ragdoll" = "布偶貓";
@@ -115,3 +117,7 @@
 "Vet Visit" = "看醫生";
 "Health Check" = "體檢";
 "Surgery" = "手術";
+
+"System" = "跟隨系統";
+"Light" = "淺色模式";
+"Dark" = "深色模式";

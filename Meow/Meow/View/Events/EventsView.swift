@@ -15,6 +15,7 @@ private let itemFormatter: DateFormatter = {
 }()
 
 struct EventsView: View {
+    @StateObject private var languageManager = LanguageManager.shared
     @Environment(\.modelContext) private var modelContext
     @Query private var events: [Event]
     @State private var showingNewEventSheet = false
@@ -22,7 +23,7 @@ struct EventsView: View {
     var body: some View {
         NavigationView {
             EventsList(events: events, onDelete: deleteEvents)
-                .navigationTitle("事项提醒").toolbarTitleDisplayMode(.inline)
+                .navigationTitle("Event Reminder".localised(using: languageManager.selectedLanguage)).toolbarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         addButton
@@ -73,15 +74,16 @@ struct EventsList: View {
 }
 
 struct EventRow: View {
+    @StateObject private var languageManager = LanguageManager.shared
     let event: Event
     
     var body: some View {
         VStack(alignment: .leading) {
             Text(event.eventType.description)
                 .font(.headline)
-            Text("宠物: \(event.cat.name)")
-            Text("提醒时间: \(event.reminderTime, formatter: itemFormatter)")
-            Text("重复: \(event.repeatInterval.description)")
+            Text(String(format: "Pet: %@".localised(using: languageManager.selectedLanguage), event.cat.name))
+            Text(String(format: "Reminder Time: %@".localised(using: languageManager.selectedLanguage), itemFormatter.string(from: event.reminderTime)))
+            Text(String(format: "Repeat: %@".localised(using: languageManager.selectedLanguage), event.repeatInterval.description))
         }
     }
 }

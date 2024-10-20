@@ -2,6 +2,8 @@ import SwiftData
 import SwiftUI
 
 struct NewEventView: View {
+    @StateObject private var languageManager = LanguageManager.shared
+
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
     @Query private var cats: [Cat]
@@ -16,26 +18,26 @@ struct NewEventView: View {
                 repeatIntervalPicker
                 notesEditor
             }
-            .navigationTitle("新增提醒").toolbarTitleDisplayMode(.inline)
+            .navigationTitle("Add Reminder".localised(using: languageManager.selectedLanguage)).toolbarTitleDisplayMode(.inline)
             .navigationBarItems(leading: cancelButton, trailing: saveButton)
-            .alert("校验失败", isPresented: $viewModel.showingValidationAlert) {
-                Text("请确保所有字段都已填写。")
-                Button("确定", role: .cancel) {}
+            .alert("Validation Failed".localised(using: languageManager.selectedLanguage), isPresented: $viewModel.showingValidationAlert) {
+                Text("Validation Filled".localised(using: languageManager.selectedLanguage))
+                Button("Confirm".localised(using: languageManager.selectedLanguage), role: .cancel) {}
             }
-            .alert("添加自定义类型", isPresented: $viewModel.showingAddCustomTypeAlert) {
+            .alert("Add Custom Type".localised(using: languageManager.selectedLanguage), isPresented: $viewModel.showingAddCustomTypeAlert) {
                 customTypeAlert
             }
         }
     }
     
     private var cancelButton: some View {
-        Button("取消") {
+        Button("Cancel".localised(using: languageManager.selectedLanguage)) {
             dismiss()
         }
     }
     
     private var saveButton: some View {
-        Button("保存") {
+        Button("Save".localised(using: languageManager.selectedLanguage)) {
             viewModel.saveEvent(modelContext: modelContext, dismiss: dismiss)
         }
         .disabled(!viewModel.isFormValid)
@@ -44,24 +46,24 @@ struct NewEventView: View {
 
 extension NewEventView {
     private var eventTypePicker: some View {
-        Section(header: Text("事件类型")) {
-            Picker("选择事件类型", selection: $viewModel.selectedEventType) {
+        Section(header: Text("Event Type".localised(using: languageManager.selectedLanguage))) {
+            Picker("Select Event Type".localised(using: languageManager.selectedLanguage), selection: $viewModel.selectedEventType) {
                 ForEach(Event.EventType.allCases, id: \.self) { type in
                     Text(type.description).tag(type)
                 }
             }
             .pickerStyle(MenuPickerStyle())
             
-            Button("添加自定义类型") {
+            Button("Add Custom Type".localised(using: languageManager.selectedLanguage)) {
                 viewModel.showingAddCustomTypeAlert = true
             }
         }
     }
     
     private var catPicker: some View {
-        Section(header: Text("选择猫咪")) {
-            Picker("选择猫咪", selection: $viewModel.selectedCat) {
-                Text("请选择").tag(Cat?.none)
+        Section(header: Text("Select Cat".localised(using: languageManager.selectedLanguage))) {
+            Picker("Select Cat".localised(using: languageManager.selectedLanguage), selection: $viewModel.selectedCat) {
+                Text("Please Select".localised(using: languageManager.selectedLanguage)).tag(Cat?.none)
                 ForEach(cats) { cat in
                     Text(cat.name).tag(Cat?.some(cat))
                 }
@@ -71,15 +73,15 @@ extension NewEventView {
     }
     
     private var dateTimePickers: some View {
-        Section(header: Text("提醒时间")) {
-            DatePicker("日期", selection: $viewModel.reminderDate, displayedComponents: .date)
-            DatePicker("时间", selection: $viewModel.reminderTime, displayedComponents: .hourAndMinute)
+        Section(header: Text("Reminder Time".localised(using: languageManager.selectedLanguage))) {
+            DatePicker("Date".localised(using: languageManager.selectedLanguage), selection: $viewModel.reminderDate, displayedComponents: .date)
+            DatePicker("Time".localised(using: languageManager.selectedLanguage), selection: $viewModel.reminderTime, displayedComponents: .hourAndMinute)
         }
     }
     
     private var repeatIntervalPicker: some View {
-        Section(header: Text("重复间隔")) {
-            Picker("重复间隔", selection: $viewModel.repeatInterval) {
+        Section(header: Text("Repeat Interval".localised(using: languageManager.selectedLanguage))) {
+            Picker("Repeat Interval".localised(using: languageManager.selectedLanguage), selection: $viewModel.repeatInterval) {
                 ForEach(Event.RepeatInterval.allCases, id: \.self) { interval in
                     Text(interval.description).tag(interval)
                 }
@@ -89,7 +91,7 @@ extension NewEventView {
     }
     
     private var notesEditor: some View {
-        Section(header: Text("备注")) {
+        Section(header: Text("Notes".localised(using: languageManager.selectedLanguage))) {
             TextEditor(text: $viewModel.notes)
                 .frame(height: 100)
         }
@@ -97,8 +99,8 @@ extension NewEventView {
     
     private var customTypeAlert: some View {
         VStack {
-            TextField("输入自定义类型", text: $viewModel.customEventType)
-            Button("添加") {
+            TextField("Enter Custom Type".localised(using: languageManager.selectedLanguage), text: $viewModel.customEventType)
+            Button("Add".localised(using: languageManager.selectedLanguage)) {
                 viewModel.addCustomEventType()
             }
         }
