@@ -10,7 +10,7 @@ import SwiftUI
 
 class LanguageManager: ObservableObject {
     static let shared = LanguageManager()
-    @Published var selectedLanguage = "en"
+    @Published var selectedLanguage = "zh-Hans"
 
     func setLanguage(_ languageCode: String) {
         if Bundle.main.localizations.contains(languageCode) {
@@ -20,21 +20,22 @@ class LanguageManager: ObservableObject {
     }
 
     var supportedLanguages: [String] {
-        return ["en", "zh-Hans", "zh-Hant", "ja"]
+        return ["en", " ja", "zh-Hant", "zh-Hans"]
     }
 
     func languageDisplayName(for languageCode: String) -> String {
         switch languageCode {
         case "en":
             return "English"
-        case "zh-Hans":
-            return "简体中文"
+      
         case "zh-Hant":
             return "繁体中文"
         case "ja":
             return "日本語"
+        case "zh-Hans":
+            return "简体中文"
         default:
-            return "English"
+            return "简体中文"
         }
     }
 }

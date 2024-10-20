@@ -30,5 +30,4 @@ struct LanguageView: View {
 
 #Preview {
     LanguageView()
-        .environment(\.locale, .init(identifier: "en"))
 }

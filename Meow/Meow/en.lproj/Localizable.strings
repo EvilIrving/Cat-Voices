@@ -50,7 +50,7 @@
 "Age %@" = "Age %@";
 
 
-"Event Reminder" = "Event Reminder";
+"Reminder" = "Reminder";
 "Pet: %@" = "Pet: %@";
 "Reminder Time: %@" = "Reminder Time: %@";
 "Repeat: %@" = "Repeat: %@";
@@ -76,7 +76,7 @@
 "Weight" = "Weight";
 "Weight: %@ %@" = "Weight: %@ %@";
 "Add Weight Record" = "Add Weight Record";
-"Weight Record" = "Weight Record";
+"Weights" = "Weights";
 "Please enter weight" = "Please enter weight";
  
 "Ragdoll" = "Ragdoll";
@@ -117,3 +117,7 @@
 "System" = "System";
 "Light" = "Light";
 "Dark" = "Dark";
+
+
+// Sounds Text
+"Sounds" = "Sounds";

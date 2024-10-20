@@ -65,7 +65,6 @@ struct SoundsView: View {
                                         },
                                         onShowTrim: {
                                             audioToTrim = audio
-                                            showingTrimView = true
                                         }
                                     )
                                     .listRowInsets(
@@ -139,10 +138,8 @@ struct SoundsView: View {
                 }
             }
 
-            .sheet(isPresented: $showingTrimView) {
-                if let audioToTrim = audioToTrim {
-                    AudioTrimView(audio: audioToTrim)
-                }
+            .sheet(item: $audioToTrim) { audio in
+                AudioTrimView(audio: audio)
             }
         }
     }
