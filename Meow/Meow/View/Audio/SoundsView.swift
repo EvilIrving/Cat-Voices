@@ -1,10 +1,3 @@
-//
-//  SoundsView.swift
-//  Test
-//
-//  Created by Actor on 2024/10/7.
-//
-
 import SwiftData
 import SwiftUI
 
@@ -21,7 +14,7 @@ struct SoundsView: View {
 
     @State private var selectedSound: Audio?
     @State private var playingSound: Audio?
-    @StateObject private var audioManager = AudioManager()
+    @StateObject private var audioPlayerVM = AudioPlayerViewModel()
 
     @State private var showingTrimView = false
     @State private var audioToTrim: Audio?
@@ -41,56 +34,66 @@ struct SoundsView: View {
                                 .foregroundColor(.secondary)
                         } else {
                             // 使用 List 视图显示猫的音频列表
-                            List(cat.audios, id: \.id) { audio in
-                                VStack {
-                                    HStack {
-                                        Text(audio.name)
-                                        Spacer()
-                                        // 显示音频时长
-                                        Text(String(format: "%.1f s", audio.duration))
-                                            .foregroundColor(.secondary)
-
-                                        HStack {
-                                            IconButton(
-                                                systemName: playingSound == audio && audioManager.isPlaying ? "pause.circle" : "play.circle",
-                                                size: 30,
-                                                action: {
-                                                    // 播放声音逻辑
-                                                    if playingSound == audio && audioManager.isPlaying {
-                                                        audioManager.pause()
-                                                        playingSound = nil
-                                                    } else {
-                                                        playOf(sound: audio)
-                                                    }
+                            List {
+                                ForEach(cat.audios, id: \.id) { audio in
+                                    AudioListItemView(
+                                        audio: audio,
+                                        audioPlayerVM: audioPlayerVM,
+                                        isPlaying: audioPlayerVM.isPlaying
+                                            && audioPlayerVM.currentAudioURL
+                                                == audio.url,
+                                        progress: audioPlayerVM.currentAudioURL
+                                            == audio.url
+                                            ? audioPlayerVM.progress : 0,
+                                        onPlayPause: {
+                                            if audioPlayerVM.currentAudioURL
+                                                == audio.url
+                                            {
+                                                audioPlayerVM.togglePlayPause()
+                                            } else {
+                                                do {
+                                                    try audioPlayerVM.loadAudio(
+                                                        url: audio.url)
+                                                    audioPlayerVM.play()
+                                                } catch {
+                                                    print(
+                                                        "加载音频时出错: \(error.localizedDescription)"
+                                                    )
+                                                    // 在这里添加用户反馈，例如显示一个警告
                                                 }
-                                            )
-
-                                            // 循环播放按钮
-                                            IconButton(
-                                                systemName: "repeat.1",
-                                                size: 30,
-                                                action: {}
-                                            )
+                                            }
+                                        },
+                                        onShowTrim: {
+                                            audioToTrim = audio
+                                            showingTrimView = true
+                                        }
+                                    )
+                                    .listRowInsets(
+                                        EdgeInsets(
+                                            top: 12, leading: 14, bottom: 12,
+                                            trailing: 14)
+                                    )
+                                    .listRowSeparator(.hidden)
+                                    .swipeActions(
+                                        edge: .trailing, allowsFullSwipe: true
+                                    ) {
+                                        Button(role: .destructive) {
+                                            deleteAudio(audio: audio)
+                                        } label: {
+                                            Label("删除", systemImage: "trash")
                                         }
                                     }
-
-                                    WavesView(waves: audio.waves, progress: 0)
-                                        .frame(width: .infinity, height: 30)
                                 }
-
-                                // 水平间距
-                                .padding(.horizontal, 10)
                             }
-
                             .listStyle(PlainListStyle())
-                            .background(Color(.systemBackground))
                         }
 
                         Spacer()
 
                         // 显示录音按钮
                         if let selectedCat = selectedCat {
-                            RecordButton(isRecording: $isRecording, cat: selectedCat)
+                            RecordButton(
+                                isRecording: $isRecording, cat: selectedCat)
                         } else {
                             // 如果 selectedCat 为空，则显示提示信息
                             Text("选择猫猫")
@@ -98,12 +101,10 @@ struct SoundsView: View {
                         }
                     }
                 } else {
-                    // 如果没有猫，则显示无猫提示
+                    // 如果没有猫，则显示无猫提
                     Text("没有猫猫，也没有录制声音")
                         .foregroundColor(.secondary)
                 }
-
-//                    .navigationBarTitle(Text("mao"))
             }
 
             .navigationTitle(Text("喵语")).toolbarTitleDisplayMode(.inline)
@@ -124,7 +125,9 @@ struct SoundsView: View {
             .onChange(of: cats) { _, newValue in
                 if newValue.isEmpty {
                     selectedCat = nil
-                } else if selectedCat == nil || !newValue.contains(where: { $0.id == selectedCat?.id }) {
+                } else if selectedCat == nil
+                    || !newValue.contains(where: { $0.id == selectedCat?.id })
+                {
                     selectedCat = newValue.first
                 }
             }
@@ -144,55 +147,37 @@ struct SoundsView: View {
         }
     }
 
-    // 暂停当前正在播放的音频
-    private func pauseAudio() {
-        audioManager.pause()
-    }
-
-    private func playOf(sound: Audio) {
-        audioManager.pause()
-        do {
-            try audioManager.play(url: sound.url)
-            playingSound = sound
-        } catch {
-            print("Unable to play audio file: \(error.localizedDescription)")
-        }
-    }
-
     // 删除声音的方法
     private func deleteAudio(audio: Audio) {
         // 删除关联的音频文件
-        try? FileManager.default.removeItem(at: audio.url)
+        do {
+            try FileManager.default.removeItem(at: audio.url)
+        } catch {
+            print("删除音频文件失败: \(error.localizedDescription)")
+        }
 
         // 从数据库中删除音频
         modelContext.delete(audio)
-    }
-}
 
-/// 自定义图标按钮视图
-struct IconButton: View {
-    let systemName: String
-    let size: CGFloat
-    let action: () -> Void
+        // 如果当前正在播放这个音频，停止播放
+        if audioPlayerVM.currentAudioURL == audio.url {
+            audioPlayerVM.pause()
+            audioPlayerVM.currentAudioURL = nil
+        }
 
-    var body: some View {
-        Image(systemName: systemName)
-            .resizable()
-            .frame(width: size, height: size)
-            .foregroundColor(.accentColor)
-            .gesture(
-                DragGesture(minimumDistance: 0)
-                    .onEnded { _ in
-                        action()
-                    }
-            )
+        // 从猫咪的音频列表中移除
+        if let index = selectedCat?.audios.firstIndex(where: {
+            $0.id == audio.id
+        }) {
+            selectedCat?.audios.remove(at: index)
+        }
     }
 }
 
 // 预览代码
 #Preview {
     do {
-        let previewer = try Previewer()
+        let previewer = try MP3Preview()
         return SoundsView()
             .modelContainer(previewer.container)
     } catch {
