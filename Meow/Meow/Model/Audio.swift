@@ -11,6 +11,7 @@ final class Audio: Identifiable {
     var duration: Double
     var waves: [Float] = []
     var createdAt: Date
+    var isLooping: Bool = false
 
     // 使用 @Relationship 注解，表示 cat 属性是一个反向关联关系，并定义了关联的属性为 Cat 类的 audios 属性
     @Relationship(inverse: \Cat.audios) var cat: Cat?
@@ -22,6 +23,7 @@ final class Audio: Identifiable {
         self.name = name
         duration = 0.0  // 初始化为 0，稍后会更新
         createdAt = Date()
+        isLooping = false
     }
 
     // 使用 async/await 定义异步方法，用于更新音频时长

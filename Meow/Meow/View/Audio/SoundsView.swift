@@ -18,6 +18,8 @@ struct SoundsView: View {
 
     @State private var showingTrimView = false
     @State private var audioToTrim: Audio?
+    @State private var showErrorAlert = false
+    @State private var errorMessage = ""
 
     var body: some View {
         NavigationView {
@@ -51,16 +53,7 @@ struct SoundsView: View {
                                             {
                                                 audioPlayerVM.togglePlayPause()
                                             } else {
-                                                do {
-                                                    try audioPlayerVM.loadAudio(
-                                                        url: audio.url)
-                                                    audioPlayerVM.play()
-                                                } catch {
-                                                    print(
-                                                        "加载音频时出错: \(error.localizedDescription)"
-                                                    )
-                                                    // 在这里添加用户反馈，例如显示一个警告
-                                                }
+                                                loadAndPlayAudio(audio)
                                             }
                                         },
                                         onShowTrim: {
@@ -144,6 +137,10 @@ struct SoundsView: View {
                     AudioTrimView(audio: audioToTrim)
                 }
             }
+
+            .alert(isPresented: $showErrorAlert) {
+                Alert(title: Text("错误"), message: Text(errorMessage), dismissButton: .default(Text("确定")))
+            }
         }
     }
 
@@ -170,6 +167,16 @@ struct SoundsView: View {
             $0.id == audio.id
         }) {
             selectedCat?.audios.remove(at: index)
+        }
+    }
+
+    private func loadAndPlayAudio(_ audio: Audio) {
+        do {
+            try audioPlayerVM.loadAudio(url: audio.url, isLooping: audio.isLooping)
+            audioPlayerVM.play()
+        } catch {
+            errorMessage = "加载音频失败：\(error.localizedDescription)"
+            showErrorAlert = true
         }
     }
 }
