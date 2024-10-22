@@ -1,4 +1,5 @@
 import SwiftUI
+import SwiftData
 
 struct AudioListItemView: View {
     let audio: Audio
@@ -6,7 +7,8 @@ struct AudioListItemView: View {
     let isPlaying: Bool
     let progress: Double
     var onPlayPause: () -> Void
-    var onShowTrim: () -> Void  // 新增的回调函数
+    var onShowTrim: () -> Void
+    @Environment(\.modelContext) private var modelContext
 
     var body: some View {
         VStack(spacing: 10) {
@@ -21,17 +23,21 @@ struct AudioListItemView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
 
                     VStack(spacing: 0) {
-                        Text("loop")
-                            .font(.custom("Righteous-Regular", size: 16))
-                            .foregroundColor(.accent.opacity(0.40))
-                            .padding(.bottom, 2)
+                        TextButton(
+                            text: "loop",
+                            isToggled: audio.isLooping,
+                            action: {
+                                toggleLooping()
+                            }
+                        )
+                        .padding(.bottom, 2)
 
                         IconButton(
                             iconName: "ellipsis",
                             size: 25,
                             weight: .bold,
                             color: .customBlack,
-                            action: onShowTrim  // 使用新的回调函数
+                            action: onShowTrim
                         )
                     }
                     .frame(height: 50)
@@ -45,7 +51,7 @@ struct AudioListItemView: View {
                             action: onPlayPause
                         )
 
-                        Text(formatDuration(audio.duration))
+                        Text(isPlaying ? formatCurrentTime(audioPlayerVM.currentTime) : formatTotalDuration(audio.duration))
                             .font(.system(size: 14))
                             .fontWeight(.regular)
                             .foregroundColor(.accent.opacity(0.80))
@@ -62,11 +68,28 @@ struct AudioListItemView: View {
             .frame(height: 100)
         }
     }
+
+    private func toggleLooping() {
+        audio.isLooping.toggle()
+        modelContext.insert(audio)
+        
+        if audioPlayerVM.currentAudioURL == audio.url {
+            audioPlayerVM.setLooping(audio.isLooping)
+        }
+    }
 }
 
-func formatDuration(_ seconds: Double) -> String {
-    let minutes = Int(seconds) / 60
-    let remainingSeconds = Int(seconds) % 60
+func formatCurrentTime(_ seconds: Double) -> String {
+    let totalSeconds = Int(floor(seconds))
+    let minutes = totalSeconds / 60
+    let remainingSeconds = totalSeconds % 60
+    return String(format: "%02d:%02d", minutes, remainingSeconds)
+}
+
+func formatTotalDuration(_ seconds: Double) -> String {
+    let roundedSeconds = Int(seconds.rounded())
+    let minutes = roundedSeconds / 60
+    let remainingSeconds = roundedSeconds % 60
     return String(format: "%02d:%02d", minutes, remainingSeconds)
 }
 

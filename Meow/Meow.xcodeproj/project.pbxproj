@@ -31,6 +31,7 @@
 		1A84E1C02CC038A8003EAE2F /* CustomInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A84E1BF2CC038A8003EAE2F /* CustomInputField.swift */; };
 		1A84E1C22CC03B23003EAE2F /* WeightsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A84E1C12CC03B23003EAE2F /* WeightsView.swift */; };
 		1A84E1E52CC151CE003EAE2F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1A84E1E32CC151CE003EAE2F /* Localizable.strings */; };
+		1A84E1EC2CC171F7003EAE2F /* UnusedWavesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A84E1EB2CC171F7003EAE2F /* UnusedWavesView.swift */; };
 		1A84E1EE2CC23AA0003EAE2F /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A84E1ED2CC23AA0003EAE2F /* LanguageManager.swift */; };
 		1A84E1F32CC243B2003EAE2F /* StringEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A84E1F22CC243B2003EAE2F /* StringEx.swift */; };
 		1A932ABE2CAD8F6500954B71 /* MeowApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A932ABD2CAD8F6500954B71 /* MeowApp.swift */; };
@@ -38,6 +39,7 @@
 		1A932AC22CAD8F6700954B71 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A932AC12CAD8F6700954B71 /* Assets.xcassets */; };
 		1A932AC52CAD8F6700954B71 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A932AC42CAD8F6700954B71 /* Preview Assets.xcassets */; };
 		1A932AD02CAD93DF00954B71 /* Previewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A932ACF2CAD93DF00954B71 /* Previewer.swift */; };
+		D2A5387A2CC51BF200417B72 /* TextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A538792CC51BF200417B72 /* TextButton.swift */; };
 		D2D3CFA22CC4A46F00838235 /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D3CFA02CC4A46F00838235 /* IconButton.swift */; };
 		D2D3CFA82CC4A48600838235 /* AudioPlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D3CFA62CC4A48600838235 /* AudioPlayerViewModel.swift */; };
 		D2D3CFAB2CC4A4A600838235 /* AudioListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D3CFA92CC4A4A600838235 /* AudioListItemView.swift */; };
@@ -89,6 +91,7 @@
 		1A84E1E62CC151F7003EAE2F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		1A84E1E72CC15211003EAE2F /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		1A84E1E82CC15213003EAE2F /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1A84E1EB2CC171F7003EAE2F /* UnusedWavesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnusedWavesView.swift; sourceTree = "<group>"; };
 		1A84E1ED2CC23AA0003EAE2F /* LanguageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageManager.swift; sourceTree = "<group>"; };
 		1A84E1F22CC243B2003EAE2F /* StringEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringEx.swift; sourceTree = "<group>"; };
 		1A932ABA2CAD8F6500954B71 /* Meow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Meow.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -97,6 +100,7 @@
 		1A932AC12CAD8F6700954B71 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1A932AC42CAD8F6700954B71 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1A932ACF2CAD93DF00954B71 /* Previewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Previewer.swift; sourceTree = "<group>"; };
+		D2A538792CC51BF200417B72 /* TextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextButton.swift; sourceTree = "<group>"; };
 		D2D3CFA02CC4A46F00838235 /* IconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
 		D2D3CFA32CC4A47A00838235 /* Righteous-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Righteous-Regular.ttf"; sourceTree = "<group>"; };
 		D2D3CFA62CC4A48600838235 /* AudioPlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerViewModel.swift; sourceTree = "<group>"; };
@@ -303,6 +307,7 @@
 			isa = PBXGroup;
 			children = (
 				D2D3CFA02CC4A46F00838235 /* IconButton.swift */,
+				D2A538792CC51BF200417B72 /* TextButton.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -448,6 +453,7 @@
 				D2D3CFCF2CC4A8BB00838235 /* Audio.swift in Sources */,
 				1A408FCA2CB3C91A004B78A4 /* RecordButton.swift in Sources */,
 				1A84E1EE2CC23AA0003EAE2F /* LanguageManager.swift in Sources */,
+				D2A5387A2CC51BF200417B72 /* TextButton.swift in Sources */,
 				1A932AC02CAD8F6500954B71 /* ContentView.swift in Sources */,
 				1A84E1F32CC243B2003EAE2F /* StringEx.swift in Sources */,
 				1A84E1AF2CBF9CDA003EAE2F /* NewEventView.swift in Sources */,

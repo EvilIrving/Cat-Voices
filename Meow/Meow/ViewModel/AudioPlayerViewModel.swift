@@ -5,7 +5,11 @@ class AudioPlayerViewModel: NSObject, ObservableObject {
     @Published var samples: [Float] = []
     @Published var progress: Double = 0
     @Published var isPlaying: Bool = false
-    @Published var isLooping: Bool = false
+    @Published var isLooping: Bool = false {
+        didSet {
+            updateLoopingState()
+        }
+    }
     @Published var currentAudioURL: URL?
     @Published var audioFileName: String = ""
     @Published var duration: TimeInterval = 0
@@ -18,11 +22,35 @@ class AudioPlayerViewModel: NSObject, ObservableObject {
         super.init()
     }
 
-    func loadAudio(url: URL) throws {
+    private func updateLoopingState() {
+        if let audioPlayer = audioPlayer {
+            if isLooping {
+                audioPlayer.numberOfLoops = -1 // 无限循环
+            } else {
+                audioPlayer.numberOfLoops = 0 // 不循环
+                // 如果当前播放位置已经超过了总时长的99%，则立即停止播放
+                if audioPlayer.currentTime > audioPlayer.duration * 0.99 {
+                    pause()
+                    audioPlayer.currentTime = 0
+                    isPlaying = false
+                    progress = 0
+                    currentTime = 0
+                    pauseDisplayLink()
+                }
+            }
+        }
+    }
+
+    func setLooping(_ looping: Bool) {
+        isLooping = looping
+    }
+
+    func loadAudio(url: URL, isLooping: Bool) throws {
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: url)
-            audioPlayer?.delegate = self  // 设置代理
+            audioPlayer?.delegate = self
             audioPlayer?.prepareToPlay()
+            setLooping(isLooping)
 
             self.currentAudioURL = url
             self.audioFileName = url.deletingPathExtension().lastPathComponent
@@ -52,7 +80,7 @@ class AudioPlayerViewModel: NSObject, ObservableObject {
     func play() {
         if audioPlayer == nil, let url = currentAudioURL {
             do {
-                try loadAudio(url: url)
+                try loadAudio(url: url, isLooping: isLooping)
             } catch {
                 print("重新加载音频失败: \(error.localizedDescription)")
                 return
@@ -150,9 +178,14 @@ class AudioPlayerViewModel: NSObject, ObservableObject {
         progress = audioPlayer.currentTime / audioPlayer.duration
         currentTime = audioPlayer.currentTime
 
-        if !audioPlayer.isPlaying && progress >= 1.0 {
+        // 检查是否接近结束且不循环
+        if !isLooping && progress > 0.99 {
             isPlaying = false
             pauseDisplayLink()
+            audioPlayer.stop()
+            audioPlayer.currentTime = 0
+            progress = 0
+            currentTime = 0
         }
     }
 
@@ -165,14 +198,16 @@ class AudioPlayerViewModel: NSObject, ObservableObject {
 }
 
 extension AudioPlayerViewModel: AVAudioPlayerDelegate {
-    func audioPlayerDidFinishPlaying(
-        _ player: AVAudioPlayer, successfully flag: Bool
-    ) {
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         DispatchQueue.main.async {
-            self.isPlaying = false
-            self.progress = 0
-            self.currentTime = 0
-            self.pauseDisplayLink()
+            if self.isLooping {
+                self.play()
+            } else {
+                self.isPlaying = false
+                self.progress = 0
+                self.currentTime = 0
+                self.pauseDisplayLink()
+            }
         }
     }
 }
