@@ -19,7 +19,7 @@ struct WeightsView: View {
                     })
                 }
             }
-            .navigationTitle("Weight Record".localised(using: languageManager.selectedLanguage)).toolbarTitleDisplayMode(.inline)
+            .navigationTitle("Weights".localised(using: languageManager.selectedLanguage)).toolbarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: { isPresentingNewWeightView = true }) {

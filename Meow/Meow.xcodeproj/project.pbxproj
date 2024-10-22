@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		1A408FBF2CB3C854004B78A4 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A408FBE2CB3C854004B78A4 /* Model.swift */; };
 		1A408FC12CB3C886004B78A4 /* CatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A408FC02CB3C886004B78A4 /* CatsView.swift */; };
-		1A408FC32CB3C8B3004B78A4 /* UnusedSoundsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A408FC22CB3C8B3004B78A4 /* UnusedSoundsView.swift */; };
 		1A408FC82CB3C900004B78A4 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A408FC72CB3C900004B78A4 /* SettingView.swift */; };
 		1A408FCA2CB3C91A004B78A4 /* RecordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A408FC92CB3C91A004B78A4 /* RecordButton.swift */; };
 		1A408FCC2CB3C93A004B78A4 /* AudioRecordHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A408FCB2CB3C93A004B78A4 /* AudioRecordHelp.swift */; };
@@ -32,7 +31,6 @@
 		1A84E1C02CC038A8003EAE2F /* CustomInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A84E1BF2CC038A8003EAE2F /* CustomInputField.swift */; };
 		1A84E1C22CC03B23003EAE2F /* WeightsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A84E1C12CC03B23003EAE2F /* WeightsView.swift */; };
 		1A84E1E52CC151CE003EAE2F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1A84E1E32CC151CE003EAE2F /* Localizable.strings */; };
-		1A84E1EC2CC171F7003EAE2F /* UnusedWavesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A84E1EB2CC171F7003EAE2F /* UnusedWavesView.swift */; };
 		1A84E1EE2CC23AA0003EAE2F /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A84E1ED2CC23AA0003EAE2F /* LanguageManager.swift */; };
 		1A84E1F32CC243B2003EAE2F /* StringEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A84E1F22CC243B2003EAE2F /* StringEx.swift */; };
 		1A932ABE2CAD8F6500954B71 /* MeowApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A932ABD2CAD8F6500954B71 /* MeowApp.swift */; };
@@ -66,7 +64,6 @@
 /* Begin PBXFileReference section */
 		1A408FBE2CB3C854004B78A4 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		1A408FC02CB3C886004B78A4 /* CatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatsView.swift; sourceTree = "<group>"; };
-		1A408FC22CB3C8B3004B78A4 /* UnusedSoundsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnusedSoundsView.swift; sourceTree = "<group>"; };
 		1A408FC72CB3C900004B78A4 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		1A408FC92CB3C91A004B78A4 /* RecordButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordButton.swift; sourceTree = "<group>"; };
 		1A408FCB2CB3C93A004B78A4 /* AudioRecordHelp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecordHelp.swift; sourceTree = "<group>"; };
@@ -92,7 +89,6 @@
 		1A84E1E62CC151F7003EAE2F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		1A84E1E72CC15211003EAE2F /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		1A84E1E82CC15213003EAE2F /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
-		1A84E1EB2CC171F7003EAE2F /* UnusedWavesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnusedWavesView.swift; sourceTree = "<group>"; };
 		1A84E1ED2CC23AA0003EAE2F /* LanguageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageManager.swift; sourceTree = "<group>"; };
 		1A84E1F22CC243B2003EAE2F /* StringEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringEx.swift; sourceTree = "<group>"; };
 		1A932ABA2CAD8F6500954B71 /* Meow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Meow.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -171,8 +167,8 @@
 		1A408FCD2CB3C95C004B78A4 /* Help */ = {
 			isa = PBXGroup;
 			children = (
-				1A408FCB2CB3C93A004B78A4 /* AudioRecordHelp.swift */,
 				1A408FCE2CB3CC45004B78A4 /* AudioPlayManagerHelp.swift */,
+				1A408FCB2CB3C93A004B78A4 /* AudioRecordHelp.swift */,
 			);
 			path = Help;
 			sourceTree = "<group>";
@@ -296,9 +292,7 @@
 			children = (
 				D2D3CFA92CC4A4A600838235 /* AudioListItemView.swift */,
 				D2D3CFAA2CC4A4A600838235 /* WaveformView.swift */,
-				1A408FC22CB3C8B3004B78A4 /* UnusedSoundsView.swift */,
 				1A408FD22CB3EE79004B78A4 /* AudioTrimView.swift */,
-				1A84E1EB2CC171F7003EAE2F /* UnusedWavesView.swift */,
 				1A408FC92CB3C91A004B78A4 /* RecordButton.swift */,
 				D2D3CFAD2CC4A5EB00838235 /* SoundsView.swift */,
 			);
@@ -461,7 +455,6 @@
 				1A932ABE2CAD8F6500954B71 /* MeowApp.swift in Sources */,
 				1A84E1C22CC03B23003EAE2F /* WeightsView.swift in Sources */,
 				1A84E1B82CC02C0A003EAE2F /* PetMedicalRecordView.swift in Sources */,
-				1A84E1EC2CC171F7003EAE2F /* UnusedWavesView.swift in Sources */,
 				1A408FDE2CB44793004B78A4 /* AddAndEditCatView.swift in Sources */,
 				1A932AD02CAD93DF00954B71 /* Previewer.swift in Sources */,
 				D2D3CFCC2CC4A61B00838235 /* MP3Preview.swift in Sources */,
@@ -483,7 +476,6 @@
 				1A408FE02CB59C20004B78A4 /* AppState.swift in Sources */,
 				1A84E1B62CC02B70003EAE2F /* WeightUnitView.swift in Sources */,
 				1A84E1B12CC0254A003EAE2F /* Extension.swift in Sources */,
-				1A408FC32CB3C8B3004B78A4 /* UnusedSoundsView.swift in Sources */,
 				1A408FCF2CB3CC45004B78A4 /* AudioPlayManagerHelp.swift in Sources */,
 				1A408FBF2CB3C854004B78A4 /* Model.swift in Sources */,
 				1A84E1BA2CC02F15003EAE2F /* SwitchHome.swift in Sources */,

@@ -23,7 +23,7 @@ struct EventsView: View {
     var body: some View {
         NavigationView {
             EventsList(events: events, onDelete: deleteEvents)
-                .navigationTitle("Event Reminder".localised(using: languageManager.selectedLanguage)).toolbarTitleDisplayMode(.inline)
+                .navigationTitle("Reminder".localised(using: languageManager.selectedLanguage)).toolbarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         addButton
